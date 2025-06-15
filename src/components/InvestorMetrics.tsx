@@ -3,243 +3,226 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { TrendingUp, AlertTriangle, DollarSign, Calendar } from "lucide-react";
+import { Calendar, DollarSign, MapPin, Users, Bookmark } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 
 const InvestorMetrics = () => {
-  const tenderOpportunities = [
-    {
-      package: "Package 1-A",
-      location: "Northern Region",
-      capacity: "145 MW",
-      sites: 8,
-      deadline: "March 15, 2024",
-      bids: 3,
-      status: "Under-subscribed",
-      riskLevel: "Medium",
-      estimatedROI: "12-15%"
-    },
-    {
-      package: "Package 2-B",
-      location: "Central Region", 
-      capacity: "89 MW",
-      sites: 5,
-      deadline: "April 2, 2024",
-      bids: 0,
-      status: "Zero Bids",
-      riskLevel: "High Opportunity",
-      estimatedROI: "18-22%"
-    },
-    {
-      package: "Package 3-C",
-      location: "Southern Region",
-      capacity: "203 MW", 
-      sites: 12,
-      deadline: "May 10, 2024",
-      bids: 7,
-      status: "Competitive",
-      riskLevel: "Low",
-      estimatedROI: "10-13%"
+  const { user } = useAuth();
+
+  const { data: tenders } = useQuery({
+    queryKey: ['tender-opportunities'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('tender_opportunities')
+        .select('*')
+        .order('deadline', { ascending: true });
+      
+      if (error) throw error;
+      return data;
     }
-  ];
+  });
 
-  const investmentMetrics = [
-    { label: "Total Market Size", value: "2,605 MW", change: "+15%" },
-    { label: "Avg. Installation Cost", value: "$0.62/W", change: "-8%" },
-    { label: "Grid Tariff Rate", value: "৳6.8/kWh", change: "+3%" },
-    { label: "Policy Stability Index", value: "7.2/10", change: "+0.5" }
-  ];
+  const { data: projects } = useQuery({
+    queryKey: ['solar-projects'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('solar_projects')
+        .select('*')
+        .order('capacity_mw', { ascending: false });
+      
+      if (error) throw error;
+      return data;
+    }
+  });
 
-  const fundingSources = [
-    { name: "ADB LEAP 2", amount: "$515M", status: "Available", focus: "Grid-connected solar" },
-    { name: "World Bank IDA", amount: "$300M", status: "Phase 2", focus: "Rural electrification" },
-    { name: "Green Climate Fund", amount: "$180M", status: "Under Review", focus: "Climate adaptation" },
-    { name: "Private Investment", amount: "$1.2B", status: "Active", focus: "Commercial & Industrial" }
-  ];
+  const handleBookmarkTender = async (tenderId: string) => {
+    if (!user) {
+      toast.error("Please sign in to bookmark tenders");
+      return;
+    }
+
+    const { error } = await supabase
+      .from('user_project_interactions')
+      .upsert({
+        user_id: user.id,
+        project_id: tenderId,
+        interaction_type: 'bookmark',
+        notes: 'Bookmarked tender opportunity'
+      });
+
+    if (error) {
+      toast.error("Failed to bookmark tender");
+    } else {
+      toast.success("Tender bookmarked successfully!");
+    }
+  };
+
+  // Calculate metrics
+  const totalTenderValue = tenders?.reduce((sum, tender) => sum + Number(tender.minimum_bid || 0), 0) || 247500000;
+  const avgBidsPerTender = tenders?.reduce((sum, tender) => sum + tender.bid_count, 0) / (tenders?.length || 1) || 1.33;
+  const highCapacityProjects = projects?.filter(p => Number(p.capacity_mw) >= 50).length || 3;
 
   return (
     <div className="space-y-6">
       {/* Investment Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        {investmentMetrics.map((metric, index) => (
-          <Card key={index} className="border-blue-200">
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">{metric.label}</p>
-                  <p className="text-xl font-bold text-blue-700">{metric.value}</p>
-                </div>
-                <Badge variant={metric.change.startsWith('+') ? "default" : "secondary"} className="text-xs">
-                  {metric.change}
-                </Badge>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Active Tender Opportunities */}
-        <Card className="border-orange-200">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5 text-orange-600" />
-              Active Tender Opportunities
-            </CardTitle>
-            <CardDescription>
-              Live BPDB solar procurement with bid analysis and risk assessment
-            </CardDescription>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card className="border-blue-200">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Opportunity Value</CardTitle>
+            <DollarSign className="h-4 w-4 text-blue-600" />
           </CardHeader>
-          <CardContent className="space-y-4">
-            {tenderOpportunities.map((tender, index) => (
-              <div key={index} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h4 className="font-semibold text-gray-900">{tender.package}</h4>
-                    <p className="text-sm text-muted-foreground">{tender.location} • {tender.capacity}</p>
-                  </div>
-                  <Badge 
-                    variant={
-                      tender.status === "Zero Bids" ? "destructive" :
-                      tender.status === "Under-subscribed" ? "secondary" : "default"
-                    }
-                  >
-                    {tender.status}
-                  </Badge>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <span className="text-muted-foreground">Sites:</span> {tender.sites}
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Deadline:</span> {tender.deadline}
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Current Bids:</span> {tender.bids}
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Est. ROI:</span> {tender.estimatedROI}
-                  </div>
-                </div>
-
-                <div className="mt-3 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <AlertTriangle className="h-4 w-4 text-amber-500" />
-                    <span className="text-sm text-amber-700">{tender.riskLevel} Risk</span>
-                  </div>
-                  <Button size="sm" variant="outline">
-                    View Details
-                  </Button>
-                </div>
-              </div>
-            ))}
+          <CardContent>
+            <div className="text-2xl font-bold text-blue-700">
+              ${(totalTenderValue / 1000000).toFixed(0)}M
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Active tender minimum bids
+            </p>
           </CardContent>
         </Card>
 
-        {/* Funding Sources */}
         <Card className="border-green-200">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <DollarSign className="h-5 w-5 text-green-600" />
-              Available Funding Sources
-            </CardTitle>
-            <CardDescription>
-              International and domestic financing options for solar projects
-            </CardDescription>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Competition Level</CardTitle>
+            <Users className="h-4 w-4 text-green-600" />
           </CardHeader>
-          <CardContent className="space-y-4">
-            {fundingSources.map((source, index) => (
-              <div key={index} className="p-4 border rounded-lg">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-semibold text-gray-900">{source.name}</h4>
-                  <Badge 
-                    variant={
-                      source.status === "Available" ? "default" :
-                      source.status === "Active" ? "secondary" : "outline"
-                    }
-                  >
-                    {source.status}
-                  </Badge>
-                </div>
-                
-                <div className="text-2xl font-bold text-green-700 mb-1">{source.amount}</div>
-                <p className="text-sm text-muted-foreground">{source.focus}</p>
-                
-                {source.status === "Available" && (
-                  <Button size="sm" className="mt-3 bg-green-600 hover:bg-green-700">
-                    Apply Now
-                  </Button>
-                )}
-              </div>
-            ))}
+          <CardContent>
+            <div className="text-2xl font-bold text-green-700">{avgBidsPerTender.toFixed(1)}</div>
+            <p className="text-xs text-muted-foreground">
+              Average bids per tender
+            </p>
+            <Progress value={33} className="mt-2" />
+          </CardContent>
+        </Card>
+
+        <Card className="border-purple-200">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Large Scale Projects</CardTitle>
+            <MapPin className="h-4 w-4 text-purple-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-purple-700">{highCapacityProjects}</div>
+            <p className="text-xs text-muted-foreground">
+              Projects ≥50 MW capacity
+            </p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Risk Analysis Dashboard */}
-      <Card className="border-red-200">
+      {/* Active Tenders */}
+      <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-red-600" />
-            Market Risk Analysis
-          </CardTitle>
+          <CardTitle>Active Tender Opportunities</CardTitle>
           <CardDescription>
-            Key risk factors and policy volatility indicators for solar investments in Bangladesh
+            Current BPDB solar tenders available for bidding
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-3">
-              <h4 className="font-semibold text-gray-900">Policy Risk</h4>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span>Regulatory Stability</span>
-                  <span className="font-medium">72%</span>
+          <div className="space-y-4">
+            {tenders?.map((tender) => (
+              <div key={tender.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="space-y-1">
+                    <h4 className="font-semibold text-lg">{tender.title}</h4>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <MapPin className="h-3 w-3" />
+                        {tender.location}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-3 w-3" />
+                        Deadline: {new Date(tender.deadline).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right space-y-2">
+                    <Badge variant={tender.status === 'open' ? 'default' : 'secondary'}>
+                      {tender.status.toUpperCase()}
+                    </Badge>
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      onClick={() => handleBookmarkTender(tender.id)}
+                    >
+                      <Bookmark className="h-3 w-3 mr-1" />
+                      Bookmark
+                    </Button>
+                  </div>
                 </div>
-                <Progress value={72} className="h-2" />
-                <p className="text-xs text-muted-foreground">
-                  31 projects cancelled in 2023 due to policy changes
-                </p>
-              </div>
-            </div>
 
-            <div className="space-y-3">
-              <h4 className="font-semibold text-gray-900">Financial Risk</h4>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span>Payment Security</span>
-                  <span className="font-medium">68%</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
+                  <div>
+                    <span className="text-sm font-medium text-emerald-600">Capacity</span>
+                    <p className="font-bold">{tender.capacity_mw} MW</p>
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-blue-600">Minimum Bid</span>
+                    <p className="font-bold">${(Number(tender.minimum_bid) / 1000000).toFixed(1)}M</p>
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-purple-600">Current Bids</span>
+                    <p className="font-bold">{tender.bid_count}</p>
+                  </div>
                 </div>
-                <Progress value={68} className="h-2" />
-                <p className="text-xs text-muted-foreground">
-                  Government payment delays averaging 45 days
-                </p>
-              </div>
-            </div>
 
-            <div className="space-y-3">
-              <h4 className="font-semibold text-gray-900">Technical Risk</h4>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span>Grid Integration</span>
-                  <span className="font-medium">85%</span>
+                <p className="text-sm text-gray-600 mb-3">{tender.description}</p>
+                
+                <div className="flex items-center justify-between">
+                  <div className="text-xs text-muted-foreground">
+                    Days remaining: {Math.max(0, Math.ceil((new Date(tender.deadline).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)))}
+                  </div>
+                  <div className="space-x-2">
+                    <Button size="sm" variant="outline">View Details</Button>
+                    <Button size="sm" disabled={!user}>
+                      {user ? 'Submit Bid' : 'Sign In to Bid'}
+                    </Button>
+                  </div>
                 </div>
-                <Progress value={85} className="h-2" />
-                <p className="text-xs text-muted-foreground">
-                  Strong transmission infrastructure in target areas
-                </p>
               </div>
-            </div>
+            ))}
           </div>
+        </CardContent>
+      </Card>
 
-          <div className="mt-6 p-4 bg-red-50 rounded-lg border border-red-200">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="h-5 w-5 text-red-600 mt-0.5" />
-              <div>
-                <h5 className="font-semibold text-red-900">Investment Advisory</h5>
-                <p className="text-sm text-red-700 mt-1">
-                  Due diligence recommended for projects over 50 MW. Recent policy volatility has affected 23% of large-scale solar developments. Consider diversified portfolio approach across multiple smaller projects.
-                </p>
+      {/* Investment Insights */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Market Insights</CardTitle>
+          <CardDescription>Key trends and opportunities in Bangladesh's solar market</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <h4 className="font-semibold">High-Opportunity Regions</h4>
+              {projects?.slice(0, 3).map((project) => (
+                <div key={project.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div>
+                    <p className="font-medium">{project.location}</p>
+                    <p className="text-sm text-muted-foreground">{project.capacity_mw} MW capacity</p>
+                  </div>
+                  <Badge variant="outline">{project.status.replace('_', ' ')}</Badge>
+                </div>
+              ))}
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-semibold">Investment Tips</h4>
+              <div className="space-y-3">
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <p className="font-medium text-blue-900">Low Competition</p>
+                  <p className="text-sm text-blue-700">Several tenders have zero bids - early mover advantage</p>
+                </div>
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <p className="font-medium text-green-900">ADB Backing</p>
+                  <p className="text-sm text-green-700">Projects backed by Asian Development Bank financing</p>
+                </div>
+                <div className="p-3 bg-amber-50 rounded-lg">
+                  <p className="font-medium text-amber-900">Policy Support</p>
+                  <p className="text-sm text-amber-700">Government target: 40% renewable energy by 2041</p>
+                </div>
               </div>
             </div>
           </div>

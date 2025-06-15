@@ -1,107 +1,133 @@
 
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Sun, Menu, User, LogOut } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
-  const navigation = [
-    { name: "Dashboard", href: "/dashboard" },
-    { name: "AI Tools", href: "/ai-tools" },
-    { name: "Investors", href: "/investors" },
-    { name: "Learn", href: "/learn" },
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
+
+  const navigationItems = [
+    { href: "/", label: "Home" },
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/ai-tools", label: "AI Tools" },
+    { href: "/investors", label: "Investors" },
+    { href: "/learn", label: "Learn" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
-
   return (
-    <header className="bg-white/95 backdrop-blur-sm border-b border-emerald-100 sticky top-0 z-50">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-emerald-500 to-amber-500 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">BD</span>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent">
-              SolarPower
-            </span>
-          </Link>
+    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center space-x-2">
+          <Sun className="h-8 w-8 text-emerald-600" />
+          <span className="font-bold text-xl text-gray-900">BDSolarPower</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-emerald-600 ${
-                  isActive(item.href) 
-                    ? "text-emerald-600 border-b-2 border-emerald-600 pb-1" 
-                    : "text-gray-700"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navigationItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className="text-gray-600 hover:text-emerald-600 transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
-              Sign In
-            </Button>
-            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
-              Get Started
-            </Button>
-          </div>
-
-          {/* Mobile Navigation */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="sm">
-                <Menu className="h-5 w-5" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-80">
-              <div className="flex flex-col space-y-4 mt-8">
-                <Link to="/" className="flex items-center space-x-2 mb-8">
-                  <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-emerald-500 to-amber-500 flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">BD</span>
+        {/* Desktop Auth */}
+        <div className="hidden md:flex items-center space-x-4">
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Avatar className="h-8 w-8">
+                    <AvatarFallback>
+                      {user.email?.charAt(0).toUpperCase() || "U"}
+                    </AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuItem className="flex flex-col items-start">
+                  <div className="font-medium">{user.email}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {user.user_metadata?.organization || "Individual"}
                   </div>
-                  <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent">
-                    SolarPower
-                  </span>
-                </Link>
-                
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-lg font-medium py-2 px-4 rounded-lg transition-colors ${
-                      isActive(item.href) 
-                        ? "bg-emerald-100 text-emerald-700" 
-                        : "text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                
-                <div className="pt-4 space-y-2">
-                  <Button variant="outline" className="w-full">
-                    Sign In
-                  </Button>
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
-                    Get Started
-                  </Button>
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={handleSignOut}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Link to="/auth">
+              <Button>
+                <User className="mr-2 h-4 w-4" />
+                Sign In
+              </Button>
+            </Link>
+          )}
         </div>
+
+        {/* Mobile Navigation */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon">
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px]">
+            <div className="flex flex-col space-y-4 mt-8">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="text-gray-600 hover:text-emerald-600 transition-colors py-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="pt-4 border-t">
+                {user ? (
+                  <div className="space-y-4">
+                    <div className="text-sm">
+                      <div className="font-medium">{user.email}</div>
+                      <div className="text-muted-foreground">
+                        {user.user_metadata?.organization || "Individual"}
+                      </div>
+                    </div>
+                    <Button onClick={handleSignOut} variant="outline" className="w-full">
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Log out
+                    </Button>
+                  </div>
+                ) : (
+                  <Link to="/auth" onClick={() => setIsOpen(false)}>
+                    <Button className="w-full">
+                      <User className="mr-2 h-4 w-4" />
+                      Sign In
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );
