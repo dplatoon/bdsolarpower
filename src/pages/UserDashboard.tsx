@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
+import ProjectComparison from "@/components/ProjectComparison";
+import InvestmentPortfolio from "@/components/InvestmentPortfolio";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -104,10 +106,11 @@ const UserDashboard = () => {
         </div>
 
         <Tabs defaultValue="projects" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="projects">Bookmarked Projects</TabsTrigger>
-            <TabsTrigger value="tenders">Bookmarked Tenders</TabsTrigger>
-            <TabsTrigger value="profile">Profile</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="projects">Projects</TabsTrigger>
+            <TabsTrigger value="tenders">Tenders</TabsTrigger>
+            <TabsTrigger value="compare">Compare</TabsTrigger>
+            <TabsTrigger value="portfolio">Portfolio</TabsTrigger>
           </TabsList>
 
           <TabsContent value="projects" className="space-y-4">
@@ -180,37 +183,12 @@ const UserDashboard = () => {
             )}
           </TabsContent>
 
-          <TabsContent value="profile">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <User className="h-5 w-5" />
-                  Profile Information
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium">Email</label>
-                  <p className="text-gray-600">{user?.email}</p>
-                </div>
-                {profile?.full_name && (
-                  <div>
-                    <label className="text-sm font-medium">Full Name</label>
-                    <p className="text-gray-600">{profile.full_name}</p>
-                  </div>
-                )}
-                {profile?.organization && (
-                  <div>
-                    <label className="text-sm font-medium">Organization</label>
-                    <p className="text-gray-600">{profile.organization}</p>
-                  </div>
-                )}
-                <div>
-                  <label className="text-sm font-medium">Member Since</label>
-                  <p className="text-gray-600">{new Date(user?.created_at || '').toLocaleDateString()}</p>
-                </div>
-              </CardContent>
-            </Card>
+          <TabsContent value="compare">
+            <ProjectComparison />
+          </TabsContent>
+
+          <TabsContent value="portfolio">
+            <InvestmentPortfolio />
           </TabsContent>
         </Tabs>
       </div>

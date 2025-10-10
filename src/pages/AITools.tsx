@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import SolarAnalyzer from "@/components/SolarAnalyzer";
 import ProjectMap from "@/components/ProjectMap";
+import CarbonCalculator from "@/components/CarbonCalculator";
+import PolicySummarizer from "@/components/PolicySummarizer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const AITools = () => {
@@ -16,13 +18,23 @@ const AITools = () => {
         </div>
 
         <Tabs defaultValue="analyzer" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="analyzer">Solar Analyzer</TabsTrigger>
+            <TabsTrigger value="carbon">Carbon Calculator</TabsTrigger>
+            <TabsTrigger value="policy">Policy Summarizer</TabsTrigger>
             <TabsTrigger value="map">Project Map</TabsTrigger>
           </TabsList>
 
           <TabsContent value="analyzer">
             <SolarAnalyzer />
+          </TabsContent>
+
+          <TabsContent value="carbon">
+            <CarbonCalculator />
+          </TabsContent>
+
+          <TabsContent value="policy">
+            <PolicySummarizer />
           </TabsContent>
 
           <TabsContent value="map">
