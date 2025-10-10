@@ -1,1 +1,4 @@
 project_id = "bjgnptivvbxtdqueszkk"
+
+[functions.analyze-solar-potential]
+verify_jwt = false

@@ -24,6 +24,7 @@ const Header = () => {
     { href: "/ai-tools", label: "AI Tools" },
     { href: "/investors", label: "Investors" },
     { href: "/learn", label: "Learn" },
+    ...(user ? [{ href: "/my-dashboard", label: "My Dashboard" }] : []),
   ];
 
   return (

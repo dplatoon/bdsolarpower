@@ -11,6 +11,7 @@ import AITools from "./pages/AITools";
 import Investors from "./pages/Investors";
 import Learn from "./pages/Learn";
 import Auth from "./pages/Auth";
+import UserDashboard from "./pages/UserDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/investors" element={<Investors />} />
             <Route path="/learn" element={<Learn />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/my-dashboard" element={<UserDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
