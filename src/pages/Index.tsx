@@ -1,5 +1,3 @@
-
-import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowUp, TrendingUp, MapPin, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import SolarDataDashboard from "@/components/SolarDataDashboard";
 import AIToolsPreview from "@/components/AIToolsPreview";
@@ -15,6 +14,11 @@ import InvestorMetrics from "@/components/InvestorMetrics";
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+      <SEO 
+        title="Bangladesh's Premier Solar Energy Intelligence Platform"
+        description="Advanced AI-powered solar energy platform for Bangladesh. Real-time analytics, investment opportunities, tender tracking, and comprehensive solar solutions. 1,183 MW capacity across 55 active sites."
+        keywords="solar energy Bangladesh, renewable energy, solar investment Bangladesh, BPDB tenders, solar panels Bangladesh, solar farm, grid integration, net metering Bangladesh"
+      />
       <Header />
       
       {/* Hero Section */}

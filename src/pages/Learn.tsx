@@ -1,9 +1,9 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Calendar, FileText, TrendingUp, ArrowUp } from "lucide-react";
+import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 
 const Learn = () => {
@@ -52,6 +52,11 @@ const Learn = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
+      <SEO 
+        title="Solar Energy Education Hub - Learn About Bangladesh's Renewable Journey"
+        description="Comprehensive resources on Bangladesh's renewable energy journey, policies, and implementation guides. From 20% electrification to 97% grid access and 2041 clean energy targets."
+        keywords="solar energy education, Bangladesh renewable energy policy, net metering Bangladesh, solar implementation guide, BPDB, SREDA, solar standards"
+      />
       <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
