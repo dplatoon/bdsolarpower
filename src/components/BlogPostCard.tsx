@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 export interface BlogPost {
   id: string;
@@ -79,6 +80,7 @@ const equipmentFrames = {
 
 export const BlogPostCard = ({ post }: BlogPostCardProps) => {
   const frame = equipmentFrames[post.equipment];
+  const navigate = useNavigate();
 
   return (
     <Card 
@@ -127,6 +129,7 @@ export const BlogPostCard = ({ post }: BlogPostCardProps) => {
             `hover:${frame.badge}`,
             "hover:text-white transition-all"
           )}
+          onClick={() => navigate(`/blog/${post.id}`)}
         >
           Read More
         </Button>

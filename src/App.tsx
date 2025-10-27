@@ -12,6 +12,7 @@ import AITools from "./pages/AITools";
 import Investors from "./pages/Investors";
 import Learn from "./pages/Learn";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Auth from "./pages/Auth";
 import UserDashboard from "./pages/UserDashboard";
 import NotFound from "./pages/NotFound";
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/investors" element={<Investors />} />
               <Route path="/learn" element={<Learn />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/my-dashboard" element={<UserDashboard />} />
               <Route path="*" element={<NotFound />} />
