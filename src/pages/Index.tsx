@@ -10,16 +10,9 @@ import Header from "@/components/Header";
 import SolarDataDashboard from "@/components/SolarDataDashboard";
 import AIToolsPreview from "@/components/AIToolsPreview";
 import InvestorMetrics from "@/components/InvestorMetrics";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
-      <SEO 
-        title="Solar Panel Bangladesh | 5kW System from BDT 275,000"
-        description="Leading solar panel installation in Bangladesh. 5kW system from BDT 275,000. Rooftop solar, net metering, 3-4 year ROI. 500+ installations. Get free quote today!"
-        keywords="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh"
-        canonicalUrl="https://bdsolarpower.com/"
-      />
+  return <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+      <SEO title="Solar Panel Bangladesh | 5kW System from BDT 275,000" description="Leading solar panel installation in Bangladesh. 5kW system from BDT 275,000. Rooftop solar, net metering, 3-4 year ROI. 500+ installations. Get free quote today!" keywords="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh" canonicalUrl="https://bdsolarpower.com/" />
       <Header />
       
       {/* Hero Section */}
@@ -167,15 +160,13 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/learn">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-emerald-600">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto border-white hover:bg-white text-slate-900">
                 Learn About Government Program
               </Button>
             </Link>
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
