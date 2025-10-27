@@ -14,7 +14,7 @@ interface SEOProps {
 export const SEO = ({ 
   title, 
   description, 
-  keywords = "solar energy Bangladesh, renewable energy, solar panels, solar investment, BPDB tenders, solar equipment",
+  keywords = "solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, solar energy Bangladesh, net metering Bangladesh, solar system price, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh, solar loan Bangladesh EMI, monocrystalline solar panel Bangladesh, off grid solar system Bangladesh, solar panel installation cost Bangladesh",
   canonicalUrl,
   ogImage = "https://lovable.dev/opengraph-image-p98pqg.png",
   type = 'website',

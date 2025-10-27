@@ -53,9 +53,10 @@ const Learn = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
       <SEO 
-        title="Solar Energy Education Hub - Learn About Bangladesh's Renewable Journey"
-        description="Comprehensive resources on Bangladesh's renewable energy journey, policies, and implementation guides. From 20% electrification to 97% grid access and 2041 clean energy targets."
-        keywords="solar energy education, Bangladesh renewable energy policy, net metering Bangladesh, solar implementation guide, BPDB, SREDA, solar standards"
+        title="Net Metering Bangladesh | Solar Policy & 3000 MW Program Guide"
+        description="Complete guide to Bangladesh solar policy, net metering, 3000 MW rooftop program. Government incentives, 1% import duty savings. ROI calculators & implementation guides."
+        keywords="net metering Bangladesh policy, 3000 MW solar program Bangladesh, solar policy Bangladesh, solar energy education, renewable energy Bangladesh, SREDA guidelines, BPDB solar regulations"
+        canonicalUrl="https://bdsolarpower.com/learn"
       />
       <Header />
       <div className="container mx-auto px-4 py-8">

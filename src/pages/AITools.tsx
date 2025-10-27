@@ -4,10 +4,17 @@ import ProjectMap from "@/components/ProjectMap";
 import CarbonCalculator from "@/components/CarbonCalculator";
 import PolicySummarizer from "@/components/PolicySummarizer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { SEO } from "@/components/SEO";
 
 const AITools = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-emerald-50">
+      <SEO 
+        title="Solar ROI Calculator Bangladesh | AI Analysis Tools"
+        description="Free solar ROI calculator & AI tools for Bangladesh. Calculate payback period, carbon offset, net metering savings. 5kW solar system analysis. Project visualization."
+        keywords="solar ROI calculator Bangladesh, solar calculator, solar payback period Bangladesh, carbon calculator, solar analysis tools, net metering calculator"
+        canonicalUrl="https://bdsolarpower.com/ai-tools"
+      />
       <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">

@@ -15,9 +15,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
       <SEO 
-        title="Bangladesh's Premier Solar Energy Intelligence Platform"
-        description="Advanced AI-powered solar energy platform for Bangladesh. Real-time analytics, investment opportunities, tender tracking, and comprehensive solar solutions. 1,183 MW capacity across 55 active sites."
-        keywords="solar energy Bangladesh, renewable energy, solar investment Bangladesh, BPDB tenders, solar panels Bangladesh, solar farm, grid integration, net metering Bangladesh"
+        title="Solar Panel Bangladesh | 5kW System from BDT 275,000"
+        description="Leading solar panel installation in Bangladesh. 5kW system from BDT 275,000. Rooftop solar, net metering, 3-4 year ROI. 500+ installations. Get free quote today!"
+        keywords="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh"
+        canonicalUrl="https://bdsolarpower.com/"
       />
       <Header />
       
@@ -26,23 +27,31 @@ const Index = () => {
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Powering Bangladesh's
-              <span className="bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent"> Solar Future</span>
+              Solar Panel Bangladesh
+              <span className="bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent"> 5kW from BDT 275,000</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-              Advanced AI-powered platform connecting investors, policymakers, and citizens to accelerate solar adoption across Bangladesh's 1,183 MW renewable energy landscape.
+              Leading solar panel installation in Bangladesh. Rooftop solar with net metering. 3-4 year ROI. 500+ installations. Government 3000 MW program support. Get your free quote today.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link to="/dashboard">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
-                  Explore Dashboard
-                </Button>
-              </Link>
               <Link to="/ai-tools">
-                <Button variant="outline" size="lg">
-                  Try AI Tools
+                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+                  Calculate Your Savings
                 </Button>
               </Link>
+              <Link to="/learn">
+                <Button variant="outline" size="lg">
+                  Net Metering Guide
+                </Button>
+              </Link>
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-8 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">36% Cost Reduction</Badge>
+              </div>
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="bg-amber-100 text-amber-700">1% Import Duty</Badge>
+              </div>
             </div>
           </div>
         </div>
@@ -147,19 +156,19 @@ const Index = () => {
       {/* Call to Action */}
       <section className="bg-gradient-to-r from-emerald-600 to-amber-500 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-white">Ready to Power Bangladesh's Solar Revolution?</h2>
+          <h2 className="text-3xl font-bold text-white">Ready to Install Solar Panels in Bangladesh?</h2>
           <p className="mt-4 text-xl text-emerald-100">
-            Join investors, developers, and policymakers building a sustainable energy future
+            Get free quote for your 5kW rooftop solar system. Join 500+ satisfied customers. 3-4 year ROI with net metering.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/investors">
+            <Link to="/ai-tools">
               <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                Explore Investment Opportunities
+                Calculate Your Savings
               </Button>
             </Link>
             <Link to="/learn">
               <Button size="lg" variant="outline" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-emerald-600">
-                Learn About Solar Policy
+                Learn About Government Program
               </Button>
             </Link>
           </div>

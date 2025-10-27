@@ -1,10 +1,17 @@
 
 import Header from "@/components/Header";
 import SolarDataDashboard from "@/components/SolarDataDashboard";
+import { SEO } from "@/components/SEO";
 
 const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+      <SEO 
+        title="Solar Analytics Dashboard Bangladesh | Real-time Data"
+        description="Real-time solar energy monitoring dashboard for Bangladesh. Track capacity, tenders, pricing trends. 1,183 MW capacity analysis. Government 3000 MW program updates."
+        keywords="solar analytics Bangladesh, solar market data, BPDB solar tenders, solar capacity Bangladesh, renewable energy dashboard"
+        canonicalUrl="https://bdsolarpower.com/dashboard"
+      />
       <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">

@@ -77,10 +77,11 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
       <SEO 
-        title="Solar Energy Blog & Equipment Guides"
-        description="Expert insights on solar panels, inverters, batteries, and equipment for Bangladesh's renewable energy sector. Read our comprehensive guides and industry updates."
-        keywords="solar panels Bangladesh, solar inverters, battery storage, solar equipment, MPPT controllers, mounting systems, solar cables"
+        title="Solar Panel Price Bangladesh 2025 | Equipment Reviews & Guides"
+        description="Solar equipment blog Bangladesh. Panel reviews, inverter comparison, battery guides. Monocrystalline vs polycrystalline. MPPT controllers. Installation tips. Expert insights."
+        keywords="solar panel price Bangladesh 2025, monocrystalline solar panel Bangladesh, solar inverter Bangladesh, battery storage Bangladesh, MPPT charge controller, solar mounting system, solar equipment reviews"
         type="website"
+        canonicalUrl="https://bdsolarpower.com/blog"
       />
       
       <Header />
