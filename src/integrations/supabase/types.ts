@@ -14,7 +14,147 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string | null
+          full_name: string | null
+          id: string
+          organization: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          full_name?: string | null
+          id: string
+          organization?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          organization?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      solar_projects: {
+        Row: {
+          capacity_mw: number
+          carbon_offset_tons: number | null
+          created_at: string | null
+          description: string | null
+          id: string
+          investment_amount: number | null
+          location: string
+          name: string
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          capacity_mw: number
+          carbon_offset_tons?: number | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          investment_amount?: number | null
+          location: string
+          name: string
+          status?: string
+          updated_at?: string | null
+        }
+        Update: {
+          capacity_mw?: number
+          carbon_offset_tons?: number | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          investment_amount?: number | null
+          location?: string
+          name?: string
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      tender_opportunities: {
+        Row: {
+          bid_count: number | null
+          capacity_mw: number
+          created_at: string | null
+          deadline: string
+          description: string | null
+          estimated_budget: string | null
+          id: string
+          location: string
+          minimum_bid: number
+          organization: string
+          status: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          bid_count?: number | null
+          capacity_mw: number
+          created_at?: string | null
+          deadline: string
+          description?: string | null
+          estimated_budget?: string | null
+          id?: string
+          location: string
+          minimum_bid: number
+          organization?: string
+          status?: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          bid_count?: number | null
+          capacity_mw?: number
+          created_at?: string | null
+          deadline?: string
+          description?: string | null
+          estimated_budget?: string | null
+          id?: string
+          location?: string
+          minimum_bid?: number
+          organization?: string
+          status?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_project_interactions: {
+        Row: {
+          created_at: string | null
+          id: string
+          interaction_type: string
+          notes: string | null
+          project_id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          interaction_type?: string
+          notes?: string | null
+          project_id: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          interaction_type?: string
+          notes?: string | null
+          project_id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
