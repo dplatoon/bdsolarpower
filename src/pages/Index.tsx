@@ -20,11 +20,11 @@ const Index = () => {
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Solar Panel Bangladesh
-              <span className="bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent"> 5kW from BDT 275,000</span>
+              Best Solar Panel Company in Bangladesh
+              <span className="bg-gradient-to-r from-emerald-600 to-amber-500 bg-clip-text text-transparent"> Save 70% on Bills</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
-              Leading solar panel installation in Bangladesh. Rooftop solar with net metering. 3-4 year ROI. 500+ installations. Government 3000 MW program support. Get your free quote today.
+              Transform your home or business with premium solar panel systems in Bangladesh. Get 5kW rooftop solar installation from BDT 275,000 with 3-4 year payback period. Government net metering approved • 25-year warranty • Free site survey.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link to="/ai-tools">
@@ -146,12 +146,124 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section className="px-4 py-16 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">Why Choose BD Solar Power?</h2>
+            <p className="mt-4 text-lg text-gray-600">Bangladesh's Most Trusted Solar Installer</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-emerald-700">✅ Bangladesh's Trusted Solar Installer</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">500+ successful installations across Dhaka, Chittagong & nationwide</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-emerald-700">✅ Lowest Prices Guaranteed</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">5kW system from BDT 275,000 (competitors charge BDT 350,000+)</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-emerald-700">✅ Fastest Installation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">Complete rooftop solar setup in just 2 days</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-emerald-700">✅ Maximum Savings</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">Reduce electricity bills by 70%, earn from excess power via net metering</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-emerald-700">✅ Government Approved</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">IDCOL certified, eligible for 3,000 MW rooftop solar program</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-emerald-700">✅ Premium Quality</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">Tier-1 solar panels (Trina, JA Solar, REC) with 25-year warranty</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Solar Solutions Section */}
+      <section className="px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 to-amber-50">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">Our Solar Solutions</h2>
+            <p className="mt-4 text-lg text-gray-600">Customized systems for every need</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="border-emerald-200">
+              <CardHeader>
+                <CardTitle className="text-2xl">Residential Solar Systems</CardTitle>
+                <CardDescription>Perfect solutions for homes and apartments</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="border-l-4 border-emerald-500 pl-4">
+                  <h3 className="font-bold text-lg">Small Homes (1-3kW)</h3>
+                  <p className="text-gray-600">Perfect for apartments, BDT 85,000-255,000</p>
+                </div>
+                <div className="border-l-4 border-emerald-500 pl-4">
+                  <h3 className="font-bold text-lg">Medium Homes (5kW)</h3>
+                  <p className="text-gray-600">Most popular, BDT 275,000, saves BDT 4,500/month</p>
+                </div>
+                <div className="border-l-4 border-emerald-500 pl-4">
+                  <h3 className="font-bold text-lg">Large Homes (10kW+)</h3>
+                  <p className="text-gray-600">For villas & commercial, BDT 500,000+, ROI in 3 years</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-amber-200">
+              <CardHeader>
+                <CardTitle className="text-2xl">Commercial Solar Solutions</CardTitle>
+                <CardDescription>Reduce business operating costs significantly</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="border-l-4 border-amber-500 pl-4">
+                  <h3 className="font-bold text-lg">Offices & Shops</h3>
+                  <p className="text-gray-600">Reduce operating costs by 60%</p>
+                </div>
+                <div className="border-l-4 border-amber-500 pl-4">
+                  <h3 className="font-bold text-lg">Factories & Industries</h3>
+                  <p className="text-gray-600">Mega solar installations 100kW-1MW</p>
+                </div>
+                <div className="border-l-4 border-amber-500 pl-4">
+                  <h3 className="font-bold text-lg">Hospitals & Schools</h3>
+                  <p className="text-gray-600">Reliable backup power + grid savings</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="bg-gradient-to-r from-emerald-600 to-amber-500 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold text-white">Ready to Install Solar Panels in Bangladesh?</h2>
           <p className="mt-4 text-xl text-emerald-100">
-            Get free quote for your 5kW rooftop solar system. Join 500+ satisfied customers. 3-4 year ROI with net metering.
+            Get free quote for your 5kW rooftop solar system. Join 500+ satisfied customers. 3-4 year ROI with net metering. Beat load shedding forever!
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/ai-tools">

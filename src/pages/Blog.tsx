@@ -7,63 +7,153 @@ const Blog = () => {
   const blogPosts: BlogPost[] = [
     {
       id: "1",
-      title: "High-Efficiency Monocrystalline Solar Panels: The Future of Bangladesh's Solar Energy",
-      excerpt: "Discover why monocrystalline solar panels are revolutionizing Bangladesh's renewable energy sector with 20-22% efficiency rates.",
-      author: "Dr. Rahman Ahmed",
-      date: "March 15, 2024",
-      category: "Solar Panels",
-      readTime: "5 min read",
+      title: "2025 Solar Panel Price Guide Bangladesh",
+      excerpt: "Complete solar panel prices Bangladesh 2025. 1kW-10kW systems from BDT 85,000. New year savings positioning with government incentives and ROI analysis.",
+      author: "BD Solar Expert Team",
+      date: "January 2025",
+      category: "Pricing",
+      readTime: "8 min read",
       equipment: "solar-panel"
     },
     {
       id: "2",
-      title: "Choosing the Right Solar Inverter for Bangladesh's Grid System",
-      excerpt: "A comprehensive guide to selecting inverters that work seamlessly with Bangladesh's power grid and net metering regulations.",
-      author: "Eng. Fatima Khan",
-      date: "March 12, 2024",
-      category: "Inverters",
+      title: "Government 3000 MW Solar Program: How to Apply",
+      excerpt: "Complete guide to Bangladesh government 3000 MW rooftop solar program. Application process, eligibility, benefits. Capitalize on government initiative.",
+      author: "Policy Analyst",
+      date: "January 2025",
+      category: "Government",
+      readTime: "6 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "3",
+      title: "5kW Solar System ROI Calculator Bangladesh",
+      excerpt: "Calculate your solar investment returns. Interactive tool shows payback period, monthly savings, and 25-year earnings. Perfect for large homes.",
+      author: "Financial Expert",
+      date: "January 2025",
+      category: "Financial",
+      readTime: "5 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "4",
+      title: "Top 10 Solar Companies in Bangladesh 2025",
+      excerpt: "Comprehensive comparison of leading solar installers in Bangladesh. Competitive analysis, pricing, service quality, and customer reviews.",
+      author: "BD Solar Review Team",
+      date: "January 2025",
+      category: "Comparison",
+      readTime: "10 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "5",
+      title: "Net Metering Policy Bangladesh: Complete Guide",
+      excerpt: "Sell excess solar power to BPDB and earn monthly income. Complete guide to net metering policy, application process, and benefits.",
+      author: "Grid Connection Expert",
+      date: "February 2025",
+      category: "Policy",
       readTime: "7 min read",
       equipment: "inverter"
     },
     {
-      id: "3",
-      title: "Lithium-Ion vs Lead-Acid: Best Battery Storage Solutions for Solar Projects",
-      excerpt: "Compare battery technologies for optimal energy storage in Bangladesh's tropical climate conditions.",
-      author: "Tech Team BD Solar",
-      date: "March 10, 2024",
-      category: "Energy Storage",
+      id: "6",
+      title: "Commercial Solar Installation: Factory Case Study",
+      excerpt: "How a Chittagong textile factory reduced electricity costs by 65% with 200kW solar installation. B2B case study with ROI breakdown.",
+      author: "Commercial Solar Team",
+      date: "February 2025",
+      category: "Case Study",
+      readTime: "9 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "7",
+      title: "Solar Panel Maintenance Tips for Bangladesh Climate",
+      excerpt: "Professional maintenance guide for monsoon and tropical conditions. Increase efficiency by 15% with proper cleaning and care.",
+      author: "Maintenance Specialists",
+      date: "February 2025",
+      category: "Maintenance",
       readTime: "6 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "8",
+      title: "Monocrystalline vs Polycrystalline Solar Panels",
+      excerpt: "Technical comparison of solar panel technologies. Efficiency, cost, durability, and best choice for Bangladesh climate conditions.",
+      author: "Technical Team",
+      date: "February 2025",
+      category: "Technical",
+      readTime: "8 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "9",
+      title: "Best Time to Install Solar Panels in Bangladesh",
+      excerpt: "Seasonal guide to solar installation. Why spring installations maximize first-year returns. Weather patterns and optimal timing.",
+      author: "Installation Experts",
+      date: "March 2025",
+      category: "Seasonal",
+      readTime: "5 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "10",
+      title: "Solar Panel Financing Options Bangladesh 2025",
+      excerpt: "Complete guide to solar loans, EMI options, and financing. 8-9% interest rates, bank partnerships. Make solar affordable for everyone.",
+      author: "Finance Team",
+      date: "March 2025",
+      category: "Financial",
+      readTime: "7 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "11",
+      title: "Dhaka Solar Installation: Complete Area Guide",
+      excerpt: "Solar installation services in Gulshan, Dhanmondi, Uttara, Mirpur. Area-specific coverage, local regulations, and pricing.",
+      author: "Dhaka Team",
+      date: "March 2025",
+      category: "Location",
+      readTime: "6 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "12",
+      title: "Industrial Solar Solutions: Reduce Factory Costs",
+      excerpt: "Mega solar installations 100kW-1MW for manufacturing sector. Target heavy industries with high electricity consumption.",
+      author: "Industrial Solar Team",
+      date: "March 2025",
+      category: "Commercial",
+      readTime: "10 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "13",
+      title: "Solar Panel Efficiency in Bangladesh Hot Climate",
+      excerpt: "How solar panels perform in summer heat. Temperature coefficients, efficiency ratings, and choosing heat-resistant panels.",
+      author: "Technical Expert",
+      date: "April 2025",
+      category: "Technical",
+      readTime: "7 min read",
+      equipment: "solar-panel"
+    },
+    {
+      id: "14",
+      title: "Hospital Solar Installation: Uninterrupted Power",
+      excerpt: "Healthcare sector solar solutions. Reliable backup power for critical equipment. Case study from Dhaka hospital.",
+      author: "Healthcare Solar Team",
+      date: "April 2025",
+      category: "Case Study",
+      readTime: "8 min read",
       equipment: "battery"
     },
     {
-      id: "4",
-      title: "MPPT Charge Controllers: Maximizing Solar Efficiency in Monsoon Season",
-      excerpt: "Learn how Maximum Power Point Tracking technology ensures optimal performance even during cloudy weather.",
-      author: "Solar Expert Team",
-      date: "March 8, 2024",
-      category: "Controllers",
-      readTime: "4 min read",
-      equipment: "charge-controller"
-    },
-    {
-      id: "5",
-      title: "Cyclone-Resistant Mounting Systems: Essential for Bangladesh's Climate",
-      excerpt: "Engineering solutions for solar mounting that withstand 180+ km/h winds and heavy monsoon conditions.",
-      author: "Structural Eng. Team",
-      date: "March 5, 2024",
-      category: "Mounting Systems",
-      readTime: "8 min read",
-      equipment: "mounting"
-    },
-    {
-      id: "6",
-      title: "UV-Resistant Solar Cables: Preventing Power Loss in Tropical Conditions",
-      excerpt: "Why choosing the right solar cables is critical for long-term system performance and safety in Bangladesh.",
-      author: "Installation Experts",
-      date: "March 3, 2024",
-      category: "Components",
-      readTime: "5 min read",
-      equipment: "cable"
+      id: "15",
+      title: "Solar vs Generator: Cost Comparison Bangladesh",
+      excerpt: "Solar wins with 70% lower lifetime costs. No fuel needed, silent operation, zero emissions. Complete cost breakdown.",
+      author: "Comparison Analyst",
+      date: "April 2025",
+      category: "Comparison",
+      readTime: "6 min read",
+      equipment: "solar-panel"
     }
   ];
 
@@ -89,22 +179,22 @@ const Blog = () => {
       <main className="container mx-auto px-4 py-8">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Solar Equipment & Industry Insights
+            Solar Panel Price Bangladesh 2025 | Equipment Reviews & Expert Guides
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Professional guides and expert reviews on solar equipment, technology, and best practices for Bangladesh's renewable energy sector
+            Complete solar equipment reviews, panel comparison, inverter guides, battery solutions. Monocrystalline vs polycrystalline analysis. MPPT controllers. Installation tips from Bangladesh solar experts.
           </p>
         </header>
 
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 mb-8">
+          <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 mb-8 gap-2">
             <TabsTrigger value="all">All Posts</TabsTrigger>
-            <TabsTrigger value="panels">Panels</TabsTrigger>
-            <TabsTrigger value="inverters">Inverters</TabsTrigger>
-            <TabsTrigger value="storage">Storage</TabsTrigger>
-            <TabsTrigger value="controllers">Controllers</TabsTrigger>
-            <TabsTrigger value="mounting">Mounting</TabsTrigger>
-            <TabsTrigger value="components">Components</TabsTrigger>
+            <TabsTrigger value="pricing">Pricing</TabsTrigger>
+            <TabsTrigger value="government">Government</TabsTrigger>
+            <TabsTrigger value="financial">Financial</TabsTrigger>
+            <TabsTrigger value="technical">Technical</TabsTrigger>
+            <TabsTrigger value="case">Case Studies</TabsTrigger>
+            <TabsTrigger value="location">Locations</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all" className="space-y-8">
@@ -115,7 +205,7 @@ const Blog = () => {
             </div>
           </TabsContent>
 
-          {['panels', 'inverters', 'storage', 'controllers', 'mounting', 'components'].map(category => (
+          {['pricing', 'government', 'financial', 'technical', 'case', 'location'].map(category => (
             <TabsContent key={category} value={category} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filterByCategory(category).map(post => (
