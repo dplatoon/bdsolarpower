@@ -16,6 +16,28 @@ serve(async (req) => {
   try {
     const { policyText, policyType } = await req.json();
 
+    // Validate inputs
+    if (!policyText || typeof policyText !== 'string') {
+      return new Response(
+        JSON.stringify({ error: 'Policy text is required' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (policyText.length > 50000) {
+      return new Response(
+        JSON.stringify({ error: 'Policy text too long (max 50,000 characters)' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!policyType || typeof policyType !== 'string') {
+      return new Response(
+        JSON.stringify({ error: 'Policy type is required' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     console.log('Summarizing policy:', { policyType, textLength: policyText.length });
 
     const systemPrompt = `You are an expert analyst of Bangladesh's solar energy policies and regulations. 

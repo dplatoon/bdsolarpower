@@ -18,6 +18,36 @@ serve(async (req) => {
       throw new Error('OPENAI_API_KEY not configured');
     }
 
+    // Validate inputs
+    if (!roofArea || isNaN(Number(roofArea)) || Number(roofArea) <= 0) {
+      return new Response(
+        JSON.stringify({ error: 'Valid roof area is required' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!location || typeof location !== 'string' || location.trim().length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'Location is required' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!imageUrl || !imageUrl.startsWith('data:image/')) {
+      return new Response(
+        JSON.stringify({ error: 'Valid image is required' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Limit base64 image size (roughly 5MB)
+    if (imageUrl.length > 7000000) {
+      return new Response(
+        JSON.stringify({ error: 'Image too large (max 5MB)' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     console.log('Analyzing solar potential for:', { location, roofArea });
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
