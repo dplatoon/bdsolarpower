@@ -14,7 +14,7 @@ interface Project {
   capacity_mw: number;
   status: string;
   investment_amount: number;
-  completion_date: string;
+  created_at: string;
 }
 
 const ProjectComparison = () => {
@@ -161,11 +161,11 @@ const ProjectComparison = () => {
                     <tr className="border-t bg-muted/50">
                       <td className="p-3 text-sm font-medium flex items-center gap-2">
                         <Calendar className="h-4 w-4 text-muted-foreground" />
-                        Completion
+                        Created
                       </td>
                       {selectedProjectsData.map((project) => (
                         <td key={project.id} className="p-3 text-sm">
-                          {new Date(project.completion_date).toLocaleDateString()}
+                          {new Date(project.created_at).toLocaleDateString()}
                         </td>
                       ))}
                     </tr>
