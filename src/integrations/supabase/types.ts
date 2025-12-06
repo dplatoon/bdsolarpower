@@ -178,54 +178,7 @@ export type Database = {
       }
     }
     Views: {
-      tender_opportunities_public: {
-        Row: {
-          bid_count: number | null
-          capacity_mw: number | null
-          created_at: string | null
-          deadline: string | null
-          description: string | null
-          estimated_budget: string | null
-          id: string | null
-          location: string | null
-          minimum_bid: number | null
-          organization: string | null
-          status: string | null
-          title: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          bid_count?: never
-          capacity_mw?: number | null
-          created_at?: string | null
-          deadline?: string | null
-          description?: string | null
-          estimated_budget?: string | null
-          id?: string | null
-          location?: string | null
-          minimum_bid?: number | null
-          organization?: string | null
-          status?: string | null
-          title?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          bid_count?: never
-          capacity_mw?: number | null
-          created_at?: string | null
-          deadline?: string | null
-          description?: string | null
-          estimated_budget?: string | null
-          id?: string | null
-          location?: string | null
-          minimum_bid?: number | null
-          organization?: string | null
-          status?: string | null
-          title?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       has_role: {
