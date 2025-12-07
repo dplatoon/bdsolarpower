@@ -18,10 +18,18 @@ interface Project {
   longitude?: number;
 }
 
+// Sanitize text to prevent XSS attacks
+const sanitizeText = (text: string): string => {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+};
+
 const ProjectMap = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState<Project[]>([]);
+  const [apiKeyMissing, setApiKeyMissing] = useState(false);
 
   useEffect(() => {
     fetchProjects();
@@ -43,15 +51,26 @@ const ProjectMap = () => {
   useEffect(() => {
     if (!mapRef.current || projects.length === 0) return;
 
+    // Use environment variable for Google Maps API key
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+    
+    if (!apiKey || apiKey === 'YOUR_GOOGLE_MAPS_API_KEY') {
+      console.warn('Google Maps API key not configured. Set VITE_GOOGLE_MAPS_API_KEY environment variable.');
+      setApiKeyMissing(true);
+      return;
+    }
+
     // Load Google Maps script
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}`;
     script.async = true;
     script.onload = initMap;
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
     };
   }, [projects]);
 
@@ -77,7 +96,7 @@ const ProjectMap = () => {
         const marker = new window.google.maps.Marker({
           position: { lat: project.latitude, lng: project.longitude },
           map,
-          title: project.name,
+          title: sanitizeText(project.name),
           icon: {
             path: window.google.maps.SymbolPath.CIRCLE,
             scale: 8,
@@ -88,14 +107,34 @@ const ProjectMap = () => {
           }
         });
 
+        // Create InfoWindow content using DOM elements to prevent XSS
+        const contentDiv = document.createElement('div');
+        contentDiv.style.padding = '8px';
+        contentDiv.style.minWidth = '200px';
+
+        const titleEl = document.createElement('h3');
+        titleEl.style.margin = '0 0 8px 0';
+        titleEl.style.fontWeight = 'bold';
+        titleEl.textContent = project.name; // Safe: textContent escapes HTML
+
+        const locationEl = document.createElement('p');
+        locationEl.style.margin = '4px 0';
+        locationEl.innerHTML = '<strong>Location:</strong> ';
+        const locationText = document.createTextNode(project.location);
+        locationEl.appendChild(locationText);
+
+        const capacityEl = document.createElement('p');
+        capacityEl.style.margin = '4px 0';
+        capacityEl.innerHTML = '<strong>Capacity:</strong> ';
+        const capacityText = document.createTextNode(`${project.capacity_mw} MW`);
+        capacityEl.appendChild(capacityText);
+
+        contentDiv.appendChild(titleEl);
+        contentDiv.appendChild(locationEl);
+        contentDiv.appendChild(capacityEl);
+
         const infoWindow = new window.google.maps.InfoWindow({
-          content: `
-            <div style="padding: 8px; min-width: 200px;">
-              <h3 style="margin: 0 0 8px 0; font-weight: bold;">${project.name}</h3>
-              <p style="margin: 4px 0;"><strong>Location:</strong> ${project.location}</p>
-              <p style="margin: 4px 0;"><strong>Capacity:</strong> ${project.capacity_mw} MW</p>
-            </div>
-          `
+          content: contentDiv
         });
 
         marker.addListener('click', () => {
@@ -104,6 +143,29 @@ const ProjectMap = () => {
       }
     });
   };
+
+  if (apiKeyMissing) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <MapPin className="h-5 w-5 text-emerald-600" />
+            Solar Projects Map
+          </CardTitle>
+          <CardDescription>
+            Interactive map showing solar projects across Bangladesh
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col items-center justify-center h-[500px] text-muted-foreground">
+            <MapPin className="h-12 w-12 mb-4 text-muted-foreground/50" />
+            <p className="text-center">Google Maps API key not configured.</p>
+            <p className="text-sm text-center mt-2">Please set the VITE_GOOGLE_MAPS_API_KEY environment variable.</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card>
