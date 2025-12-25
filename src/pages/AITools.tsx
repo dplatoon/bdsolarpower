@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SolarAnalyzer from "@/components/SolarAnalyzer";
 import ProjectMap from "@/components/ProjectMap";
 import CarbonCalculator from "@/components/CarbonCalculator";
 import PolicySummarizer from "@/components/PolicySummarizer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
 import { SEO } from "@/components/SEO";
+import { BarChart3, TrendingUp, BookOpen, ArrowRight } from "lucide-react";
 
 const AITools = () => {
   return (
@@ -48,6 +51,49 @@ const AITools = () => {
             <ProjectMap />
           </TabsContent>
         </Tabs>
+
+        {/* Cross-links Section */}
+        <div className="mt-12 border-t pt-8">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Continue Your Solar Journey</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link to="/dashboard">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer border-emerald-200 hover:border-emerald-400">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <BarChart3 className="h-8 w-8 text-emerald-600" />
+                  <div>
+                    <h3 className="font-medium text-gray-900">Analytics Dashboard</h3>
+                    <p className="text-sm text-muted-foreground">Real-time solar market data</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 ml-auto text-gray-400" />
+                </CardContent>
+              </Card>
+            </Link>
+            <Link to="/investors">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer border-blue-200 hover:border-blue-400">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <TrendingUp className="h-8 w-8 text-blue-600" />
+                  <div>
+                    <h3 className="font-medium text-gray-900">Investor Portal</h3>
+                    <p className="text-sm text-muted-foreground">BPDB tenders & ROI analysis</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 ml-auto text-gray-400" />
+                </CardContent>
+              </Card>
+            </Link>
+            <Link to="/learn">
+              <Card className="hover:shadow-lg transition-shadow cursor-pointer border-amber-200 hover:border-amber-400">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <BookOpen className="h-8 w-8 text-amber-600" />
+                  <div>
+                    <h3 className="font-medium text-gray-900">Learning Hub</h3>
+                    <p className="text-sm text-muted-foreground">Net metering & policy guides</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 ml-auto text-gray-400" />
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

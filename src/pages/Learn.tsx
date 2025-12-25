@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Calendar, FileText, TrendingUp, ArrowUp } from "lucide-react";
+import { Calendar, FileText, TrendingUp, ArrowUp, BarChart3, Calculator, ArrowRight } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 
@@ -222,6 +223,49 @@ const Learn = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Cross-links Section */}
+          <div className="mt-8 border-t pt-8">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Take Action</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Link to="/dashboard">
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer border-emerald-200 hover:border-emerald-400">
+                  <CardContent className="p-4 flex items-center gap-3">
+                    <BarChart3 className="h-8 w-8 text-emerald-600" />
+                    <div>
+                      <h3 className="font-medium text-gray-900">Market Dashboard</h3>
+                      <p className="text-sm text-muted-foreground">View real-time solar data</p>
+                    </div>
+                    <ArrowRight className="h-5 w-5 ml-auto text-gray-400" />
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to="/ai-tools">
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer border-purple-200 hover:border-purple-400">
+                  <CardContent className="p-4 flex items-center gap-3">
+                    <Calculator className="h-8 w-8 text-purple-600" />
+                    <div>
+                      <h3 className="font-medium text-gray-900">Calculate Savings</h3>
+                      <p className="text-sm text-muted-foreground">ROI & carbon offset tools</p>
+                    </div>
+                    <ArrowRight className="h-5 w-5 ml-auto text-gray-400" />
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to="/investors">
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer border-blue-200 hover:border-blue-400">
+                  <CardContent className="p-4 flex items-center gap-3">
+                    <TrendingUp className="h-8 w-8 text-blue-600" />
+                    <div>
+                      <h3 className="font-medium text-gray-900">Investment Portal</h3>
+                      <p className="text-sm text-muted-foreground">Explore tender opportunities</p>
+                    </div>
+                    <ArrowRight className="h-5 w-5 ml-auto text-gray-400" />
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
