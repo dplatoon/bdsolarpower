@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
@@ -220,6 +221,7 @@ const BlogPostPage = () => {
           </div>
         </article>
       </main>
+      <Footer />
     </div>
   );
 };

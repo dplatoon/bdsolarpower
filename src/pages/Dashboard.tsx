@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import SolarDataDashboard from "@/components/SolarDataDashboard";
 import { SEO } from "@/components/SEO";
 import { Card, CardContent } from "@/components/ui/card";
@@ -68,6 +69,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

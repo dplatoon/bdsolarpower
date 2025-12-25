@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Calendar, FileText, TrendingUp, ArrowUp, BarChart3, Calculator, ArrowRight } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Learn = () => {
   const timelineEvents = [
@@ -268,6 +269,7 @@ const Learn = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
