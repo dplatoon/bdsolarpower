@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import SolarAnalyzer from "@/components/SolarAnalyzer";
 import ProjectMap from "@/components/ProjectMap";
 import CarbonCalculator from "@/components/CarbonCalculator";
@@ -95,6 +96,7 @@ const AITools = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { ArrowUp, TrendingUp, MapPin, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import SolarDataDashboard from "@/components/SolarDataDashboard";
 import AIToolsPreview from "@/components/AIToolsPreview";
 import InvestorMetrics from "@/components/InvestorMetrics";
@@ -279,6 +280,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>;
 };
 export default Index;
