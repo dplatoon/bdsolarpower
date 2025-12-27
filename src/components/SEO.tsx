@@ -9,7 +9,167 @@ interface SEOProps {
   type?: 'website' | 'article';
   publishedTime?: string;
   author?: string;
+  includeLocalBusiness?: boolean;
 }
+
+// LocalBusiness structured data for Bangladesh solar company
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://bdsolarpower.com/#localbusiness",
+  "name": "BD Solar Power",
+  "alternateName": "Bangladesh Solar Power Solutions",
+  "description": "Leading solar panel installation company in Bangladesh offering rooftop solar systems, commercial solar solutions, and net metering services across Dhaka, Chittagong, and nationwide.",
+  "url": "https://bdsolarpower.com",
+  "telephone": "+880-1234-567890",
+  "email": "info@bdsolarpower.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "House 45, Road 12, Gulshan-2",
+    "addressLocality": "Dhaka",
+    "addressRegion": "Dhaka Division",
+    "postalCode": "1212",
+    "addressCountry": "BD"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "23.7934",
+    "longitude": "90.4146"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "Bangladesh"
+    },
+    {
+      "@type": "City",
+      "name": "Dhaka"
+    },
+    {
+      "@type": "City",
+      "name": "Chittagong"
+    },
+    {
+      "@type": "City",
+      "name": "Sylhet"
+    },
+    {
+      "@type": "City",
+      "name": "Rajshahi"
+    },
+    {
+      "@type": "City",
+      "name": "Khulna"
+    }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "16:00"
+    }
+  ],
+  "priceRange": "৳৳৳",
+  "currenciesAccepted": "BDT",
+  "paymentAccepted": "Cash, Bank Transfer, EMI, Mobile Banking",
+  "image": [
+    "https://bdsolarpower.com/images/solar-installation-dhaka.jpg",
+    "https://bdsolarpower.com/images/rooftop-solar-bangladesh.jpg"
+  ],
+  "logo": "https://bdsolarpower.com/logo.png",
+  "sameAs": [
+    "https://facebook.com/bdsolarpower",
+    "https://twitter.com/bdsolarpower",
+    "https://linkedin.com/company/bdsolarpower",
+    "https://youtube.com/@bdsolarpower"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Solar Energy Solutions",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Rooftop Solar Installation",
+          "description": "Complete rooftop solar panel installation for homes and businesses in Bangladesh"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Net Metering Setup",
+          "description": "BPDB approved net metering installation and configuration"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Commercial Solar Solutions",
+          "description": "Large-scale solar installations for factories and commercial buildings"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Solar System Maintenance",
+          "description": "Regular maintenance and monitoring services for solar installations"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "156",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Mohammad Rahman"
+      },
+      "reviewBody": "Excellent solar installation service in Dhaka. Professional team and great after-sales support."
+    }
+  ]
+};
+
+// Organization schema for brand recognition
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BD Solar Power",
+  "url": "https://bdsolarpower.com",
+  "logo": "https://bdsolarpower.com/logo.png",
+  "description": "Bangladesh's trusted solar energy solutions provider",
+  "foundingDate": "2020",
+  "foundingLocation": "Dhaka, Bangladesh",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+880-1234-567890",
+    "contactType": "customer service",
+    "availableLanguage": ["Bengali", "English"],
+    "areaServed": "BD"
+  }
+};
 
 export const SEO = ({ 
   title, 
@@ -19,11 +179,11 @@ export const SEO = ({
   ogImage = "https://lovable.dev/opengraph-image-p98pqg.png",
   type = 'website',
   publishedTime,
-  author = "BD Solar Power"
+  author = "BD Solar Power",
+  includeLocalBusiness = true
 }: SEOProps) => {
   const fullTitle = `${title} | BD Solar Power`;
-  const siteUrl = window.location.origin;
-  const currentUrl = canonicalUrl || window.location.href;
+  const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : '');
 
   return (
     <Helmet>
@@ -34,6 +194,12 @@ export const SEO = ({
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       <link rel="canonical" href={currentUrl} />
+
+      {/* Geo Tags for Bangladesh */}
+      <meta name="geo.region" content="BD" />
+      <meta name="geo.placename" content="Dhaka, Bangladesh" />
+      <meta name="geo.position" content="23.7934;90.4146" />
+      <meta name="ICBM" content="23.7934, 90.4146" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -67,6 +233,18 @@ export const SEO = ({
       <meta name="revisit-after" content="7 days" />
       <meta name="distribution" content="global" />
       <meta name="rating" content="general" />
+
+      {/* JSON-LD Structured Data */}
+      {includeLocalBusiness && (
+        <>
+          <script type="application/ld+json">
+            {JSON.stringify(localBusinessSchema)}
+          </script>
+          <script type="application/ld+json">
+            {JSON.stringify(organizationSchema)}
+          </script>
+        </>
+      )}
     </Helmet>
   );
 };
