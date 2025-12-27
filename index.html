@@ -1,14 +1,16 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-BD">
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) with SPA support -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y39QW3QYF"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-0Y39QW3QYF');
+      gtag('config', 'G-0Y39QW3QYF', {
+        page_path: window.location.pathname
+      });
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -16,7 +18,6 @@
     <meta name="theme-color" content="#059669" />
     <title>Solar Panel Bangladesh | 5kW System from BDT 275,000 | BD Solar Power</title>
     <meta name="description" content="Leading solar panel installation in Bangladesh. 5kW system from BDT 275,000. Rooftop solar, net metering, 3-4 year ROI. 500+ installations. Get free quote today!" />
-    <meta name="keywords" content="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, solar energy Bangladesh, net metering Bangladesh, solar system price, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh, solar loan Bangladesh EMI, monocrystalline solar panel Bangladesh, off grid solar system Bangladesh, solar panel installation cost Bangladesh" />
     <meta name="author" content="BD Solar Power" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://bdsolarpower.com/" />
@@ -39,35 +40,52 @@
     <meta name="twitter:site" content="@bdsolarpower" />
     <meta name="twitter:creator" content="@bdsolarpower" />
 
-    <!-- Structured Data -->
+    <!-- Structured Data - Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "BD Solar Power",
       "url": "https://bdsolarpower.com",
-      "logo": "https://lovable.dev/opengraph-image-p98pqg.png",
+      "logo": "https://bdsolarpower.com/favicon.png",
       "description": "Leading solar panel installation company in Bangladesh. 500+ installations, 3-4 year ROI, government program support.",
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "BD",
-        "addressLocality": "Dhaka"
+        "streetAddress": "House 12, Road 5, Sector 7",
+        "addressLocality": "Uttara",
+        "addressRegion": "Dhaka",
+        "postalCode": "1230",
+        "addressCountry": "BD"
       },
-      "areaServed": ["Dhaka", "Chittagong", "Bangladesh"],
-      "priceRange": "BDT 275,000 - BDT 5,000,000",
-      "telephone": "+880-XXX-XXXXXX",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "500"
-      },
-      "sameAs": [
-        "https://twitter.com/bdsolarpower"
+      "areaServed": [
+        {"@type": "City", "name": "Dhaka"},
+        {"@type": "City", "name": "Chittagong"},
+        {"@type": "City", "name": "Sylhet"},
+        {"@type": "City", "name": "Rajshahi"},
+        {"@type": "City", "name": "Khulna"},
+        {"@type": "Country", "name": "Bangladesh"}
       ],
-      "serviceType": ["Solar Panel Installation", "Rooftop Solar", "Net Metering", "Commercial Solar", "Off-Grid Solar"],
+      "priceRange": "BDT 275,000 - BDT 5,000,000",
+      "sameAs": [
+        "https://twitter.com/bdsolarpower",
+        "https://facebook.com/bdsolarpower",
+        "https://linkedin.com/company/bdsolarpower"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Solar Installation Services",
+        "itemListElement": [
+          {"@type": "Service", "name": "Rooftop Solar Installation"},
+          {"@type": "Service", "name": "Net Metering Setup"},
+          {"@type": "Service", "name": "Commercial Solar Solutions"},
+          {"@type": "Service", "name": "Off-Grid Solar Systems"}
+        ]
+      },
       "knowsAbout": ["Solar Energy", "Renewable Energy", "Net Metering Policy Bangladesh", "3000 MW Solar Program"]
     }
     </script>
+    
+    <!-- Structured Data - Product -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -83,13 +101,54 @@
         "price": "275000",
         "priceCurrency": "BDT",
         "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2025-12-31",
-        "itemCondition": "https://schema.org/NewCondition"
+        "priceValidUntil": "2026-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Organization",
+          "name": "BD Solar Power"
+        }
+      }
+    }
+    </script>
+
+    <!-- Structured Data - Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Solar Panel Installation",
+      "provider": {
+        "@type": "Organization",
+        "name": "BD Solar Power",
+        "url": "https://bdsolarpower.com"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "500"
+      "areaServed": {
+        "@type": "Country",
+        "name": "Bangladesh"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Solar Installation Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "5kW Residential Solar System"
+            },
+            "price": "275000",
+            "priceCurrency": "BDT"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "10kW Commercial Solar System"
+            },
+            "price": "550000",
+            "priceCurrency": "BDT"
+          }
+        ]
       }
     }
     </script>
