@@ -1,4 +1,10 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+
+interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
 
 interface SEOProps {
   title: string;
@@ -10,7 +16,68 @@ interface SEOProps {
   publishedTime?: string;
   author?: string;
   includeLocalBusiness?: boolean;
+  breadcrumbs?: BreadcrumbItem[];
 }
+
+// Page name mapping for automatic breadcrumb generation
+const pageNameMap: Record<string, string> = {
+  '': 'Home',
+  'dashboard': 'Solar Dashboard',
+  'ai-tools': 'AI Tools',
+  'investors': 'Investors',
+  'learn': 'Learn',
+  'blog': 'Blog',
+  'auth': 'Login',
+  'my-dashboard': 'My Dashboard',
+};
+
+// Generate breadcrumb schema from path or custom breadcrumbs
+const generateBreadcrumbSchema = (pathname: string, customBreadcrumbs?: BreadcrumbItem[]) => {
+  const baseUrl = 'https://bdsolarpower.com';
+  
+  if (customBreadcrumbs && customBreadcrumbs.length > 0) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": customBreadcrumbs.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.name,
+        "item": `${baseUrl}${item.path}`
+      }))
+    };
+  }
+
+  // Auto-generate from pathname
+  const pathParts = pathname.split('/').filter(Boolean);
+  const breadcrumbItems = [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": baseUrl
+    }
+  ];
+
+  let currentPath = '';
+  pathParts.forEach((part, index) => {
+    currentPath += `/${part}`;
+    const pageName = pageNameMap[part] || part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' ');
+    
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      "position": index + 2,
+      "name": pageName,
+      "item": `${baseUrl}${currentPath}`
+    });
+  });
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems
+  };
+};
 
 // LocalBusiness structured data for Bangladesh solar company
 const localBusinessSchema = {
@@ -180,10 +247,15 @@ export const SEO = ({
   type = 'website',
   publishedTime,
   author = "BD Solar Power",
-  includeLocalBusiness = true
+  includeLocalBusiness = true,
+  breadcrumbs
 }: SEOProps) => {
+  const location = useLocation();
   const fullTitle = `${title} | BD Solar Power`;
   const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : '');
+  
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema(location.pathname, breadcrumbs);
 
   return (
     <Helmet>
@@ -245,6 +317,11 @@ export const SEO = ({
           </script>
         </>
       )}
+      
+      {/* BreadcrumbList Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
     </Helmet>
   );
 };
