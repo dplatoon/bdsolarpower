@@ -13,6 +13,7 @@ import AIToolsPreview from "@/components/AIToolsPreview";
 import InvestorMetrics from "@/components/InvestorMetrics";
 import Testimonials, { generateReviewSchema } from "@/components/Testimonials";
 import FAQSection, { generateFAQSchema } from "@/components/FAQSection";
+import ContactForm from "@/components/ContactForm";
 
 const Index = () => {
   const faqSchema = generateFAQSchema();
@@ -277,6 +278,9 @@ const Index = () => {
 
       {/* FAQ Section */}
       <FAQSection />
+
+      {/* Contact Form Section */}
+      <ContactForm />
 
       {/* Call to Action */}
       <section className="bg-gradient-to-r from-emerald-600 to-amber-500 px-4 py-16 sm:px-6 lg:px-8">
