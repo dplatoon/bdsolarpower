@@ -134,8 +134,10 @@ const BlogPostPage = () => {
         keywords={`${post.category}, solar equipment Bangladesh, ${post.equipment} Bangladesh`}
         type="article"
         publishedTime={new Date(post.date).toISOString()}
+        modifiedTime={new Date().toISOString()}
         author={post.author}
         canonicalUrl={`https://bdsolarpower.com/blog/${post.id}`}
+        articleHeadline={post.title}
       />
       
       <Header />

@@ -14,9 +14,11 @@ interface SEOProps {
   ogImage?: string;
   type?: 'website' | 'article';
   publishedTime?: string;
+  modifiedTime?: string;
   author?: string;
   includeLocalBusiness?: boolean;
   breadcrumbs?: BreadcrumbItem[];
+  articleHeadline?: string;
 }
 
 // Page name mapping for automatic breadcrumb generation
@@ -243,19 +245,49 @@ export const SEO = ({
   description, 
   keywords = "solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, solar energy Bangladesh, net metering Bangladesh, solar system price, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh, solar loan Bangladesh EMI, monocrystalline solar panel Bangladesh, off grid solar system Bangladesh, solar panel installation cost Bangladesh",
   canonicalUrl,
-  ogImage = "https://lovable.dev/opengraph-image-p98pqg.png",
+  ogImage = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/09b97229-6270-4b92-8d18-54559774b5b8/id-preview-8dfaa430--8be7421c-b3e4-48f0-a046-877e7036ea4d.lovable.app-1766849002696.png",
   type = 'website',
   publishedTime,
+  modifiedTime,
   author = "BD Solar Power",
   includeLocalBusiness = true,
-  breadcrumbs
+  breadcrumbs,
+  articleHeadline
 }: SEOProps) => {
   const location = useLocation();
   const fullTitle = `${title} | BD Solar Power`;
-  const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : '');
+  const baseUrl = 'https://bdsolarpower.com';
+  const currentUrl = canonicalUrl || `${baseUrl}${location.pathname}`;
   
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema(location.pathname, breadcrumbs);
+  
+  // Generate Article schema for blog/article pages
+  const articleSchema = type === 'article' ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": articleHeadline || title,
+    "description": description,
+    "author": {
+      "@type": "Organization",
+      "name": author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BD Solar Power",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/favicon.png`
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": currentUrl
+    },
+    "image": ogImage,
+    ...(publishedTime && { "datePublished": publishedTime }),
+    ...(modifiedTime && { "dateModified": modifiedTime })
+  } : null;
 
   return (
     <Helmet>
@@ -316,6 +348,13 @@ export const SEO = ({
             {JSON.stringify(organizationSchema)}
           </script>
         </>
+      )}
+      
+      {/* Article Schema for blog/article pages */}
+      {articleSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(articleSchema)}
+        </script>
       )}
       
       {/* BreadcrumbList Schema */}

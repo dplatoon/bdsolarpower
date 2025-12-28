@@ -56,9 +56,13 @@ const Learn = () => {
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
       <SEO 
         title="Net Metering Bangladesh | Solar Policy & 3000 MW Program Guide"
-        description="Complete guide to Bangladesh solar policy, net metering, 3000 MW rooftop program. Government incentives, 1% import duty savings. ROI calculators & implementation guides."
+        description="Complete guide to net metering in Bangladesh. Learn 3000 MW solar program rules, eligibility, DISCO approval steps, and how to reduce your electricity bill with rooftop solar."
         keywords="net metering Bangladesh policy, 3000 MW solar program Bangladesh, solar policy Bangladesh, solar energy education, renewable energy Bangladesh, SREDA guidelines, BPDB solar regulations"
         canonicalUrl="https://bdsolarpower.com/learn"
+        type="article"
+        articleHeadline="Net Metering Bangladesh – Solar Policy & 3000 MW Program Guide"
+        publishedTime="2024-01-01T00:00:00Z"
+        modifiedTime="2025-01-01T00:00:00Z"
       />
       <Header />
       <div className="container mx-auto px-4 py-8">
