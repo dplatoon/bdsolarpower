@@ -19,6 +19,8 @@ interface SEOProps {
   includeLocalBusiness?: boolean;
   breadcrumbs?: BreadcrumbItem[];
   articleHeadline?: string;
+  faqSchema?: object;
+  reviewSchema?: object[];
 }
 
 // Page name mapping for automatic breadcrumb generation
@@ -252,7 +254,9 @@ export const SEO = ({
   author = "BD Solar Power",
   includeLocalBusiness = true,
   breadcrumbs,
-  articleHeadline
+  articleHeadline,
+  faqSchema,
+  reviewSchema
 }: SEOProps) => {
   const location = useLocation();
   const fullTitle = `${title} | BD Solar Power`;
@@ -361,6 +365,20 @@ export const SEO = ({
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
       </script>
+      
+      {/* FAQ Schema */}
+      {faqSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
+      
+      {/* Review Schema */}
+      {reviewSchema && reviewSchema.map((review, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(review)}
+        </script>
+      ))}
     </Helmet>
   );
 };
