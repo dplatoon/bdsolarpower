@@ -11,9 +11,22 @@ import Footer from "@/components/Footer";
 import SolarDataDashboard from "@/components/SolarDataDashboard";
 import AIToolsPreview from "@/components/AIToolsPreview";
 import InvestorMetrics from "@/components/InvestorMetrics";
+import Testimonials, { generateReviewSchema } from "@/components/Testimonials";
+import FAQSection, { generateFAQSchema } from "@/components/FAQSection";
+
 const Index = () => {
+  const faqSchema = generateFAQSchema();
+  const reviewSchema = generateReviewSchema();
+
   return <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
-      <SEO title="Solar Panel Bangladesh | 5kW System from BDT 275,000" description="Leading solar panel installation in Bangladesh. 5kW system from BDT 275,000. Rooftop solar, net metering, 3-4 year ROI. 500+ installations. Get free quote today!" keywords="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh" canonicalUrl="https://bdsolarpower.com/" />
+      <SEO 
+        title="Solar Panel Bangladesh | 5kW System from BDT 275,000" 
+        description="Leading solar panel installation in Bangladesh. 5kW system from BDT 275,000. Rooftop solar, net metering, 3-4 year ROI. 500+ installations. Get free quote today!" 
+        keywords="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh" 
+        canonicalUrl="https://bdsolarpower.com/"
+        faqSchema={faqSchema}
+        reviewSchema={reviewSchema}
+      />
       <Header />
       
       {/* Hero Section */}
@@ -258,6 +271,12 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Call to Action */}
       <section className="bg-gradient-to-r from-emerald-600 to-amber-500 px-4 py-16 sm:px-6 lg:px-8">
