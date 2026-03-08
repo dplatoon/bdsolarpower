@@ -62,7 +62,7 @@ const Learn = () => {
         type="article"
         articleHeadline="Net Metering Bangladesh – Solar Policy & 3000 MW Program Guide"
         publishedTime="2024-01-01T00:00:00Z"
-        modifiedTime="2025-01-01T00:00:00Z"
+        modifiedTime="2026-03-08T00:00:00Z"
       />
       <Header />
       <div className="container mx-auto px-4 py-8">

@@ -5,102 +5,15 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
-import { BlogPost } from "@/components/BlogPostCard";
-
-const blogPostsData: BlogPost[] = [
-  {
-    id: "1",
-    title: "High-Efficiency Monocrystalline Solar Panels: The Future of Bangladesh's Solar Energy",
-    excerpt: "Discover why monocrystalline solar panels are revolutionizing Bangladesh's renewable energy sector with 20-22% efficiency rates.",
-    author: "Dr. Rahman Ahmed",
-    date: "March 15, 2024",
-    category: "Solar Panels",
-    readTime: "5 min read",
-    equipment: "solar-panel"
-  },
-  {
-    id: "2",
-    title: "Choosing the Right Solar Inverter for Bangladesh's Grid System",
-    excerpt: "A comprehensive guide to selecting inverters that work seamlessly with Bangladesh's power grid and net metering regulations.",
-    author: "Eng. Fatima Khan",
-    date: "March 12, 2024",
-    category: "Inverters",
-    readTime: "7 min read",
-    equipment: "inverter"
-  },
-  {
-    id: "3",
-    title: "Lithium-Ion vs Lead-Acid: Best Battery Storage Solutions for Solar Projects",
-    excerpt: "Compare battery technologies for optimal energy storage in Bangladesh's tropical climate conditions.",
-    author: "Tech Team BD Solar",
-    date: "March 10, 2024",
-    category: "Energy Storage",
-    readTime: "6 min read",
-    equipment: "battery"
-  },
-  {
-    id: "4",
-    title: "MPPT Charge Controllers: Maximizing Solar Efficiency in Monsoon Season",
-    excerpt: "Learn how Maximum Power Point Tracking technology ensures optimal performance even during cloudy weather.",
-    author: "Solar Expert Team",
-    date: "March 8, 2024",
-    category: "Controllers",
-    readTime: "4 min read",
-    equipment: "charge-controller"
-  },
-  {
-    id: "5",
-    title: "Cyclone-Resistant Mounting Systems: Essential for Bangladesh's Climate",
-    excerpt: "Engineering solutions for solar mounting that withstand 180+ km/h winds and heavy monsoon conditions.",
-    author: "Structural Eng. Team",
-    date: "March 5, 2024",
-    category: "Mounting Systems",
-    readTime: "8 min read",
-    equipment: "mounting"
-  },
-  {
-    id: "6",
-    title: "UV-Resistant Solar Cables: Preventing Power Loss in Tropical Conditions",
-    excerpt: "Why choosing the right solar cables is critical for long-term system performance and safety in Bangladesh.",
-    author: "Installation Experts",
-    date: "March 3, 2024",
-    category: "Components",
-    readTime: "5 min read",
-    equipment: "cable"
-  }
-];
+import { blogPostsData } from "@/data/blogPosts";
 
 const equipmentFrames = {
-  'solar-panel': {
-    border: 'border-l-8 border-blue-500',
-    badge: 'bg-blue-600',
-    icon: '☀️'
-  },
-  'inverter': {
-    border: 'border-l-8 border-purple-500',
-    badge: 'bg-purple-600',
-    icon: '⚡'
-  },
-  'battery': {
-    border: 'border-l-8 border-emerald-500',
-    badge: 'bg-emerald-600',
-    icon: '🔋'
-  },
-  'charge-controller': {
-    border: 'border-l-8 border-amber-500',
-    badge: 'bg-amber-600',
-    icon: '🎛️'
-  },
-  'mounting': {
-    border: 'border-l-8 border-slate-500',
-    badge: 'bg-slate-600',
-    icon: '🏗️'
-  },
-  'cable': {
-    border: 'border-l-8 border-rose-500',
-    badge: 'bg-rose-600',
-    icon: '🔌'
-  }
+  'solar-panel': { border: 'border-l-8 border-blue-500', badge: 'bg-blue-600', icon: '☀️' },
+  'inverter': { border: 'border-l-8 border-purple-500', badge: 'bg-purple-600', icon: '⚡' },
+  'battery': { border: 'border-l-8 border-emerald-500', badge: 'bg-emerald-600', icon: '🔋' },
+  'charge-controller': { border: 'border-l-8 border-amber-500', badge: 'bg-amber-600', icon: '🎛️' },
+  'mounting': { border: 'border-l-8 border-slate-500', badge: 'bg-slate-600', icon: '🏗️' },
+  'cable': { border: 'border-l-8 border-rose-500', badge: 'bg-rose-600', icon: '🔌' }
 };
 
 const BlogPostPage = () => {
@@ -134,7 +47,7 @@ const BlogPostPage = () => {
         keywords={`${post.category}, solar equipment Bangladesh, ${post.equipment} Bangladesh`}
         type="article"
         publishedTime={new Date(post.date).toISOString()}
-        modifiedTime={new Date().toISOString()}
+        modifiedTime="2026-03-08T00:00:00Z"
         author={post.author}
         canonicalUrl={`https://bdsolarpower.com/blog/${post.id}`}
         articleHeadline={post.title}
