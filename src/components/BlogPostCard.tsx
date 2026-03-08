@@ -30,6 +30,7 @@ const equipmentFrames = {
     corners: 'rounded-xl',
     shadow: 'shadow-[0_0_20px_rgba(59,130,246,0.5)]',
     badge: 'bg-blue-600',
+    hoverBg: 'hover:bg-blue-600',
     icon: '☀️'
   },
   'inverter': {
@@ -39,6 +40,7 @@ const equipmentFrames = {
     corners: 'rounded-2xl',
     shadow: 'shadow-[0_0_20px_rgba(168,85,247,0.5)]',
     badge: 'bg-purple-600',
+    hoverBg: 'hover:bg-purple-600',
     icon: '⚡'
   },
   'battery': {
@@ -48,6 +50,7 @@ const equipmentFrames = {
     corners: 'rounded-3xl',
     shadow: 'shadow-[0_0_20px_rgba(16,185,129,0.5)]',
     badge: 'bg-emerald-600',
+    hoverBg: 'hover:bg-emerald-600',
     icon: '🔋'
   },
   'charge-controller': {
@@ -57,6 +60,7 @@ const equipmentFrames = {
     corners: 'rounded-[2rem]',
     shadow: 'shadow-[0_0_20px_rgba(245,158,11,0.5)]',
     badge: 'bg-amber-600',
+    hoverBg: 'hover:bg-amber-600',
     icon: '🎛️'
   },
   'mounting': {
@@ -66,6 +70,7 @@ const equipmentFrames = {
     corners: 'rounded-lg',
     shadow: 'shadow-[0_0_20px_rgba(100,116,139,0.5)]',
     badge: 'bg-slate-600',
+    hoverBg: 'hover:bg-slate-600',
     icon: '🏗️'
   },
   'cable': {
@@ -75,6 +80,7 @@ const equipmentFrames = {
     corners: 'rounded-xl',
     shadow: 'shadow-[0_0_20px_rgba(244,63,94,0.5)]',
     badge: 'bg-rose-600',
+    hoverBg: 'hover:bg-rose-600',
     icon: '🔌'
   }
 };
