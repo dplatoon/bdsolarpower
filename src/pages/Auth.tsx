@@ -116,6 +116,7 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50 flex items-center justify-center p-4">
+      <SEO title="Login" description="Sign in to BD Solar Power" noIndex={true} includeLocalBusiness={false} />
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
