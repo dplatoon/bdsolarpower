@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { blogPostsData } from "@/data/blogPosts";
+import { blogPostContent } from "@/data/blogPostContent";
 
 const equipmentFrames = {
   'solar-panel': { border: 'border-l-8 border-blue-500', badge: 'bg-blue-600', icon: '☀️' },
@@ -38,6 +39,7 @@ const BlogPostPage = () => {
   }
 
   const frame = equipmentFrames[post.equipment];
+  const content = blogPostContent[post.id];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
@@ -99,39 +101,57 @@ const BlogPostPage = () => {
                 {post.excerpt}
               </p>
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Introduction</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Bangladesh's renewable energy sector is experiencing unprecedented growth, with solar technology at the forefront of this transformation. Understanding the right equipment for your specific needs is crucial for maximizing efficiency and return on investment.
-              </p>
+              {content?.sections.map((section, index) => (
+                <div key={index}>
+                  <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{section.heading}</h2>
+                  
+                  {section.paragraphs.map((para, pIndex) => (
+                    <p key={pIndex} className="text-gray-700 mb-4 leading-relaxed">{para}</p>
+                  ))}
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Key Features and Benefits</h2>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                When selecting solar equipment for Bangladesh's unique climate conditions, several factors must be considered:
-              </p>
-              <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
-                <li>High efficiency ratings suitable for tropical climates</li>
-                <li>Durability against monsoon and cyclone conditions</li>
-                <li>Compliance with Bangladesh's net metering regulations</li>
-                <li>Cost-effectiveness and long-term ROI</li>
-                <li>Warranty and local service availability</li>
-              </ul>
+                  {section.table && (
+                    <div className="overflow-x-auto my-6">
+                      <table className="w-full border-collapse border border-gray-200 rounded-lg">
+                        <thead>
+                          <tr className="bg-gray-50">
+                            {section.table.headers.map((header, hIndex) => (
+                              <th key={hIndex} className="border border-gray-200 px-4 py-3 text-left text-sm font-semibold text-gray-900">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row, rIndex) => (
+                            <tr key={rIndex} className={rIndex % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                              {row.map((cell, cIndex) => (
+                                <td key={cIndex} className="border border-gray-200 px-4 py-3 text-sm text-gray-700">
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Technical Specifications</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Modern solar equipment designed for Bangladesh's market must meet stringent quality standards while remaining cost-effective. This balance ensures both immediate performance and long-term reliability.
-              </p>
+                  {section.list && (
+                    <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
+                      {section.list.map((item, lIndex) => (
+                        <li key={lIndex}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
 
-              <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Conclusion</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Investing in quality solar equipment is essential for the success of your renewable energy project in Bangladesh. By understanding the specific requirements of your installation and choosing equipment that meets both international standards and local climate demands, you can ensure optimal performance and maximum return on your investment.
-              </p>
-
-              <div className="bg-amber-50 border-l-4 border-amber-500 p-6 mt-8">
-                <p className="text-gray-800 font-semibold mb-2">Need Expert Guidance?</p>
-                <p className="text-gray-700">
-                  Contact our team of solar energy experts to discuss your specific project requirements and get personalized equipment recommendations for your solar installation in Bangladesh.
-                </p>
-              </div>
+                  {section.callout && (
+                    <div className="bg-amber-50 border-l-4 border-amber-500 p-6 mt-6 mb-6">
+                      <p className="text-gray-800 font-semibold mb-2">{section.callout.title}</p>
+                      <p className="text-gray-700">{section.callout.text}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </article>
