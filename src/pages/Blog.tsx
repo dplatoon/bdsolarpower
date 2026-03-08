@@ -12,11 +12,6 @@ const Blog = () => {
       post.category.toLowerCase().includes(category.toLowerCase())
     );
   };
-    if (category === 'all') return blogPosts;
-    return blogPosts.filter(post => 
-      post.category.toLowerCase().includes(category.toLowerCase())
-    );
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
