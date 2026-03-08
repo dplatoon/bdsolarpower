@@ -21,6 +21,7 @@ interface SEOProps {
   articleHeadline?: string;
   faqSchema?: object;
   reviewSchema?: object[];
+  noIndex?: boolean;
 }
 
 // Page name mapping for automatic breadcrumb generation
