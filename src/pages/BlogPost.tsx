@@ -55,6 +55,7 @@ const BlogPostPage = () => {
         author={post.author}
         canonicalUrl={`https://bdsolarpower.com/blog/${post.id}`}
         articleHeadline={post.title}
+        ogImage={blogHeroImages[post.id]}
       />
       
       <Header />
