@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Bookmark, TrendingUp, FileText, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 
 const UserDashboard = () => {
   const { user, loading: authLoading } = useAuth();
