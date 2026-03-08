@@ -21,6 +21,7 @@ interface SEOProps {
   articleHeadline?: string;
   faqSchema?: object;
   reviewSchema?: object[];
+  noIndex?: boolean;
 }
 
 // Page name mapping for automatic breadcrumb generation
@@ -256,7 +257,8 @@ export const SEO = ({
   breadcrumbs,
   articleHeadline,
   faqSchema,
-  reviewSchema
+  reviewSchema,
+  noIndex = false
 }: SEOProps) => {
   const location = useLocation();
   const fullTitle = `${title} | BD Solar Power`;
@@ -336,7 +338,7 @@ export const SEO = ({
       )}
 
       {/* Additional SEO tags */}
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
       <meta name="language" content="English" />
       <meta name="revisit-after" content="7 days" />
       <meta name="distribution" content="global" />

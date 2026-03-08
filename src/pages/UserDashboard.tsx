@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Bookmark, TrendingUp, FileText, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 
 const UserDashboard = () => {
   const { user, loading: authLoading } = useAuth();
@@ -56,6 +57,7 @@ const UserDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+      <SEO title="My Dashboard" description="Manage your solar projects and bookmarks" noIndex={true} includeLocalBusiness={false} />
       <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">

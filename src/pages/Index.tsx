@@ -25,6 +25,7 @@ const Index = () => {
         description="Leading solar panel installation in Bangladesh. 5kW system from BDT 275,000. Rooftop solar, net metering, 3-4 year ROI. 500+ installations. Get free quote today!" 
         keywords="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh" 
         canonicalUrl="https://bdsolarpower.com/"
+        includeLocalBusiness={false}
         faqSchema={faqSchema}
         reviewSchema={reviewSchema}
       />

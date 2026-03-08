@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Sun } from "lucide-react";
 import { z } from "zod";
+import { SEO } from "@/components/SEO";
 
 const signUpSchema = z.object({
   email: z.string().email('Invalid email format').max(255, 'Email too long'),
@@ -116,6 +117,7 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50 flex items-center justify-center p-4">
+      <SEO title="Login" description="Sign in to BD Solar Power" noIndex={true} includeLocalBusiness={false} />
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
