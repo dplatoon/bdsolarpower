@@ -8,6 +8,7 @@ import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { blogPostsData } from "@/data/blogPosts";
 import { blogPostContent } from "@/data/blogPostContent";
 import { blogHeroImages } from "@/data/blogHeroImages";
+import BlogTableOfContents from "@/components/BlogTableOfContents";
 
 const equipmentFrames = {
   'solar-panel': { border: 'border-l-8 border-blue-500', badge: 'bg-blue-600', icon: '☀️' },
@@ -58,7 +59,12 @@ const BlogPostPage = () => {
       
       <Header />
       
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <main className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="flex gap-8 items-start">
+        {/* Table of Contents */}
+        {content && <BlogTableOfContents sections={content.sections} />}
+
+        <div className="flex-1 max-w-4xl">
         <Button 
           variant="ghost" 
           onClick={() => navigate('/blog')}
@@ -200,6 +206,8 @@ const BlogPostPage = () => {
             </section>
           );
         })()}
+        </div>
+        </div>
       </main>
       <Footer />
     </div>
