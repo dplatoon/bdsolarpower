@@ -28,7 +28,7 @@ const Blog = () => {
         canonicalUrl="https://bdsolarpower.com/blog"
         articleHeadline="Solar Panel Price Bangladesh 2025 – Equipment Reviews & Guides"
         publishedTime="2025-01-01T00:00:00Z"
-        modifiedTime="2025-01-15T00:00:00Z"
+        modifiedTime="2026-03-08T00:00:00Z"
       />
       
       <Header />
