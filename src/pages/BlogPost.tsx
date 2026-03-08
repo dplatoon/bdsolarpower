@@ -166,6 +166,40 @@ const BlogPostPage = () => {
             </div>
           </div>
         </article>
+
+        {/* Related Posts */}
+        {(() => {
+          const relatedPosts = blogPostsData
+            .filter(p => p.id !== post.id && (p.equipment === post.equipment || p.category === post.category))
+            .slice(0, 3);
+          if (relatedPosts.length === 0) return null;
+          return (
+            <section className="mt-12">
+              <h2 className="text-2xl font-bold text-foreground mb-6">Related Articles</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {relatedPosts.map(rp => {
+                  const rpFrame = equipmentFrames[rp.equipment];
+                  return (
+                    <button
+                      key={rp.id}
+                      onClick={() => navigate(`/blog/${rp.id}`)}
+                      className={`text-left bg-card rounded-xl shadow-md overflow-hidden border-l-4 ${rpFrame.border.replace('border-l-8', '')} hover:shadow-lg transition-shadow`}
+                    >
+                      {blogHeroImages[rp.id] && (
+                        <img src={blogHeroImages[rp.id]} alt={rp.title} className="w-full aspect-video object-cover" loading="lazy" />
+                      )}
+                      <div className="p-4">
+                        <Badge className={`${rpFrame.badge} text-white mb-2`}>{rpFrame.icon} {rp.category}</Badge>
+                        <h3 className="font-semibold text-foreground line-clamp-2 mb-1">{rp.title}</h3>
+                        <p className="text-sm text-muted-foreground">{rp.readTime} · {rp.date}</p>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })()}
       </main>
       <Footer />
     </div>
