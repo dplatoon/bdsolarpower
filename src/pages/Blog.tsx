@@ -24,7 +24,7 @@ const Blog = () => {
         title="Solar Panel Price Bangladesh 2025 | Equipment Reviews & Guides"
         description="Updated solar panel price in Bangladesh 2025. See 1kW–10kW system price ranges, equipment recommendations, and real monthly bill savings for homes and businesses."
         keywords="solar panel price Bangladesh 2025, monocrystalline solar panel Bangladesh, solar inverter Bangladesh, battery storage Bangladesh, MPPT charge controller, solar mounting system, solar equipment reviews"
-        type="article"
+        type="website"
         canonicalUrl="https://bdsolarpower.com/blog"
         articleHeadline="Solar Panel Price Bangladesh 2025 – Equipment Reviews & Guides"
         publishedTime="2025-01-01T00:00:00Z"
