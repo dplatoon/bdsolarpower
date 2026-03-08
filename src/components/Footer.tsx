@@ -126,8 +126,8 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500">
-            © {currentYear} BD Solar Power. All rights reserved.
+          <p className="text-sm text-gray-500 text-center md:text-left">
+            © {currentYear} BD Solar Power by Start BD. All rights reserved. সকল অধিকার সংরক্ষিত।
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link to="/learn" className="hover:text-emerald-500 transition-colors">
