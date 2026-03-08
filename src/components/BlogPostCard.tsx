@@ -144,7 +144,7 @@ export const BlogPostCard = ({ post }: BlogPostCardProps) => {
           variant="outline" 
           className={cn(
             "w-full font-semibold",
-            `hover:${frame.badge}`,
+            frame.hoverBg,
             "hover:text-white transition-all"
           )}
           onClick={() => navigate(`/blog/${post.id}`)}
