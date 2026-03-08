@@ -257,7 +257,8 @@ export const SEO = ({
   breadcrumbs,
   articleHeadline,
   faqSchema,
-  reviewSchema
+  reviewSchema,
+  noIndex = false
 }: SEOProps) => {
   const location = useLocation();
   const fullTitle = `${title} | BD Solar Power`;
