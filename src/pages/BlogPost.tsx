@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { blogPostsData } from "@/data/blogPosts";
 import { blogPostContent } from "@/data/blogPostContent";
+import { blogHeroImages } from "@/data/blogHeroImages";
 
 const equipmentFrames = {
   'solar-panel': { border: 'border-l-8 border-blue-500', badge: 'bg-blue-600', icon: '☀️' },
@@ -68,6 +69,16 @@ const BlogPostPage = () => {
         </Button>
 
         <article className={`bg-white rounded-xl shadow-lg overflow-hidden ${frame.border}`}>
+          {blogHeroImages[post.id] && (
+            <div className="w-full aspect-[16/9] overflow-hidden">
+              <img
+                src={blogHeroImages[post.id]}
+                alt={post.title}
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+          )}
           <div className="p-8 md:p-12">
             <div className="flex flex-wrap gap-3 mb-6">
               <Badge className={`${frame.badge} text-white`}>
