@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
+import { blogHeroImages } from "@/data/blogHeroImages";
 
 export interface BlogPost {
   id: string;
