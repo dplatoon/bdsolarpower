@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { blogPostsData } from "@/data/blogPosts";
 import { blogPostContent } from "@/data/blogPostContent";
+import { blogHeroImages } from "@/data/blogHeroImages";
 
 const equipmentFrames = {
   'solar-panel': { border: 'border-l-8 border-blue-500', badge: 'bg-blue-600', icon: '☀️' },
