@@ -206,6 +206,8 @@ const BlogPostPage = () => {
             </section>
           );
         })()}
+        </div>
+        </div>
       </main>
       <Footer />
     </div>
