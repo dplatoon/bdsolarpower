@@ -51,10 +51,11 @@ const BlogPostPage = () => {
         keywords={`${post.category}, solar equipment Bangladesh, ${post.equipment} Bangladesh`}
         type="article"
         publishedTime={new Date(post.date).toISOString()}
-        modifiedTime="2026-03-08T00:00:00Z"
+        modifiedTime={new Date(post.date).toISOString()}
         author={post.author}
         canonicalUrl={`https://bdsolarpower.com/blog/${post.id}`}
         articleHeadline={post.title}
+        ogImage={blogHeroImages[post.id]}
       />
       
       <Header />
@@ -189,7 +190,7 @@ const BlogPostPage = () => {
                     <button
                       key={rp.id}
                       onClick={() => navigate(`/blog/${rp.id}`)}
-                      className={`text-left bg-card rounded-xl shadow-md overflow-hidden border-l-4 ${rpFrame.border.replace('border-l-8', '')} hover:shadow-lg transition-shadow`}
+                      className={`group text-left bg-card rounded-xl shadow-md overflow-hidden border-l-4 ${rpFrame.border.replace('border-l-8', '')} hover:shadow-lg transition-shadow`}
                     >
                       {blogHeroImages[rp.id] && (
                         <img src={blogHeroImages[rp.id]} alt={rp.title} className="w-full aspect-video object-cover" loading="lazy" />
