@@ -69,6 +69,16 @@ const BlogPostPage = () => {
         </Button>
 
         <article className={`bg-white rounded-xl shadow-lg overflow-hidden ${frame.border}`}>
+          {blogHeroImages[post.id] && (
+            <div className="w-full aspect-[16/9] overflow-hidden">
+              <img
+                src={blogHeroImages[post.id]}
+                alt={post.title}
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+          )}
           <div className="p-8 md:p-12">
             <div className="flex flex-wrap gap-3 mb-6">
               <Badge className={`${frame.badge} text-white`}>
