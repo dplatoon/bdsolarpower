@@ -16,7 +16,7 @@ const InvestorMetrics = () => {
     queryKey: ['tender-opportunities'],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('tender_opportunities')
+        .from('tender_opportunities_public')
         .select('*')
         .order('deadline', { ascending: true });
       
