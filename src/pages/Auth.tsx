@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loader2, Sun } from "lucide-react";
 import { z } from "zod";
 import { SEO } from "@/components/SEO";
+import { lovable } from "@/integrations/lovable/index";
 
 const signUpSchema = z.object({
   email: z.string().email('Invalid email format').max(255, 'Email too long'),
