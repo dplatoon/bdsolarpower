@@ -16,7 +16,7 @@ const InvestorMetrics = () => {
     queryKey: ['tender-opportunities'],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('tender_opportunities')
+        .from('tender_opportunities_public')
         .select('*')
         .order('deadline', { ascending: true });
       
@@ -62,7 +62,7 @@ const InvestorMetrics = () => {
 
   // Calculate metrics
   const totalTenderValue = tenders?.reduce((sum, tender) => sum + Number(tender.minimum_bid || 0), 0) || 247500000;
-  const avgBidsPerTender = tenders?.reduce((sum, tender) => sum + tender.bid_count, 0) / (tenders?.length || 1) || 1.33;
+  const avgBidsPerTender = tenders?.reduce((sum, tender) => sum + Number(tender.bid_count ?? 0), 0) / (tenders?.length || 1) || 1.33;
   const highCapacityProjects = projects?.filter(p => Number(p.capacity_mw) >= 50).length || 3;
 
   return (
@@ -164,7 +164,7 @@ const InvestorMetrics = () => {
                   </div>
                   <div>
                     <span className="text-sm font-medium text-purple-600">Current Bids</span>
-                    <p className="font-bold">{tender.bid_count}</p>
+                    <p className="font-bold">{tender.bid_count ?? 'Hidden until deadline'}</p>
                   </div>
                 </div>
 
