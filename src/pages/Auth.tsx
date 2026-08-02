@@ -116,6 +116,21 @@ const Auth = () => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    setError("");
+    setLoading(true);
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin,
+    });
+    if (result.error) {
+      setError(result.error.message ?? "Google sign-in failed");
+      setLoading(false);
+      return;
+    }
+    if (result.redirected) return;
+    navigate("/");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50 flex items-center justify-center p-4">
       <SEO title="Login" description="Sign in to BD Solar Power" noIndex={true} includeLocalBusiness={false} />
