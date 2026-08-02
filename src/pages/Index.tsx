@@ -42,19 +42,19 @@ const Index = () => {
             <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
               Transform your home or business with premium solar panel systems in Bangladesh. Get 5kW rooftop solar installation from BDT 275,000 with 3-4 year payback period. Government net metering approved • 25-year warranty • Free site survey.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link to="/ai-tools">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+            <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
+              <Link to="/ai-tools" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700">
                   Calculate Your Savings
                 </Button>
               </Link>
-              <Link to="/learn">
-                <Button variant="outline" size="lg">
+              <Link to="/learn" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   Net Metering Guide
                 </Button>
               </Link>
             </div>
-            <div className="mt-6 flex items-center justify-center gap-8 text-sm text-gray-600">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-8 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">36% Cost Reduction</Badge>
               </div>
@@ -62,6 +62,7 @@ const Index = () => {
                 <Badge variant="secondary" className="bg-amber-100 text-amber-700">1% Import Duty</Badge>
               </div>
             </div>
+
           </div>
         </div>
       </section>
