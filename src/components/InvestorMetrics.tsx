@@ -62,7 +62,7 @@ const InvestorMetrics = () => {
 
   // Calculate metrics
   const totalTenderValue = tenders?.reduce((sum, tender) => sum + Number(tender.minimum_bid || 0), 0) || 247500000;
-  const avgBidsPerTender = tenders?.reduce((sum, tender) => sum + Number(tender.bid_count ?? 0), 0) / (tenders?.length || 1) || 1.33;
+  const avgBidsPerTender = 0;
   const highCapacityProjects = projects?.filter(p => Number(p.capacity_mw) >= 50).length || 3;
 
   return (
