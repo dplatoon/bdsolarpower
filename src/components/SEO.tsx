@@ -21,6 +21,7 @@ interface SEOProps {
   articleHeadline?: string;
   faqSchema?: object;
   reviewSchema?: object[];
+  extraSchemas?: object[];
   noIndex?: boolean;
 }
 
