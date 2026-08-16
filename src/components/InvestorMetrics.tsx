@@ -90,11 +90,10 @@ const InvestorMetrics = () => {
             <Users className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-700">{avgBidsPerTender.toFixed(1)}</div>
+            <div className="text-2xl font-bold text-green-700">Confidential</div>
             <p className="text-xs text-muted-foreground">
-              Average bids per tender
+              Bid counts disclosed after deadline
             </p>
-            <Progress value={33} className="mt-2" />
           </CardContent>
         </Card>
 
