@@ -164,7 +164,7 @@ const InvestorMetrics = () => {
                   </div>
                   <div>
                     <span className="text-sm font-medium text-purple-600">Current Bids</span>
-                    <p className="font-bold">{tender.bid_count ?? 'Hidden until deadline'}</p>
+                    <p className="font-bold">Hidden until deadline</p>
                   </div>
                 </div>
 
