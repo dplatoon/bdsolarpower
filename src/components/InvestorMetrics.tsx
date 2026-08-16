@@ -2,7 +2,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Calendar, DollarSign, MapPin, Users, Bookmark } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -62,7 +61,6 @@ const InvestorMetrics = () => {
 
   // Calculate metrics
   const totalTenderValue = tenders?.reduce((sum, tender) => sum + Number(tender.minimum_bid || 0), 0) || 247500000;
-  const avgBidsPerTender = 0;
   const highCapacityProjects = projects?.filter(p => Number(p.capacity_mw) >= 50).length || 3;
 
   return (
