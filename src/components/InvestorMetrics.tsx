@@ -2,7 +2,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Calendar, DollarSign, MapPin, Users, Bookmark } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -62,7 +61,6 @@ const InvestorMetrics = () => {
 
   // Calculate metrics
   const totalTenderValue = tenders?.reduce((sum, tender) => sum + Number(tender.minimum_bid || 0), 0) || 247500000;
-  const avgBidsPerTender = tenders?.reduce((sum, tender) => sum + Number(tender.bid_count ?? 0), 0) / (tenders?.length || 1) || 1.33;
   const highCapacityProjects = projects?.filter(p => Number(p.capacity_mw) >= 50).length || 3;
 
   return (
@@ -90,11 +88,10 @@ const InvestorMetrics = () => {
             <Users className="h-4 w-4 text-green-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-700">{avgBidsPerTender.toFixed(1)}</div>
+            <div className="text-2xl font-bold text-green-700">Confidential</div>
             <p className="text-xs text-muted-foreground">
-              Average bids per tender
+              Bid counts disclosed after deadline
             </p>
-            <Progress value={33} className="mt-2" />
           </CardContent>
         </Card>
 
@@ -164,7 +161,7 @@ const InvestorMetrics = () => {
                   </div>
                   <div>
                     <span className="text-sm font-medium text-purple-600">Current Bids</span>
-                    <p className="font-bold">{tender.bid_count ?? 'Hidden until deadline'}</p>
+                    <p className="font-bold">Hidden until deadline</p>
                   </div>
                 </div>
 

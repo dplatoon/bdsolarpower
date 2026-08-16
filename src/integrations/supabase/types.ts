@@ -180,7 +180,6 @@ export type Database = {
     Views: {
       tender_opportunities_public: {
         Row: {
-          bid_count: number | null
           capacity_mw: number | null
           created_at: string | null
           deadline: string | null
@@ -195,7 +194,6 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
-          bid_count?: never
           capacity_mw?: number | null
           created_at?: string | null
           deadline?: string | null
@@ -210,7 +208,6 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
-          bid_count?: never
           capacity_mw?: number | null
           created_at?: string | null
           deadline?: string | null
