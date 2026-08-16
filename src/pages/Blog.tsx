@@ -16,8 +16,8 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
       <SEO 
-        title="Solar Panel Price Bangladesh 2025 | Equipment Reviews & Guides"
-        description="Updated solar panel price in Bangladesh 2025. See 1kW–10kW system price ranges, equipment recommendations, and real monthly bill savings for homes and businesses."
+        title="Solar Panel Price Bangladesh 2026"
+        description="Updated solar panel prices in Bangladesh: 1kW-10kW system price ranges, equipment picks, and real monthly bill savings for homes and businesses."
         keywords="solar panel price Bangladesh 2025, monocrystalline solar panel Bangladesh, solar inverter Bangladesh, battery storage Bangladesh, MPPT charge controller, solar mounting system, solar equipment reviews"
         type="website"
         canonicalUrl="https://bdsolarpower.com/blog"

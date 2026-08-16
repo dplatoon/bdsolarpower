@@ -21,6 +21,7 @@ interface SEOProps {
   articleHeadline?: string;
   faqSchema?: object;
   reviewSchema?: object[];
+  extraSchemas?: object[];
   noIndex?: boolean;
 }
 
@@ -258,6 +259,7 @@ export const SEO = ({
   articleHeadline,
   faqSchema,
   reviewSchema,
+  extraSchemas,
   noIndex = false
 }: SEOProps) => {
   const location = useLocation();
@@ -379,6 +381,13 @@ export const SEO = ({
       {reviewSchema && reviewSchema.map((review, index) => (
         <script key={index} type="application/ld+json">
           {JSON.stringify(review)}
+        </script>
+      ))}
+
+      {/* Page-specific extra schemas */}
+      {extraSchemas && extraSchemas.map((schema, index) => (
+        <script key={`extra-${index}`} type="application/ld+json">
+          {JSON.stringify(schema)}
         </script>
       ))}
     </Helmet>
