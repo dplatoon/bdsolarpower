@@ -99,25 +99,25 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-gray-400">
-                  Dhaka, Bangladesh
+                  Mymensingh, Bangladesh
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-emerald-500 flex-shrink-0" />
                 <a
-                  href="mailto:info@bdsolarpower.com"
+                  href="mailto:hello@bdsolarpower.com"
                   className="text-sm text-gray-400 hover:text-emerald-500 transition-colors"
                 >
-                  info@bdsolarpower.com
+                  hello@bdsolarpower.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-emerald-500 flex-shrink-0" />
                 <a
-                  href="tel:+8801700000000"
+                  href="tel:+8801711927755"
                   className="text-sm text-gray-400 hover:text-emerald-500 transition-colors"
                 >
-                  +880 1700-000000
+                  +880 1711-927755
                 </a>
               </li>
             </ul>

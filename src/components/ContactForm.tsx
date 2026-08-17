@@ -33,7 +33,7 @@ const ContactForm = () => {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
-  const WHATSAPP_NUMBER = "8801700000000"; // Replace with actual business number
+  const WHATSAPP_NUMBER = "8801711927755"; // BD Solar Power business WhatsApp
 
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
