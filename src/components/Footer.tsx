@@ -111,16 +111,10 @@ const Footer = () => {
                   hello@bdsolarpower.com
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-emerald-500 flex-shrink-0" />
-                <a
-                  href="tel:+8801711927755"
-                  className="text-sm text-gray-400 hover:text-emerald-500 transition-colors"
-                >
-                  +880 1711-927755
-                </a>
-              </li>
             </ul>
+            <p className="text-xs text-gray-500 mt-3">
+              Phone support coming soon. Reach us via WhatsApp or email for now.
+            </p>
           </div>
         </div>
 
