@@ -130,7 +130,7 @@ const SolarAnalyzer = () => {
               id="location"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              placeholder="e.g., Dhaka, Bangladesh"
+              placeholder="e.g., Mymensingh, Bangladesh"
             />
           </div>
 

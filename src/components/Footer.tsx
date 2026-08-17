@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sun, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Sun, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -99,28 +99,22 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-gray-400">
-                  Dhaka, Bangladesh
+                  Mymensingh, Bangladesh
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-emerald-500 flex-shrink-0" />
                 <a
-                  href="mailto:info@bdsolarpower.com"
+                  href="mailto:hello@bdsolarpower.com"
                   className="text-sm text-gray-400 hover:text-emerald-500 transition-colors"
                 >
-                  info@bdsolarpower.com
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-emerald-500 flex-shrink-0" />
-                <a
-                  href="tel:+8801700000000"
-                  className="text-sm text-gray-400 hover:text-emerald-500 transition-colors"
-                >
-                  +880 1700-000000
+                  hello@bdsolarpower.com
                 </a>
               </li>
             </ul>
+            <p className="text-xs text-gray-500 mt-3">
+              Phone support coming soon. Reach us via WhatsApp or email for now.
+            </p>
           </div>
         </div>
 

@@ -92,22 +92,22 @@ const localBusinessSchema = {
   "@id": "https://bdsolarpower.com/#localbusiness",
   "name": "BD Solar Power",
   "alternateName": "Bangladesh Solar Power Solutions",
-  "description": "Leading solar panel installation company in Bangladesh offering rooftop solar systems, commercial solar solutions, and net metering services across Dhaka, Chittagong, and nationwide.",
+  "description": "Leading solar panel installation company in Bangladesh offering rooftop solar systems, commercial solar solutions, and net metering services across Mymensingh, Dhaka, Chittagong, and nationwide.",
   "url": "https://bdsolarpower.com",
-  "telephone": "+880-1234-567890",
-  "email": "info@bdsolarpower.com",
+  "telephone": "+880-1711-927755",
+  "email": "hello@bdsolarpower.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "House 45, Road 12, Gulshan-2",
-    "addressLocality": "Dhaka",
-    "addressRegion": "Dhaka Division",
-    "postalCode": "1212",
+    "streetAddress": "Mymensingh",
+    "addressLocality": "Mymensingh",
+    "addressRegion": "Mymensingh Division",
+    "postalCode": "2200",
     "addressCountry": "BD"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "23.7934",
-    "longitude": "90.4146"
+    "latitude": "24.7535",
+    "longitude": "90.4065"
   },
   "areaServed": [
     {
@@ -234,10 +234,10 @@ const organizationSchema = {
   "logo": "https://bdsolarpower.com/logo.png",
   "description": "Bangladesh's trusted solar energy solutions provider",
   "foundingDate": "2020",
-  "foundingLocation": "Dhaka, Bangladesh",
+  "foundingLocation": "Mymensingh, Bangladesh",
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+880-1234-567890",
+    "telephone": "+880-1711-927755",
     "contactType": "customer service",
     "availableLanguage": ["Bengali", "English"],
     "areaServed": "BD"
@@ -309,9 +309,9 @@ export const SEO = ({
 
       {/* Geo Tags for Bangladesh */}
       <meta name="geo.region" content="BD" />
-      <meta name="geo.placename" content="Dhaka, Bangladesh" />
-      <meta name="geo.position" content="23.7934;90.4146" />
-      <meta name="ICBM" content="23.7934, 90.4146" />
+      <meta name="geo.placename" content="Mymensingh, Bangladesh" />
+      <meta name="geo.position" content="24.7535;90.4065" />
+      <meta name="ICBM" content="24.7535, 90.4065" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
