@@ -272,23 +272,16 @@ Sent from bdsolarpower.com`;
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-emerald-600" />
-                  <div>
-                    <p className="font-semibold">+880 1700-000000</p>
-                    <p className="text-sm text-gray-600">Call us directly</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-emerald-600" />
                   <div>
-                    <p className="font-semibold">info@bdsolarpower.com</p>
+                    <p className="font-semibold">hello@bdsolarpower.com</p>
                     <p className="text-sm text-gray-600">Email for detailed inquiries</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-emerald-600" />
                   <div>
-                    <p className="font-semibold">Dhaka, Bangladesh</p>
+                    <p className="font-semibold">Mymensingh, Bangladesh</p>
                     <p className="text-sm text-gray-600">Service available nationwide</p>
                   </div>
                 </div>
