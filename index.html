@@ -41,53 +41,12 @@
     <meta name="twitter:site" content="@bdsolarpower" />
     <meta name="twitter:creator" content="@bdsolarpower" />
 
-    <!-- Structured Data - Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "BD Solar Power",
-      "url": "https://bdsolarpower.com",
-      "logo": "https://bdsolarpower.com/favicon.png",
-      "description": "Leading solar panel installation company in Bangladesh. 500+ installations, 3-4 year ROI, government program support.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "House 12, Road 5, Sector 7",
-        "addressLocality": "Uttara",
-        "addressRegion": "Dhaka",
-        "postalCode": "1230",
-        "addressCountry": "BD"
-      },
-      "areaServed": [
-        {"@type": "City", "name": "Dhaka"},
-        {"@type": "City", "name": "Chittagong"},
-        {"@type": "City", "name": "Sylhet"},
-        {"@type": "City", "name": "Rajshahi"},
-        {"@type": "City", "name": "Khulna"},
-        {"@type": "Country", "name": "Bangladesh"}
-      ],
-      "priceRange": "BDT 275,000 - BDT 5,000,000",
-      "sameAs": [
-        "https://twitter.com/bdsolarpower",
-        "https://facebook.com/bdsolarpower",
-        "https://linkedin.com/company/bdsolarpower"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Solar Installation Services",
-        "itemListElement": [
-          {"@type": "Service", "name": "Rooftop Solar Installation"},
-          {"@type": "Service", "name": "Net Metering Setup"},
-          {"@type": "Service", "name": "Commercial Solar Solutions"},
-          {"@type": "Service", "name": "Off-Grid Solar Systems"}
-        ]
-      },
-      "knowsAbout": ["Solar Energy", "Renewable Energy", "Net Metering Policy Bangladesh", "3000 MW Solar Program"]
-    }
-    </script>
-    
+    <!-- Structured data (Organization, LocalBusiness, breadcrumbs, etc.) is
+         injected per-route by src/components/SEO.tsx via react-helmet-async.
+         A second static copy used to live here with a different (stale)
+         address, which meant every page shipped two conflicting Organization
+         schemas. Removed to keep a single source of truth. -->
 
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

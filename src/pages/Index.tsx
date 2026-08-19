@@ -70,9 +70,8 @@ const Index = () => {
       <SEO 
         title="Solar Panels Bangladesh from BDT 275,000" 
         description="Solar panel installation across Bangladesh. 5kW systems from BDT 275,000, net metering and 3-4 year ROI. Get your free quote today." 
-        keywords="solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh" 
+        keywords="solar panel Bangladesh, solar panel price Bangladesh 2026, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh"
         canonicalUrl="https://bdsolarpower.com/"
-        includeLocalBusiness={false}
         faqSchema={faqSchema}
         reviewSchema={reviewSchema}
         extraSchemas={[productSchema, serviceSchema]}
