@@ -1,0 +1,32 @@
+import React from "react";
+import { renderToString } from "react-dom/server";
+import type { HelmetServerState } from "react-helmet-async";
+import App from "./App";
+
+export type RenderResult = {
+  html: string;
+  head: string;
+};
+
+/** Renders one route to static HTML + head tags at build time. */
+export function render(url: string): RenderResult {
+  const helmetContext: { helmet?: HelmetServerState } = {};
+
+  const html = renderToString(
+    <App ssrLocation={url} helmetContext={helmetContext} />
+  );
+
+  const { helmet } = helmetContext;
+  const head = helmet
+    ? [
+        helmet.title.toString(),
+        helmet.meta.toString(),
+        helmet.link.toString(),
+        helmet.script.toString(),
+      ]
+        .filter(Boolean)
+        .join("\n    ")
+    : "";
+
+  return { html, head };
+}

@@ -19,4 +19,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  ssr: {
+    // CJS-only deps must be bundled for the build-time prerender to import them.
+    noExternal: ["react-helmet-async"],
+  },
 }));

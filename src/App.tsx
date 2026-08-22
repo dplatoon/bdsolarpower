@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { StaticRouter } from "react-router-dom/server";
 import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from "./contexts/AuthContext";
 import Index from "./pages/Index";
@@ -19,14 +20,29 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <HelmetProvider>
+type AppProps = {
+  /** When set (build-time prerender), routing is static instead of history-based. */
+  ssrLocation?: string;
+  /** Build-time prerender: collects head tags emitted by Helmet. */
+  helmetContext?: object;
+};
+
+const App = ({ ssrLocation, helmetContext }: AppProps) => {
+  const Router = ({ children }: { children: React.ReactNode }) =>
+    ssrLocation !== undefined ? (
+      <StaticRouter location={ssrLocation}>{children}</StaticRouter>
+    ) : (
+      <BrowserRouter>{children}</BrowserRouter>
+    );
+
+  return (
+  <HelmetProvider context={helmetContext}>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <Router>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
@@ -39,11 +55,12 @@ const App = () => (
               <Route path="/my-dashboard" element={<UserDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
+          </Router>
         </TooltipProvider>
       </AuthProvider>
     </QueryClientProvider>
   </HelmetProvider>
-);
+  );
+};
 
 export default App;

@@ -4,6 +4,7 @@ import { Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 
 const NotFound = () => {
   const location = useLocation();
@@ -17,6 +18,11 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+      <SEO
+        title="Page Not Found (404)"
+        description="The page you are looking for does not exist. Browse solar guides, tools and market data on BD Solar Power."
+        noIndex
+      />
       <Header />
       <div className="flex-1 flex items-center justify-center px-4">
         <div className="text-center max-w-md">
