@@ -241,9 +241,8 @@ export const SEO = ({
   const graph = {
     "@context": "https://schema.org",
     "@graph": [
-      stripContext(logoSchema),
-      stripContext(webSiteSchema),
-      ...(includeLocalBusiness ? [stripContext(localBusinessSchema)] : []),
+      // organization / website / logo nodes are emitted once in index.html
+      // (same @id values, so consumers merge them with the nodes below)
       webPageSchema,
       { ...stripContext(breadcrumbSchema), "@id": `${currentUrl}#breadcrumb` },
       ...(articleSchema ? [articleSchema] : []),
