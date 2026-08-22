@@ -15,6 +15,22 @@ const SERVER_ENTRY = path.join(ROOT, "dist-ssr", "entry-server.js");
 // Hard cap so the published output can never blow past hosting file limits.
 const MAX_PRERENDER_PAGES = Number(process.env.MAX_PRERENDER_PAGES ?? 500);
 
+// Minimal browser shims: the Supabase client reads localStorage at import time.
+// `window` stays undefined so components keep taking their server-safe branch.
+if (typeof globalThis.localStorage === "undefined") {
+  const store = new Map();
+  globalThis.localStorage = {
+    getItem: (k) => (store.has(k) ? store.get(k) : null),
+    setItem: (k, v) => void store.set(k, String(v)),
+    removeItem: (k) => void store.delete(k),
+    clear: () => store.clear(),
+    key: (i) => [...store.keys()][i] ?? null,
+    get length() {
+      return store.size;
+    },
+  };
+}
+
 const { render } = await import(pathToFileURL(SERVER_ENTRY).href);
 
 // Blog post ids come from the source data so new posts are prerendered too.
