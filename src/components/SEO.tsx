@@ -20,7 +20,6 @@ interface SEOProps {
   breadcrumbs?: BreadcrumbItem[];
   articleHeadline?: string;
   faqSchema?: object;
-  reviewSchema?: object[];
   extraSchemas?: object[];
   noIndex?: boolean;
 }
@@ -194,7 +193,6 @@ export const SEO = ({
   breadcrumbs,
   articleHeadline,
   faqSchema,
-  reviewSchema,
   extraSchemas,
   noIndex = false
 }: SEOProps) => {
