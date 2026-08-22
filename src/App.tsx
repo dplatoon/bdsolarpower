@@ -23,9 +23,11 @@ const queryClient = new QueryClient();
 type AppProps = {
   /** When set (build-time prerender), routing is static instead of history-based. */
   ssrLocation?: string;
+  /** Build-time prerender: collects head tags emitted by Helmet. */
+  helmetContext?: object;
 };
 
-const App = ({ ssrLocation }: AppProps) => {
+const App = ({ ssrLocation, helmetContext }: AppProps) => {
   const Router = ({ children }: { children: React.ReactNode }) =>
     ssrLocation !== undefined ? (
       <StaticRouter location={ssrLocation}>{children}</StaticRouter>
@@ -34,7 +36,7 @@ const App = ({ ssrLocation }: AppProps) => {
     );
 
   return (
-  <HelmetProvider>
+  <HelmetProvider context={helmetContext}>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>

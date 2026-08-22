@@ -1,6 +1,6 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { HelmetProvider, type HelmetServerState } from "react-helmet-async";
+import type { HelmetServerState } from "react-helmet-async";
 import App from "./App";
 
 export type RenderResult = {
@@ -13,9 +13,7 @@ export function render(url: string): RenderResult {
   const helmetContext: { helmet?: HelmetServerState } = {};
 
   const html = renderToString(
-    <HelmetProvider context={helmetContext}>
-      <App ssrLocation={url} />
-    </HelmetProvider>
+    <App ssrLocation={url} helmetContext={helmetContext} />
   );
 
   const { helmet } = helmetContext;
