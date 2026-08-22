@@ -71,6 +71,18 @@ for (const route of routes) {
     );
 
     if (head) {
+      // Strip the static defaults Helmet re-emits, so each page has exactly one
+      // title/description/canonical/social tag set.
+      page = page
+        .replace(/\n?\s*<title>[\s\S]*?<\/title>/i, "")
+        .replace(
+          /\n?\s*<meta\s+name="(?:title|description|author|robots)"[^>]*>/gi,
+          ""
+        )
+        .replace(/\n?\s*<link\s+rel="canonical"[^>]*>/gi, "")
+        .replace(/\n?\s*<meta\s+property="og:[^"]*"[^>]*>/gi, "")
+        .replace(/\n?\s*<meta\s+name="twitter:[^"]*"[^>]*>/gi, "");
+
       // Helmet-managed tags win over the static defaults in index.html.
       page = page.replace("</head>", `  ${head}\n  </head>`);
     }
