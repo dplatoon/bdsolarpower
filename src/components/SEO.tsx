@@ -20,7 +20,6 @@ interface SEOProps {
   breadcrumbs?: BreadcrumbItem[];
   articleHeadline?: string;
   faqSchema?: object;
-  reviewSchema?: object[];
   extraSchemas?: object[];
   noIndex?: boolean;
 }
@@ -85,17 +84,20 @@ const generateBreadcrumbSchema = (pathname: string, customBreadcrumbs?: Breadcru
   };
 };
 
-// LocalBusiness structured data for Bangladesh solar company
-const localBusinessSchema = {
+// Single canonical business entity for the whole domain.
+// NOTE: aggregateRating and Review markup are deliberately absent — self-serving
+// review markup is against Google's guidelines and we have no review system yet.
+export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://bdsolarpower.com/#localbusiness",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://bdsolarpower.com/#organization",
   "name": "BD Solar Power",
   "alternateName": "Bangladesh Solar Power Solutions",
-  "description": "Leading solar panel installation company in Bangladesh offering rooftop solar systems, commercial solar solutions, and net metering services across Mymensingh, Dhaka, Chittagong, and nationwide.",
+  "description": "Solar panel installation company in Bangladesh offering rooftop solar systems, commercial solar solutions, and net metering services from Mymensingh, nationwide.",
   "url": "https://bdsolarpower.com",
   "telephone": "+880-1711-927755",
   "email": "hello@bdsolarpower.com",
+  "foundingDate": "2020",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Mymensingh",
@@ -109,31 +111,14 @@ const localBusinessSchema = {
     "latitude": "24.7535",
     "longitude": "90.4065"
   },
-  "areaServed": [
-    {
-      "@type": "Country",
-      "name": "Bangladesh"
-    },
-    {
-      "@type": "City",
-      "name": "Dhaka"
-    },
-    {
-      "@type": "City",
-      "name": "Chittagong"
-    },
-    {
-      "@type": "City",
-      "name": "Sylhet"
-    },
-    {
-      "@type": "City",
-      "name": "Rajshahi"
-    },
-    {
-      "@type": "City",
-      "name": "Khulna"
-    }
+  "areaServed": { "@type": "Country", "name": "Bangladesh" },
+  "serviceArea": [
+    { "@type": "AdministrativeArea", "name": "Mymensingh Division" },
+    { "@type": "AdministrativeArea", "name": "Dhaka Division" },
+    { "@type": "AdministrativeArea", "name": "Chattogram Division", "alternateName": "Chittagong Division" },
+    { "@type": "AdministrativeArea", "name": "Sylhet Division" },
+    { "@type": "AdministrativeArea", "name": "Rajshahi Division" },
+    { "@type": "AdministrativeArea", "name": "Khulna Division" }
   ],
   "openingHoursSpecification": [
     {
@@ -151,97 +136,47 @@ const localBusinessSchema = {
   ],
   "priceRange": "৳৳৳",
   "currenciesAccepted": "BDT",
-  "paymentAccepted": "Cash, Bank Transfer, EMI, Mobile Banking",
-  "image": [
-    "https://bdsolarpower.com/images/solar-installation-dhaka.jpg",
-    "https://bdsolarpower.com/images/rooftop-solar-bangladesh.jpg"
-  ],
-  "logo": "https://bdsolarpower.com/logo.png",
+  "paymentAccepted": "Cash, Bank Transfer, EMI, bKash, Nagad",
+  "logo": { "@id": "https://bdsolarpower.com/#logo" },
+  "image": { "@id": "https://bdsolarpower.com/#logo" },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+880-1711-927755",
+    "email": "hello@bdsolarpower.com",
+    "contactType": "customer service",
+    "availableLanguage": ["Bengali", "English"],
+    "areaServed": "BD"
+  },
   "sameAs": [
     "https://facebook.com/bdsolarpower",
     "https://twitter.com/bdsolarpower",
     "https://linkedin.com/company/bdsolarpower",
     "https://youtube.com/@bdsolarpower"
   ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Solar Energy Solutions",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Rooftop Solar Installation",
-          "description": "Complete rooftop solar panel installation for homes and businesses in Bangladesh"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Net Metering Setup",
-          "description": "BPDB approved net metering installation and configuration"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Commercial Solar Solutions",
-          "description": "Large-scale solar installations for factories and commercial buildings"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Solar System Maintenance",
-          "description": "Regular maintenance and monitoring services for solar installations"
-        }
-      }
-    ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "156",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Mohammad Rahman"
-      },
-      "reviewBody": "Excellent solar installation service in Dhaka. Professional team and great after-sales support."
-    }
-  ]
+  "knowsAbout": ["Solar Energy", "Renewable Energy", "Net Metering Policy Bangladesh", "3000 MW Solar Program"]
 };
 
-// Organization schema for brand recognition
-const organizationSchema = {
+// Logo node referenced by @id from every other node
+export const logoSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "BD Solar Power",
+  "@type": "ImageObject",
+  "@id": "https://bdsolarpower.com/#logo",
+  "url": "https://bdsolarpower.com/logo.png",
+  "contentUrl": "https://bdsolarpower.com/logo.png",
+  "width": 512,
+  "height": 512,
+  "caption": "BD Solar Power"
+};
+
+// Site-level entity (enables sitelinks searchbox + inLanguage anchoring)
+export const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://bdsolarpower.com/#website",
   "url": "https://bdsolarpower.com",
-  "logo": "https://bdsolarpower.com/logo.png",
-  "description": "Bangladesh's trusted solar energy solutions provider",
-  "foundingDate": "2020",
-  "foundingLocation": "Mymensingh, Bangladesh",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+880-1711-927755",
-    "contactType": "customer service",
-    "availableLanguage": ["Bengali", "English"],
-    "areaServed": "BD"
-  }
+  "name": "BD Solar Power",
+  "inLanguage": "en-BD",
+  "publisher": { "@id": "https://bdsolarpower.com/#organization" }
 };
 
 export const SEO = ({ 
@@ -258,7 +193,6 @@ export const SEO = ({
   breadcrumbs,
   articleHeadline,
   faqSchema,
-  reviewSchema,
   extraSchemas,
   noIndex = false
 }: SEOProps) => {
@@ -269,33 +203,53 @@ export const SEO = ({
   
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema(location.pathname, breadcrumbs);
-  
+
   // Generate Article schema for blog/article pages
   const articleSchema = type === 'article' ? {
-    "@context": "https://schema.org",
     "@type": "Article",
     "headline": articleHeadline || title,
     "description": description,
     "author": {
-      "@type": "Organization",
+      "@type": "Person",
       "name": author
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "BD Solar Power",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${baseUrl}/favicon.png`
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": currentUrl
-    },
+    "publisher": { "@id": `${baseUrl}/#organization` },
+    "mainEntityOfPage": { "@id": `${currentUrl}#webpage` },
     "image": ogImage,
     ...(publishedTime && { "datePublished": publishedTime }),
     ...(modifiedTime && { "dateModified": modifiedTime })
   } : null;
+
+  const webPageSchema = {
+    "@type": type === 'article' ? "ItemPage" : "WebPage",
+    "@id": `${currentUrl}#webpage`,
+    "url": currentUrl,
+    "name": fullTitle,
+    "description": description,
+    "isPartOf": { "@id": `${baseUrl}/#website` },
+    "about": { "@id": `${baseUrl}/#organization` },
+    "inLanguage": "en-BD",
+    "breadcrumb": { "@id": `${currentUrl}#breadcrumb` }
+  };
+
+  // Single @graph — one entity per @id, everything cross-referenced
+  const stripContext = (node: object) => {
+    const { ["@context"]: _ignored, ...rest } = node as Record<string, unknown>;
+    return rest;
+  };
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      // organization / website / logo nodes are emitted once in index.html
+      // (same @id values, so consumers merge them with the nodes below)
+      webPageSchema,
+      { ...stripContext(breadcrumbSchema), "@id": `${currentUrl}#breadcrumb` },
+      ...(articleSchema ? [articleSchema] : []),
+      ...(faqSchema ? [stripContext(faqSchema)] : []),
+      ...(extraSchemas ?? []).map(stripContext),
+    ],
+  };
 
   return (
     <Helmet>
@@ -303,15 +257,8 @@ export const SEO = ({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       <link rel="canonical" href={currentUrl} />
-
-      {/* Geo Tags for Bangladesh */}
-      <meta name="geo.region" content="BD" />
-      <meta name="geo.placename" content="Mymensingh, Bangladesh" />
-      <meta name="geo.position" content="24.7535;90.4065" />
-      <meta name="ICBM" content="24.7535, 90.4065" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -341,55 +288,11 @@ export const SEO = ({
 
       {/* Additional SEO tags */}
       <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="language" content="English" />
-      <meta name="revisit-after" content="7 days" />
-      <meta name="distribution" content="global" />
-      <meta name="rating" content="general" />
 
-      {/* JSON-LD Structured Data */}
-      {includeLocalBusiness && (
-        <>
-          <script type="application/ld+json">
-            {JSON.stringify(localBusinessSchema)}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify(organizationSchema)}
-          </script>
-        </>
-      )}
-      
-      {/* Article Schema for blog/article pages */}
-      {articleSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(articleSchema)}
-        </script>
-      )}
-      
-      {/* BreadcrumbList Schema */}
+      {/* JSON-LD Structured Data (single graph) */}
       <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
+        {JSON.stringify(graph).replace(/</g, '\\u003c')}
       </script>
-      
-      {/* FAQ Schema */}
-      {faqSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      )}
-      
-      {/* Review Schema */}
-      {reviewSchema && reviewSchema.map((review, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(review)}
-        </script>
-      ))}
-
-      {/* Page-specific extra schemas */}
-      {extraSchemas && extraSchemas.map((schema, index) => (
-        <script key={`extra-${index}`} type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      ))}
     </Helmet>
   );
 };
