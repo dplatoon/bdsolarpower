@@ -205,33 +205,54 @@ export const SEO = ({
   
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema(location.pathname, breadcrumbs);
-  
+
   // Generate Article schema for blog/article pages
   const articleSchema = type === 'article' ? {
-    "@context": "https://schema.org",
     "@type": "Article",
     "headline": articleHeadline || title,
     "description": description,
     "author": {
-      "@type": "Organization",
+      "@type": "Person",
       "name": author
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "BD Solar Power",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${baseUrl}/favicon.png`
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": currentUrl
-    },
+    "publisher": { "@id": `${baseUrl}/#organization` },
+    "mainEntityOfPage": { "@id": `${currentUrl}#webpage` },
     "image": ogImage,
     ...(publishedTime && { "datePublished": publishedTime }),
     ...(modifiedTime && { "dateModified": modifiedTime })
   } : null;
+
+  const webPageSchema = {
+    "@type": type === 'article' ? "ItemPage" : "WebPage",
+    "@id": `${currentUrl}#webpage`,
+    "url": currentUrl,
+    "name": fullTitle,
+    "description": description,
+    "isPartOf": { "@id": `${baseUrl}/#website` },
+    "about": { "@id": `${baseUrl}/#organization` },
+    "inLanguage": "en-BD",
+    "breadcrumb": { "@id": `${currentUrl}#breadcrumb` }
+  };
+
+  // Single @graph — one entity per @id, everything cross-referenced
+  const stripContext = (node: object) => {
+    const { ["@context"]: _ignored, ...rest } = node as Record<string, unknown>;
+    return rest;
+  };
+
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      stripContext(logoSchema),
+      stripContext(webSiteSchema),
+      ...(includeLocalBusiness ? [stripContext(localBusinessSchema)] : []),
+      webPageSchema,
+      { ...stripContext(breadcrumbSchema), "@id": `${currentUrl}#breadcrumb` },
+      ...(articleSchema ? [articleSchema] : []),
+      ...(faqSchema ? [stripContext(faqSchema)] : []),
+      ...(extraSchemas ?? []).map(stripContext),
+    ],
+  };
 
   return (
     <Helmet>
@@ -239,15 +260,8 @@ export const SEO = ({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       <link rel="canonical" href={currentUrl} />
-
-      {/* Geo Tags for Bangladesh */}
-      <meta name="geo.region" content="BD" />
-      <meta name="geo.placename" content="Mymensingh, Bangladesh" />
-      <meta name="geo.position" content="24.7535;90.4065" />
-      <meta name="ICBM" content="24.7535, 90.4065" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
@@ -277,55 +291,11 @@ export const SEO = ({
 
       {/* Additional SEO tags */}
       <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="language" content="English" />
-      <meta name="revisit-after" content="7 days" />
-      <meta name="distribution" content="global" />
-      <meta name="rating" content="general" />
 
-      {/* JSON-LD Structured Data */}
-      {includeLocalBusiness && (
-        <>
-          <script type="application/ld+json">
-            {JSON.stringify(localBusinessSchema)}
-          </script>
-          <script type="application/ld+json">
-            {JSON.stringify(organizationSchema)}
-          </script>
-        </>
-      )}
-      
-      {/* Article Schema for blog/article pages */}
-      {articleSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(articleSchema)}
-        </script>
-      )}
-      
-      {/* BreadcrumbList Schema */}
+      {/* JSON-LD Structured Data (single graph) */}
       <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
+        {JSON.stringify(graph).replace(/</g, '\\u003c')}
       </script>
-      
-      {/* FAQ Schema */}
-      {faqSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      )}
-      
-      {/* Review Schema */}
-      {reviewSchema && reviewSchema.map((review, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(review)}
-        </script>
-      ))}
-
-      {/* Page-specific extra schemas */}
-      {extraSchemas && extraSchemas.map((schema, index) => (
-        <script key={`extra-${index}`} type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      ))}
     </Helmet>
   );
 };
