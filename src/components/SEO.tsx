@@ -87,7 +87,7 @@ const generateBreadcrumbSchema = (pathname: string, customBreadcrumbs?: Breadcru
 // Single canonical business entity for the whole domain.
 // NOTE: aggregateRating and Review markup are deliberately absent — self-serving
 // review markup is against Google's guidelines and we have no review system yet.
-const localBusinessSchema = {
+export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
   "@id": "https://bdsolarpower.com/#organization",
@@ -157,7 +157,7 @@ const localBusinessSchema = {
 };
 
 // Logo node referenced by @id from every other node
-const logoSchema = {
+export const logoSchema = {
   "@context": "https://schema.org",
   "@type": "ImageObject",
   "@id": "https://bdsolarpower.com/#logo",
@@ -169,7 +169,7 @@ const logoSchema = {
 };
 
 // Site-level entity (enables sitelinks searchbox + inLanguage anchoring)
-const webSiteSchema = {
+export const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://bdsolarpower.com/#website",
