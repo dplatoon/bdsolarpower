@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import SolarDataDashboard from "@/components/SolarDataDashboard";
 import AIToolsPreview from "@/components/AIToolsPreview";
 import InvestorMetrics from "@/components/InvestorMetrics";
-import Testimonials, { generateReviewSchema } from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials";
 import FAQSection, { generateFAQSchema } from "@/components/FAQSection";
 import ContactForm from "@/components/ContactForm";
 
@@ -21,6 +21,8 @@ const productSchema = {
   "name": "5kW Solar System Bangladesh",
   "description": "Complete 5kW rooftop solar system with net metering. 3-4 year ROI. Government approved.",
   "brand": { "@type": "Brand", "name": "BD Solar Power" },
+  "image": "https://bdsolarpower.com/logo.png",
+  "category": "Solar Energy System",
   "offers": {
     "@type": "Offer",
     "price": "275000",
@@ -28,7 +30,8 @@ const productSchema = {
     "availability": "https://schema.org/InStock",
     "priceValidUntil": "2026-12-31",
     "itemCondition": "https://schema.org/NewCondition",
-    "seller": { "@type": "Organization", "name": "BD Solar Power" }
+    "url": "https://bdsolarpower.com/",
+    "seller": { "@id": "https://bdsolarpower.com/#organization" }
   }
 };
 
@@ -36,11 +39,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Solar Panel Installation",
-  "provider": {
-    "@type": "Organization",
-    "name": "BD Solar Power",
-    "url": "https://bdsolarpower.com"
-  },
+  "provider": { "@id": "https://bdsolarpower.com/#organization" },
   "areaServed": { "@type": "Country", "name": "Bangladesh" },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -64,16 +63,14 @@ const serviceSchema = {
 
 const Index = () => {
   const faqSchema = generateFAQSchema();
-  const reviewSchema = generateReviewSchema();
 
   return <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
       <SEO 
         title="Solar Panels Bangladesh from BDT 275,000" 
         description="Solar panel installation across Bangladesh. 5kW systems from BDT 275,000, net metering and 3-4 year ROI. Get your free quote today." 
-        keywords="solar panel Bangladesh, solar panel price Bangladesh 2026, rooftop solar installation Bangladesh, net metering Bangladesh, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh"
         canonicalUrl="https://bdsolarpower.com/"
+        includeLocalBusiness={false}
         faqSchema={faqSchema}
-        reviewSchema={reviewSchema}
         extraSchemas={[productSchema, serviceSchema]}
       />
 

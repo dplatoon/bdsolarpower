@@ -62,30 +62,6 @@ const reviews: Review[] = [
 ];
 
 // Generate Review structured data
-export const generateReviewSchema = () => {
-  return reviews.map((review) => ({
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "itemReviewed": {
-      "@type": "LocalBusiness",
-      "name": "BD Solar Power",
-      "image": "https://bdsolarpower.com/logo.png"
-    },
-    "reviewRating": {
-      "@type": "Rating",
-      "ratingValue": review.rating.toString(),
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "author": {
-      "@type": "Person",
-      "name": review.name
-    },
-    "reviewBody": review.review,
-    "datePublished": review.date
-  }));
-};
-
 const StarRating = ({ rating }: { rating: number }) => (
   <div className="flex gap-0.5">
     {[...Array(5)].map((_, i) => (

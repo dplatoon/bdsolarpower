@@ -41,12 +41,67 @@
     <meta name="twitter:site" content="@bdsolarpower" />
     <meta name="twitter:creator" content="@bdsolarpower" />
 
-    <!-- Structured data (Organization, LocalBusiness, breadcrumbs, etc.) is
-         injected per-route by src/components/SEO.tsx via react-helmet-async.
-         A second static copy used to live here with a different (stale)
-         address, which meant every page shipped two conflicting Organization
-         schemas. Removed to keep a single source of truth. -->
+    <!-- Structured Data - canonical entity graph (mirrors src/components/SEO.tsx) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ImageObject",
+          "@id": "https://bdsolarpower.com/#logo",
+          "url": "https://bdsolarpower.com/logo.png",
+          "contentUrl": "https://bdsolarpower.com/logo.png",
+          "width": 512,
+          "height": 512,
+          "caption": "BD Solar Power"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://bdsolarpower.com/#website",
+          "url": "https://bdsolarpower.com",
+          "name": "BD Solar Power",
+          "inLanguage": "en-BD",
+          "publisher": { "@id": "https://bdsolarpower.com/#organization" }
+        },
+        {
+          "@type": "HomeAndConstructionBusiness",
+          "@id": "https://bdsolarpower.com/#organization",
+          "name": "BD Solar Power",
+          "url": "https://bdsolarpower.com",
+          "logo": { "@id": "https://bdsolarpower.com/#logo" },
+          "image": { "@id": "https://bdsolarpower.com/#logo" },
+          "email": "hello@bdsolarpower.com",
+          "telephone": "+880-1711-927755",
+          "description": "Solar panel installation company in Bangladesh. Rooftop solar, net metering and commercial solar solutions.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Mymensingh",
+            "addressLocality": "Mymensingh",
+            "addressRegion": "Mymensingh Division",
+            "postalCode": "2200",
+            "addressCountry": "BD"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "24.7535",
+            "longitude": "90.4065"
+          },
+          "areaServed": { "@type": "Country", "name": "Bangladesh" },
+          "priceRange": "\u09f3\u09f3\u09f3",
+          "currenciesAccepted": "BDT",
+          "sameAs": [
+            "https://twitter.com/bdsolarpower",
+            "https://facebook.com/bdsolarpower",
+            "https://linkedin.com/company/bdsolarpower"
+          ],
+          "knowsAbout": ["Solar Energy", "Renewable Energy", "Net Metering Policy Bangladesh", "3000 MW Solar Program"]
+        }
+      ]
+    }
+    </script>
+    
 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
