@@ -112,9 +112,6 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <p className="text-xs text-gray-500 mt-3">
-              Phone support coming soon. Reach us via WhatsApp or email for now.
-            </p>
           </div>
         </div>
 

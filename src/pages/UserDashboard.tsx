@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
-import { Bookmark, TrendingUp, FileText, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
 
@@ -35,12 +34,6 @@ const UserDashboard = () => {
   const fetchUserData = async () => {
     if (!user) return;
 
-    // TODO: Fetch bookmarked projects when table is created
-    // setBookmarkedProjects([]);
-
-    // TODO: Fetch bookmarked tenders when table is created
-    // setBookmarkedTenders([]);
-
     // Fetch profile
     const { data: profileData } = await supabase
       .from('profiles')
@@ -65,47 +58,6 @@ const UserDashboard = () => {
           <p className="text-gray-600 mt-2">
             Welcome back! Manage your bookmarks and track your solar journey
           </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Bookmark className="h-4 w-4" />
-                Bookmarked Projects
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{bookmarkedProjects.length}</div>
-              <p className="text-xs text-muted-foreground">Solar projects saved</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <FileText className="h-4 w-4" />
-                Bookmarked Tenders
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{bookmarkedTenders.length}</div>
-              <p className="text-xs text-muted-foreground">Opportunities tracked</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <TrendingUp className="h-4 w-4" />
-                Potential Savings
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">Coming Soon</div>
-              <p className="text-xs text-muted-foreground">Based on your interests</p>
-            </CardContent>
-          </Card>
         </div>
 
         <Tabs defaultValue="projects" className="w-full">
