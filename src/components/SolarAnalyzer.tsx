@@ -44,27 +44,28 @@ const SolarAnalyzer = () => {
 
     try {
       // Convert image to base64
-      const reader = new FileReader();
-      reader.readAsDataURL(imageFile);
-      reader.onloadend = async () => {
-        const base64Image = reader.result as string;
+      const base64Image = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.onerror = () => reject(new Error("Failed to read image file"));
+        reader.readAsDataURL(imageFile);
+      });
 
-        const { data, error } = await supabase.functions.invoke('analyze-solar-potential', {
-          body: {
-            imageUrl: base64Image,
-            roofArea,
-            location,
-          }
-        });
+      const { data, error } = await supabase.functions.invoke('analyze-solar-potential', {
+        body: {
+          imageUrl: base64Image,
+          roofArea,
+          location,
+        }
+      });
 
-        if (error) throw error;
+      if (error) throw error;
 
-        setAnalysis(data.analysis);
-        toast({
-          title: "Analysis Complete",
-          description: "Your solar potential analysis is ready",
-        });
-      };
+      setAnalysis(data.analysis);
+      toast({
+        title: "Analysis Complete",
+        description: "Your solar potential analysis is ready",
+      });
     } catch (error) {
       console.error('Analysis error:', error);
       toast({
