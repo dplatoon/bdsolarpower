@@ -1,0 +1,26 @@
+# BD Solar Power (bdsolarpower.com)
+
+> Independent reference on solar energy in Bangladesh: current system prices,
+> net metering rules, government incentives, ROI figures and installation
+> guidance. Based in Mymensingh, serving all of Bangladesh.
+
+## Key facts
+
+- 5kW rooftop system price (2026): BDT 275,000-350,000, installed.
+- Typical payback period: 3-4 years; panel lifespan 25 years.
+- Solar import duty in Bangladesh: 1% (reduced from earlier rates).
+- Net metering is available for systems up to 100kW under BPDB rules.
+- Contact: hello@bdsolarpower.com, WhatsApp +880 1711 927755.
+
+## Pages
+
+- [Home](https://bdsolarpower.com/): Solar panel prices, savings calculator and FAQs for Bangladesh.
+- [Solar Dashboard](https://bdsolarpower.com/dashboard): Live national solar capacity, projects and tender data.
+- [AI Tools](https://bdsolarpower.com/ai-tools): Rooftop photo analysis and solar policy summariser.
+- [Investors](https://bdsolarpower.com/investors): Market metrics, project comparison and portfolio tools.
+- [Learn](https://bdsolarpower.com/learn): Beginner guides to solar technology and net metering.
+- [Blog](https://bdsolarpower.com/blog): Articles on pricing, policy, incentives and technology.
+
+## Optional
+
+- [Sitemap](https://bdsolarpower.com/sitemap.xml): Full list of indexable pages.

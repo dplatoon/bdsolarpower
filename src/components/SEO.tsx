@@ -211,7 +211,20 @@ export const SEO = ({
     "description": description,
     "author": {
       "@type": "Person",
-      "name": author
+      "@id": `${baseUrl}/#author-${author.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+      "name": author,
+      "jobTitle": "Solar Energy Analyst",
+      "knowsAbout": [
+        "Solar panel pricing in Bangladesh",
+        "Net metering policy (BPDB)",
+        "Rooftop solar installation",
+        "Solar financing and ROI"
+      ],
+      "worksFor": { "@id": `${baseUrl}/#organization` },
+      "sameAs": [
+        "https://linkedin.com/company/bdsolarpower",
+        "https://facebook.com/bdsolarpower"
+      ]
     },
     "publisher": { "@id": `${baseUrl}/#organization` },
     "mainEntityOfPage": { "@id": `${currentUrl}#webpage` },
@@ -219,6 +232,7 @@ export const SEO = ({
     ...(publishedTime && { "datePublished": publishedTime }),
     ...(modifiedTime && { "dateModified": modifiedTime })
   } : null;
+
 
   const webPageSchema = {
     "@type": type === 'article' ? "ItemPage" : "WebPage",
