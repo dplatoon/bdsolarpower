@@ -23,7 +23,8 @@ const BlogPostPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   
-  const post = blogPostsData.find(p => p.id === id);
+  // Posts resolve by SEO slug or by their legacy numeric id.
+  const post = blogPostsData.find(p => p.slug === id) ?? blogPostsData.find(p => p.id === id);
   
   if (!post) {
     return (
@@ -46,14 +47,14 @@ const BlogPostPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
       <SEO 
-        title={post.title}
-        description={post.excerpt}
+        title={post.seoTitle ?? post.title}
+        description={post.seoDescription ?? post.excerpt}
         keywords={`${post.category}, solar equipment Bangladesh, ${post.equipment} Bangladesh`}
         type="article"
         publishedTime={new Date(post.date).toISOString()}
         modifiedTime={new Date(post.date).toISOString()}
         author={post.author}
-        canonicalUrl={`https://bdsolarpower.com/blog/${post.id}`}
+        canonicalUrl={`https://bdsolarpower.com/blog/${post.slug ?? post.id}`}
         articleHeadline={post.title}
         ogImage={blogHeroImages[post.id]}
       />
