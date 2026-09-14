@@ -226,7 +226,7 @@ const BlogPostPage = () => {
                   return (
                     <button
                       key={rp.id}
-                      onClick={() => navigate(`/blog/${rp.id}`)}
+                      onClick={() => navigate(`/blog/${rp.slug ?? rp.id}`)}
                       className={`group text-left bg-card rounded-xl shadow-md overflow-hidden border-l-4 ${rpFrame.border.replace('border-l-8', '')} hover:shadow-lg transition-shadow`}
                     >
                       {blogHeroImages[rp.id] && (
