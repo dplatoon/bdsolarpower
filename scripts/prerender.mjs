@@ -35,7 +35,10 @@ const { render } = await import(pathToFileURL(SERVER_ENTRY).href);
 
 // Blog post ids come from the source data so new posts are prerendered too.
 const blogSource = fs.readFileSync(path.join(ROOT, "src/data/blogPosts.ts"), "utf8");
-const blogIds = [...blogSource.matchAll(/^\s*id:\s*"([^"]+)"/gm)].map((m) => m[1]);
+// Posts with an SEO slug are rendered at the slug (their canonical URL).
+const blogIds = [...blogSource.matchAll(/id:\s*"([^"]+)"(?:,\s*\n\s*slug:\s*"([^"]+)")?/g)].map(
+  (m) => m[2] || m[1]
+);
 
 const routes = [
   "/",
