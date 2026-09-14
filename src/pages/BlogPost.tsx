@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -195,7 +195,8 @@ const BlogPostPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link to="/#contact">Get Free Site Survey</Link>
+                  {/* Full navigation so the browser scrolls to the contact section. */}
+                  <a href="/#contact">Get Free Site Survey</a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <a
