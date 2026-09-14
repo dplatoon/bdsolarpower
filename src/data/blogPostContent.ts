@@ -10,6 +10,7 @@ interface BlogContentSection {
 
 export interface BlogArticleContent {
   sections: BlogContentSection[];
+  faq?: { question: string; answer: string }[];
 }
 
 export const blogPostContent: Record<string, BlogArticleContent> = {
@@ -1006,6 +1007,20 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
           title: "Get an Accurate, Site-Specific Quote",
           text: "Contact us for a free site survey and customized quotation based on your actual roof, electricity usage, and whether you want battery backup. We serve customers across Bangladesh."
         }
+      }
+    ],
+    faq: [
+      {
+        question: "Is BDT 275,000 for a 5 kW system realistic?",
+        answer: "Yes, for a quality grid-tied or basic hybrid system using Tier-1 panels at 2026 market rates. Systems with a large lithium battery bank will cost more."
+      },
+      {
+        question: "Do quoted prices include net metering?",
+        answer: "Reputable companies include net metering application support in the package price. Ask for it to be confirmed in writing before you sign."
+      },
+      {
+        question: "Should I add battery storage?",
+        answer: "If you face frequent load shedding, yes. It raises the upfront cost but greatly improves reliability and helps you make the most of the Tk 10.50 surplus power incentive."
       }
     ]
   },
