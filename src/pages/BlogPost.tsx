@@ -171,6 +171,42 @@ const BlogPostPage = () => {
                   )}
                 </div>
               ))}
+
+              {content?.faq && content.faq.length > 0 && (
+                <section className="mt-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                  <div className="space-y-4">
+                    {content.faq.map((item, fIndex) => (
+                      <div key={fIndex} className="rounded-lg border border-gray-200 bg-gray-50 p-5">
+                        <h3 className="font-semibold text-gray-900 mb-2">{item.question}</h3>
+                        <p className="text-gray-700 leading-relaxed m-0">{item.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+
+            {/* End-of-article conversion block */}
+            <div className="mt-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Get a Free Site Survey</h2>
+              <p className="text-gray-700 mb-6">
+                Every roof is different. Tell us about your place and we'll send an itemized, no-obligation quotation.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                  <Link to="/#contact">Get Free Site Survey</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <a
+                    href="https://wa.me/8801711927755"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp Quote
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </article>
