@@ -99,8 +99,8 @@ const pages = [
     priority: "0.8",
     files: ["src/pages/Blog.tsx", "src/data/blogPosts.ts"],
   },
-  ...blogPostIds.map((id) => ({
-    loc: `/blog/${id}`,
+  ...blogPostIds.map(([id, segment]) => ({
+    loc: `/blog/${segment}`,
     changefreq: "monthly",
     priority: "0.7",
     lastmod: lastModForBlogPost(id),
