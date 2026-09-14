@@ -1093,6 +1093,20 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
           text: "We use Tier-1 panels and focus on long-term performance and after-sales support. Get a free site survey and an honest recommendation based on your actual needs and budget."
         }
       }
+    ],
+    faq: [
+      {
+        question: "Are modern systems better than the old solar home systems?",
+        answer: "Yes. Better panels, hybrid inverters and lithium batteries have significantly improved reliability, provided the system is properly installed and maintained."
+      },
+      {
+        question: "How often do panels need cleaning?",
+        answer: "In dusty areas, every 1–3 months. Rain helps, but on its own it is rarely enough to keep output at its best."
+      },
+      {
+        question: "What warranty should I expect?",
+        answer: "Panels: 25 years linear performance. Inverter: 5–10 years. Lithium batteries: 5–10 years depending on the brand."
+      }
     ]
   }
 };
