@@ -66,7 +66,7 @@ const BlogPostPage = () => {
         {/* Table of Contents */}
         {content && <BlogTableOfContents sections={content.sections} />}
 
-        <div className="flex-1 max-w-4xl">
+        <div className="flex-1 min-w-0 max-w-4xl">
         <Button 
           variant="ghost" 
           onClick={() => navigate('/blog')}
