@@ -163,7 +163,10 @@ export const blogPostsData: BlogPost[] = [
   },
   {
     id: "17",
+    slug: "solar-system-cost-bangladesh-2026",
     title: "Solar System Cost in Bangladesh 2026 – Complete Price Breakdown",
+    seoTitle: "Solar System Cost in Bangladesh 2026 – Price Guide (1kW to 10kW)",
+    seoDescription: "Updated 2026 solar system prices in Bangladesh. Real costs for 3kW, 5kW and hybrid systems, what affects price, and savings with the Tk 10.50 incentive.",
     excerpt: "Updated 2026 solar system prices: 1kW to 10kW+ systems, what affects your final price, and expected payback with the new Tk 10.50 incentive.",
     author: "BD Solar Expert Team",
     date: "September 2026",
@@ -173,7 +176,10 @@ export const blogPostsData: BlogPost[] = [
   },
   {
     id: "18",
-    title: "Why 47% of Solar Home Systems Fail in Bangladesh – And How to Avoid It",
+    slug: "why-solar-systems-fail-bangladesh-how-to-avoid",
+    title: "Why 47% of Solar Systems Fail in Bangladesh – And How to Avoid It",
+    seoTitle: "Why 47% of Solar Systems Fail in Bangladesh – And How to Avoid It",
+    seoDescription: "CPD survey shows 47% of solar home systems in Bangladesh no longer work. Learn the real reasons (batteries, maintenance, quality) and how to pick a system that lasts.",
     excerpt: "A CPD/Samakal survey found nearly half of older solar home systems no longer work. See the real causes — battery failure, poor maintenance, no after-sales support — and how to choose a system that lasts.",
     author: "Technical Team",
     date: "September 2026",

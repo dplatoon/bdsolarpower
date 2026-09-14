@@ -57,9 +57,10 @@ const blogPostsSource = readFileSync(
   join(rootDir, "src/data/blogPosts.ts"),
   "utf8"
 );
-const blogPostIds = [...blogPostsSource.matchAll(/id:\s*"(\d+)"/g)].map(
-  (m) => m[1]
-);
+// [numeric id, canonical url segment] — slugged posts are listed at their slug.
+const blogPostIds = [
+  ...blogPostsSource.matchAll(/id:\s*"(\d+)"(?:,\s*\n\s*slug:\s*"([^"]+)")?/g),
+].map((m) => [m[1], m[2] || m[1]]);
 
 const pages = [
   {
@@ -98,8 +99,8 @@ const pages = [
     priority: "0.8",
     files: ["src/pages/Blog.tsx", "src/data/blogPosts.ts"],
   },
-  ...blogPostIds.map((id) => ({
-    loc: `/blog/${id}`,
+  ...blogPostIds.map(([id, segment]) => ({
+    loc: `/blog/${segment}`,
     changefreq: "monthly",
     priority: "0.7",
     lastmod: lastModForBlogPost(id),

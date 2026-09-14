@@ -6,9 +6,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { blogPostsData } from "@/data/blogPosts";
 
 const Blog = () => {
+  // Newest posts first, so the latest guides lead the listing.
+  const orderedPosts = [...blogPostsData].sort((a, b) => Number(b.id) - Number(a.id));
+
   const filterByCategory = (category: string) => {
-    if (category === 'all') return blogPostsData;
-    return blogPostsData.filter(post => 
+    if (category === 'all') return orderedPosts;
+    return orderedPosts.filter(post => 
       post.category.toLowerCase().includes(category.toLowerCase())
     );
   };
@@ -51,7 +54,7 @@ const Blog = () => {
 
           <TabsContent value="all" className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogPostsData.map(post => (
+              {orderedPosts.map(post => (
                 <BlogPostCard key={post.id} post={post} />
               ))}
             </div>

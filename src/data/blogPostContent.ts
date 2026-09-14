@@ -10,6 +10,7 @@ interface BlogContentSection {
 
 export interface BlogArticleContent {
   sections: BlogContentSection[];
+  faq?: { question: string; answer: string }[];
 }
 
 export const blogPostContent: Record<string, BlogArticleContent> = {
@@ -1007,6 +1008,20 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
           text: "Contact us for a free site survey and customized quotation based on your actual roof, electricity usage, and whether you want battery backup. We serve customers across Bangladesh."
         }
       }
+    ],
+    faq: [
+      {
+        question: "Is BDT 275,000 for a 5 kW system realistic?",
+        answer: "Yes, for a quality grid-tied or basic hybrid system using Tier-1 panels at 2026 market rates. Systems with a large lithium battery bank will cost more."
+      },
+      {
+        question: "Do quoted prices include net metering?",
+        answer: "Reputable companies include net metering application support in the package price. Ask for it to be confirmed in writing before you sign."
+      },
+      {
+        question: "Should I add battery storage?",
+        answer: "If you face frequent load shedding, yes. It raises the upfront cost but greatly improves reliability and helps you make the most of the Tk 10.50 surplus power incentive."
+      }
     ]
   },
   "18": {
@@ -1077,6 +1092,20 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
           title: "Want a System Designed to Last?",
           text: "We use Tier-1 panels and focus on long-term performance and after-sales support. Get a free site survey and an honest recommendation based on your actual needs and budget."
         }
+      }
+    ],
+    faq: [
+      {
+        question: "Are modern systems better than the old solar home systems?",
+        answer: "Yes. Better panels, hybrid inverters and lithium batteries have significantly improved reliability, provided the system is properly installed and maintained."
+      },
+      {
+        question: "How often do panels need cleaning?",
+        answer: "In dusty areas, every 1–3 months. Rain helps, but on its own it is rarely enough to keep output at its best."
+      },
+      {
+        question: "What warranty should I expect?",
+        answer: "Panels: 25 years linear performance. Inverter: 5–10 years. Lithium batteries: 5–10 years depending on the brand."
       }
     ]
   }

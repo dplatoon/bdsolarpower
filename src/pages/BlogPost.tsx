@@ -23,7 +23,8 @@ const BlogPostPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   
-  const post = blogPostsData.find(p => p.id === id);
+  // Posts resolve by SEO slug or by their legacy numeric id.
+  const post = blogPostsData.find(p => p.slug === id) ?? blogPostsData.find(p => p.id === id);
   
   if (!post) {
     return (
@@ -46,14 +47,14 @@ const BlogPostPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-emerald-50">
       <SEO 
-        title={post.title}
-        description={post.excerpt}
+        title={post.seoTitle ?? post.title}
+        description={post.seoDescription ?? post.excerpt}
         keywords={`${post.category}, solar equipment Bangladesh, ${post.equipment} Bangladesh`}
         type="article"
         publishedTime={new Date(post.date).toISOString()}
         modifiedTime={new Date(post.date).toISOString()}
         author={post.author}
-        canonicalUrl={`https://bdsolarpower.com/blog/${post.id}`}
+        canonicalUrl={`https://bdsolarpower.com/blog/${post.slug ?? post.id}`}
         articleHeadline={post.title}
         ogImage={blogHeroImages[post.id]}
       />
@@ -65,7 +66,7 @@ const BlogPostPage = () => {
         {/* Table of Contents */}
         {content && <BlogTableOfContents sections={content.sections} />}
 
-        <div className="flex-1 max-w-4xl">
+        <div className="flex-1 min-w-0 max-w-4xl">
         <Button 
           variant="ghost" 
           onClick={() => navigate('/blog')}
@@ -170,6 +171,43 @@ const BlogPostPage = () => {
                   )}
                 </div>
               ))}
+
+              {content?.faq && content.faq.length > 0 && (
+                <section className="mt-10">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                  <div className="space-y-4">
+                    {content.faq.map((item, fIndex) => (
+                      <div key={fIndex} className="rounded-lg border border-gray-200 bg-gray-50 p-5">
+                        <h3 className="font-semibold text-gray-900 mb-2">{item.question}</h3>
+                        <p className="text-gray-700 leading-relaxed m-0">{item.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+
+            {/* End-of-article conversion block */}
+            <div className="mt-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Get a Free Site Survey</h2>
+              <p className="text-gray-700 mb-6">
+                Every roof is different. Tell us about your place and we'll send an itemized, no-obligation quotation.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg" className="w-full sm:w-auto">
+                  {/* Full navigation so the browser scrolls to the contact section. */}
+                  <a href="/#contact">Get Free Site Survey</a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <a
+                    href="https://wa.me/8801711927755"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp Quote
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </article>
@@ -189,7 +227,7 @@ const BlogPostPage = () => {
                   return (
                     <button
                       key={rp.id}
-                      onClick={() => navigate(`/blog/${rp.id}`)}
+                      onClick={() => navigate(`/blog/${rp.slug ?? rp.id}`)}
                       className={`group text-left bg-card rounded-xl shadow-md overflow-hidden border-l-4 ${rpFrame.border.replace('border-l-8', '')} hover:shadow-lg transition-shadow`}
                     >
                       {blogHeroImages[rp.id] && (
