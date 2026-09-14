@@ -8,6 +8,11 @@ import { blogHeroImages } from "@/data/blogHeroImages";
 
 export interface BlogPost {
   id: string;
+  /** SEO-friendly URL segment; falls back to the numeric id when absent. */
+  slug?: string;
+  /** Overrides the card title for the <title> tag when set. */
+  seoTitle?: string;
+  seoDescription?: string;
   title: string;
   excerpt: string;
   author: string;
@@ -147,7 +152,7 @@ export const BlogPostCard = ({ post }: BlogPostCardProps) => {
             frame.hoverBg,
             "hover:text-white transition-all"
           )}
-          onClick={() => navigate(`/blog/${post.id}`)}
+          onClick={() => navigate(`/blog/${post.slug ?? post.id}`)}
         >
           Read More
         </Button>
