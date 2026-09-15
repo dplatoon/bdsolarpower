@@ -17,16 +17,16 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
   "1": {
     sections: [
       {
-        heading: "Solar Panel Prices in Bangladesh: 2025 Overview",
+        heading: "Solar Panel Prices in Bangladesh: 2026 Overview",
         paragraphs: [
-          "The solar panel market in Bangladesh has undergone a dramatic transformation in 2025, with prices dropping by approximately 36% compared to 2022. This reduction is driven by global manufacturing scale, reduced import duties (now just 1%), and growing domestic demand fueled by the government's 3,000 MW rooftop solar initiative.",
+          "The solar panel market in Bangladesh has undergone a dramatic transformation since 2022, with prices dropping by approximately 36%. This reduction is driven by global manufacturing scale, reduced import duties (now just 1%), and growing domestic demand fueled by the government's 3,000 MW rooftop solar initiative.",
           "For homeowners and businesses considering solar, understanding the current pricing landscape is essential to making an informed investment decision."
         ]
       },
       {
         heading: "System Size and Price Breakdown",
         paragraphs: [
-          "Here's what you can expect to pay for different solar system sizes in Bangladesh in 2025:"
+          "Here's what you can expect to pay for different solar system sizes in Bangladesh in 2026:"
         ],
         table: {
           headers: ["System Size", "Price Range (BDT)", "Monthly Savings", "Payback Period"],
@@ -62,7 +62,7 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
       {
         heading: "Making the Investment Decision",
         paragraphs: [
-          "With current prices and incentives, solar energy in Bangladesh offers one of the best returns on investment available to homeowners and businesses. A typical 5kW system pays for itself in 3-4 years and continues generating free electricity for 20+ more years. The combination of falling panel prices, government support, and rising electricity tariffs makes 2025 an ideal time to invest in solar."
+          "With current prices and incentives, solar energy in Bangladesh offers one of the best returns on investment available to homeowners and businesses. A typical 5kW system pays for itself in 3-4 years and continues generating free electricity for 20+ more years. The combination of falling panel prices, government support, and rising electricity tariffs makes 2026 an ideal time to invest in solar."
         ],
         callout: {
           title: "Ready to Get Your Custom Quote?",
@@ -96,7 +96,7 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
       {
         heading: "Step-by-Step Application Process",
         paragraphs: [
-          "Applying for the 3,000 MW program involves several steps, but the process has been streamlined significantly in 2025:"
+          "Applying for the 3,000 MW program involves several steps, but the process has been streamlined significantly in recent years:"
         ],
         list: [
           "Step 1: Contact your local DISCO (DPDC, DESCO, BPDB, etc.) and obtain the net metering application form",
@@ -190,7 +190,7 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
       {
         heading: "How We Ranked the Top Solar Companies",
         paragraphs: [
-          "Our ranking methodology considers installation quality, customer reviews, pricing transparency, after-sales service, warranty terms, and years of experience in the Bangladesh market. We surveyed over 200 customers and evaluated 25+ companies to compile this definitive list for 2025."
+          "Our ranking methodology considers installation quality, customer reviews, pricing transparency, after-sales service, warranty terms, and years of experience in the Bangladesh market. We surveyed over 200 customers and evaluated 25+ companies to compile this definitive list for 2026."
         ]
       },
       {
@@ -209,7 +209,7 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
         ]
       },
       {
-        heading: "Key Market Trends in 2025",
+        heading: "Key Market Trends in 2026",
         paragraphs: [
           "The Bangladesh solar installation market has matured significantly. Companies are now offering comprehensive packages that include panels, inverters, mounting, wiring, installation, net metering setup, and annual maintenance — all in one price. Financing partnerships with banks like BRAC Bank, City Bank, and Eastern Bank have made EMI options widely available.",
           "We're also seeing increased adoption of monitoring apps that let customers track their system's performance in real-time via smartphone, adding transparency and peace of mind to the solar ownership experience."
@@ -538,7 +538,7 @@ export const blogPostContent: Record<string, BlogArticleContent> = {
       {
         heading: "Solar Financing Landscape in Bangladesh",
         paragraphs: [
-          "One of the biggest barriers to solar adoption in Bangladesh has been the upfront cost. However, 2025 has seen a dramatic expansion in financing options, making solar accessible to virtually any homeowner or business. From bank loans to EMI plans and green financing programs, there are now multiple paths to going solar with zero or minimal upfront payment."
+          "One of the biggest barriers to solar adoption in Bangladesh has been the upfront cost. However, recent years have seen a dramatic expansion in financing options, making solar accessible to virtually any homeowner or business. From bank loans to EMI plans and green financing programs, there are now multiple paths to going solar with zero or minimal upfront payment."
         ]
       },
       {

@@ -12,6 +12,8 @@ interface SEOProps {
   keywords?: string;
   canonicalUrl?: string;
   ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   type?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
@@ -23,6 +25,13 @@ interface SEOProps {
   extraSchemas?: object[];
   noIndex?: boolean;
 }
+
+// Social crawlers require absolute image URLs; blog hero images are imported
+// assets that resolve to relative "/assets/..." paths, so normalize them here.
+const DEFAULT_OG_IMAGE = '/og/default.jpg';
+
+const toAbsoluteUrl = (url: string) =>
+  url.startsWith('http') ? url : `https://bdsolarpower.com${url.startsWith('/') ? '' : '/'}${url}`;
 
 // Page name mapping for automatic breadcrumb generation
 const pageNameMap: Record<string, string> = {
@@ -182,9 +191,11 @@ export const webSiteSchema = {
 export const SEO = ({ 
   title, 
   description, 
-  keywords = "solar panel Bangladesh, solar panel price Bangladesh 2025, rooftop solar installation Bangladesh, solar energy Bangladesh, net metering Bangladesh, solar system price, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh, solar loan Bangladesh EMI, monocrystalline solar panel Bangladesh, off grid solar system Bangladesh, solar panel installation cost Bangladesh",
+  keywords = "solar panel Bangladesh, solar panel price Bangladesh 2026, rooftop solar installation Bangladesh, solar energy Bangladesh, net metering Bangladesh, solar system price, 5kW solar system Bangladesh, solar panel Dhaka, solar panel Chittagong, commercial solar Bangladesh, 3000 MW solar program Bangladesh, solar loan Bangladesh EMI, monocrystalline solar panel Bangladesh, off grid solar system Bangladesh, solar panel installation cost Bangladesh",
   canonicalUrl,
-  ogImage = "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/09b97229-6270-4b92-8d18-54559774b5b8/id-preview-8dfaa430--8be7421c-b3e4-48f0-a046-877e7036ea4d.lovable.app-1766849002696.png",
+  ogImage = DEFAULT_OG_IMAGE,
+  ogImageWidth,
+  ogImageHeight,
   type = 'website',
   publishedTime,
   modifiedTime,
@@ -197,9 +208,15 @@ export const SEO = ({
   noIndex = false
 }: SEOProps) => {
   const location = useLocation();
-  const fullTitle = `${title} | BD Solar Power`;
+  const suffixedTitle = `${title} | BD Solar Power`;
+  // Stay inside Google's ~60-character display limit: drop the suffix for long
+  // titles rather than truncating the page's own words.
+  const fullTitle = suffixedTitle.length <= 60 ? suffixedTitle : title;
   const baseUrl = 'https://bdsolarpower.com';
   const currentUrl = canonicalUrl || `${baseUrl}${location.pathname}`;
+  const absoluteOgImage = toAbsoluteUrl(ogImage);
+  const ogWidth = ogImageWidth ?? 1200;
+  const ogHeight = ogImageHeight ?? 630;
   
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema(location.pathname, breadcrumbs);
@@ -279,7 +296,10 @@ export const SEO = ({
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={absoluteOgImage} />
+      <meta property="og:image:width" content={String(ogWidth)} />
+      <meta property="og:image:height" content={String(ogHeight)} />
+      <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content="BD Solar Power" />
       <meta property="og:locale" content="en_BD" />
 
@@ -288,13 +308,15 @@ export const SEO = ({
       <meta name="twitter:url" content={currentUrl} />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={absoluteOgImage} />
       <meta name="twitter:site" content="@bdsolarpower" />
+      <meta name="twitter:creator" content="@bdsolarpower" />
 
       {/* Article specific tags */}
       {type === 'article' && publishedTime && (
         <>
           <meta property="article:published_time" content={publishedTime} />
+          {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
           <meta property="article:author" content={author} />
           <meta property="article:section" content="Solar Energy" />
         </>

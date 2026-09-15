@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -52,11 +52,18 @@ const BlogPostPage = () => {
         keywords={`${post.category}, solar equipment Bangladesh, ${post.equipment} Bangladesh`}
         type="article"
         publishedTime={new Date(post.date).toISOString()}
-        modifiedTime={new Date(post.date).toISOString()}
+        modifiedTime={new Date(post.updated ?? post.date).toISOString()}
         author={post.author}
         canonicalUrl={`https://bdsolarpower.com/blog/${post.slug ?? post.id}`}
         articleHeadline={post.title}
         ogImage={blogHeroImages[post.id]}
+        ogImageWidth={blogHeroImages[post.id] ? 1024 : 1200}
+        ogImageHeight={blogHeroImages[post.id] ? 576 : 630}
+        breadcrumbs={[
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug ?? post.id}` },
+        ]}
       />
       
       <Header />
@@ -111,7 +118,10 @@ const BlogPostPage = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                <span>{post.date}</span>
+                <span>
+                  {post.date}
+                  {post.updated ? ` · Updated ${post.updated}` : ""}
+                </span>
               </div>
             </div>
 
@@ -225,9 +235,9 @@ const BlogPostPage = () => {
                 {relatedPosts.map(rp => {
                   const rpFrame = equipmentFrames[rp.equipment];
                   return (
-                    <button
+                    <Link
                       key={rp.id}
-                      onClick={() => navigate(`/blog/${rp.slug ?? rp.id}`)}
+                      to={`/blog/${rp.slug ?? rp.id}`}
                       className={`group text-left bg-card rounded-xl shadow-md overflow-hidden border-l-4 ${rpFrame.border.replace('border-l-8', '')} hover:shadow-lg transition-shadow`}
                     >
                       {blogHeroImages[rp.id] && (
@@ -238,7 +248,7 @@ const BlogPostPage = () => {
                         <h3 className="font-semibold text-foreground line-clamp-2 mb-1">{rp.title}</h3>
                         <p className="text-sm text-muted-foreground">{rp.readTime} · {rp.date}</p>
                       </div>
-                    </button>
+                    </Link>
                   );
                 })}
               </div>

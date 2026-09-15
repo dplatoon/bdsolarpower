@@ -21,12 +21,12 @@ const Blog = () => {
       <SEO 
         title="Solar Panel Price Bangladesh 2026"
         description="Updated solar panel prices in Bangladesh: 1kW-10kW system price ranges, equipment picks, and real monthly bill savings for homes and businesses."
-        keywords="solar panel price Bangladesh 2025, monocrystalline solar panel Bangladesh, solar inverter Bangladesh, battery storage Bangladesh, MPPT charge controller, solar mounting system, solar equipment reviews"
+        keywords="solar panel price Bangladesh 2026, monocrystalline solar panel Bangladesh, solar inverter Bangladesh, battery storage Bangladesh, MPPT charge controller, solar mounting system, solar equipment reviews"
         type="website"
         canonicalUrl="https://bdsolarpower.com/blog"
-        articleHeadline="Solar Panel Price Bangladesh 2025 – Equipment Reviews & Guides"
+        articleHeadline="Solar Panel Price Bangladesh 2026 – Equipment Reviews & Guides"
         publishedTime="2025-01-01T00:00:00Z"
-        modifiedTime="2026-03-08T00:00:00Z"
+        modifiedTime="2026-09-15T00:00:00Z"
       />
       
       <Header />
@@ -34,7 +34,7 @@ const Blog = () => {
       <main className="container mx-auto px-4 py-8">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Solar Panel Price Bangladesh 2025 | Equipment Reviews & Expert Guides
+            Solar Panel Price Bangladesh 2026 | Equipment Reviews & Expert Guides
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Complete solar equipment reviews, panel comparison, inverter guides, battery solutions. Monocrystalline vs polycrystalline analysis. MPPT controllers. Installation tips from Bangladesh solar experts.

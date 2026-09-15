@@ -35,10 +35,12 @@ const { render } = await import(pathToFileURL(SERVER_ENTRY).href);
 
 // Blog post ids come from the source data so new posts are prerendered too.
 const blogSource = fs.readFileSync(path.join(ROOT, "src/data/blogPosts.ts"), "utf8");
-// Posts with an SEO slug are rendered at the slug (their canonical URL).
-const blogIds = [...blogSource.matchAll(/id:\s*"([^"]+)"(?:,\s*\n\s*slug:\s*"([^"]+)")?/g)].map(
-  (m) => m[2] || m[1]
-);
+// Slugged posts are rendered at BOTH the slug (their canonical URL) and their
+// legacy numeric id, so old links keep working instead of falling through to
+// the host's SPA fallback (which would serve the homepage at HTTP 200).
+const blogSegments = [
+  ...blogSource.matchAll(/id:\s*"([^"]+)"(?:,\s*\n\s*slug:\s*"([^"]+)")?/g),
+].flatMap((m) => (m[2] ? [m[1], m[2]] : [m[1]]));
 
 const routes = [
   "/",
@@ -47,7 +49,7 @@ const routes = [
   "/investors",
   "/learn",
   "/blog",
-  ...blogIds.map((id) => `/blog/${id}`),
+  ...blogSegments.map((segment) => `/blog/${segment}`),
   // Rendered to 404.html so static hosts serve a real 404 status.
   "/404",
 ];

@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, User } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { blogHeroImages } from "@/data/blogHeroImages";
 
 export interface BlogPost {
@@ -13,6 +13,8 @@ export interface BlogPost {
   /** Overrides the card title for the <title> tag when set. */
   seoTitle?: string;
   seoDescription?: string;
+  /** Human-readable "last updated" label, e.g. "September 2026". */
+  updated?: string;
   title: string;
   excerpt: string;
   author: string;
@@ -92,7 +94,6 @@ const equipmentFrames = {
 
 export const BlogPostCard = ({ post }: BlogPostCardProps) => {
   const frame = equipmentFrames[post.equipment];
-  const navigate = useNavigate();
 
   return (
     <Card 
@@ -124,8 +125,11 @@ export const BlogPostCard = ({ post }: BlogPostCardProps) => {
           <span className="text-xs text-muted-foreground">{post.readTime}</span>
         </div>
         
-        <CardTitle className="text-xl leading-tight hover:text-primary transition-colors">
-          {post.title}
+        <CardTitle className="text-xl leading-tight">
+          {/* Real anchor so crawlers can follow every post from the listing. */}
+          <Link to={`/blog/${post.slug ?? post.id}`} className="hover:text-primary transition-colors">
+            {post.title}
+          </Link>
         </CardTitle>
         
         <CardDescription className="line-clamp-2">
@@ -146,15 +150,15 @@ export const BlogPostCard = ({ post }: BlogPostCardProps) => {
         </div>
 
         <Button 
+          asChild
           variant="outline" 
           className={cn(
             "w-full font-semibold",
             frame.hoverBg,
             "hover:text-white transition-all"
           )}
-          onClick={() => navigate(`/blog/${post.slug ?? post.id}`)}
         >
-          Read More
+          <Link to={`/blog/${post.slug ?? post.id}`}>Read More</Link>
         </Button>
       </CardContent>
     </Card>
