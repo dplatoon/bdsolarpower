@@ -68,7 +68,7 @@ Run these when GSC/Ahrefs access exists; record for each: our position, top 3 co
 
 ### Phase 1 — Stop the bleeding (week 1) — quick wins, code-only — ✅ **COMPLETE (15 Sep 2026)**
 
-All seven tasks shipped and verified in a clean production build: 27 pages prerendered (0 skipped), 18 crawlable links from `/blog` (was 0), legacy `/blog/17` & `/blog/18` now render with canonical → slug, OG images absolute (blog heroes + on-domain 1200×630 default), 18/18 posts have `seoTitle`/`seoDescription`, logo 544 KB → 30 KB, `article:modified_time` emitted for refreshed posts. Detail table below is kept for reference.
+All seven tasks shipped and verified in a clean production build: 27 pages prerendered (0 skipped), 18 crawlable links from `/blog` (was 0), legacy `/blog/17` & `/blog/18` now render with canonical → slug, OG images absolute (blog heroes + on-domain 1200×630 default), 18/18 posts have `seoTitle`/`seoDescription`, logo 544 KB → 30 KB, `article:modified_time` emitted for refreshed posts. **Deployed to production 16 Sep 2026** — live checks pass (deployment `09f870ad…`). Detail table below is kept for reference.
 
 | Task | Where | Effort | Impact | Done when |
 |---|---|---|---|---|
@@ -80,7 +80,11 @@ All seven tasks shipped and verified in a clean production build: 27 pages prere
 | 1.6 Compress `logo.png` 544 KB → <50 KB | `public/logo.png` | 15m | Medium | file size verified |
 | 1.7 Type the "updated" pipeline: real `dateModified` + `article:modified_time` meta | `SEO.tsx`, `BlogPost.tsx` | 1h | Medium | refreshed posts show newer modified date |
 
-### Phase 2 — Technical & measurement (weeks 2–4)
+### Phase 2 — Technical & measurement (weeks 2–4) — ✅ code complete (16 Sep 2026)
+
+Shipped: route-level code-splitting (lazy routes + vendor pinning), streamed SSR prerender (`renderToPipeableStream` — Suspense-safe for lazy routes), non-blocking font load, GA4 SPA page views + `generate_lead` on the quote form, robust shared blog parser for sitemap/prerender, author bios in pages + Article schema (E-E-A-T), dead-code cleanup, push-to-deploy hosting configs (`public/_headers`, `public/_redirects`) and the GSC checklist (`gsc-setup.md`).
+Verified: `tsc` clean · 27 pages prerendered (0 skipped) · 21 blog pages · 18 crawlable links · **initial JS ≈ 152 KB gz sitewide (was 360 KB)**.
+Still open: hosting migration decision (§2.3), GSC baseline capture (user-side), and the homepage `SolarDataDashboard` chunk (~109 KB gz) as a future lazy-load candidate.
 
 | Task | Where | Effort | Impact | Notes |
 |---|---|---|---|---|

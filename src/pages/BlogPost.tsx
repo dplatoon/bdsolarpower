@@ -8,6 +8,7 @@ import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import { blogPostsData } from "@/data/blogPosts";
 import { blogPostContent } from "@/data/blogPostContent";
 import { blogHeroImages } from "@/data/blogHeroImages";
+import { authors } from "@/data/authors";
 import BlogTableOfContents from "@/components/BlogTableOfContents";
 
 const equipmentFrames = {
@@ -25,6 +26,7 @@ const BlogPostPage = () => {
   
   // Posts resolve by SEO slug or by their legacy numeric id.
   const post = blogPostsData.find(p => p.slug === id) ?? blogPostsData.find(p => p.id === id);
+  const authorInfo = post ? authors[post.author] : undefined;
   
   if (!post) {
     return (
@@ -124,6 +126,15 @@ const BlogPostPage = () => {
                 </span>
               </div>
             </div>
+
+            {authorInfo && (
+              <aside className="mb-8 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
+                <p className="font-semibold text-gray-900 mb-1">
+                  {post.author} · {authorInfo.title}
+                </p>
+                <p className="m-0">{authorInfo.bio}</p>
+              </aside>
+            )}
 
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-700 mb-6 leading-relaxed">

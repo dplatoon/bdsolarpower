@@ -7,6 +7,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { getBlogEntries } from "./lib/blog-entries.mjs";
 
 const ROOT = process.cwd();
 const DIST = path.join(ROOT, "dist");
@@ -38,9 +39,9 @@ const blogSource = fs.readFileSync(path.join(ROOT, "src/data/blogPosts.ts"), "ut
 // Slugged posts are rendered at BOTH the slug (their canonical URL) and their
 // legacy numeric id, so old links keep working instead of falling through to
 // the host's SPA fallback (which would serve the homepage at HTTP 200).
-const blogSegments = [
-  ...blogSource.matchAll(/id:\s*"([^"]+)"(?:,\s*\n\s*slug:\s*"([^"]+)")?/g),
-].flatMap((m) => (m[2] ? [m[1], m[2]] : [m[1]]));
+const blogSegments = getBlogEntries(blogSource).flatMap(({ id, slug }) =>
+  slug ? [id, slug] : [id]
+);
 
 const routes = [
   "/",
@@ -68,7 +69,7 @@ let failed = 0;
 
 for (const route of routes) {
   try {
-    const { html, head } = render(route);
+    const { html, head } = await render(route);
 
     let page = template.replace(
       '<div id="root"></div>',

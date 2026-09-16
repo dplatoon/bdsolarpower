@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { MessageCircle, Phone, Mail, MapPin, Send } from "lucide-react";
 import { z } from "zod";
+import { trackEvent } from "@/lib/analytics";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
@@ -78,6 +79,9 @@ Sent from bdsolarpower.com`;
     // Open WhatsApp with pre-filled message
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
     window.open(whatsappUrl, "_blank");
+
+    // GA4: a completed quote form is the site's lead conversion.
+    trackEvent("generate_lead", { method: "contact_form" });
 
     toast({
       title: "Opening WhatsApp",

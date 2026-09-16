@@ -10,6 +10,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { getBlogEntries } from "./lib/blog-entries.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, "..");
@@ -58,9 +59,10 @@ const blogPostsSource = readFileSync(
   "utf8"
 );
 // [numeric id, canonical url segment] — slugged posts are listed at their slug.
-const blogPostIds = [
-  ...blogPostsSource.matchAll(/id:\s*"(\d+)"(?:,\s*\n\s*slug:\s*"([^"]+)")?/g),
-].map((m) => [m[1], m[2] || m[1]]);
+const blogPostIds = getBlogEntries(blogPostsSource).map((entry) => [
+  entry.id,
+  entry.slug ?? entry.id,
+]);
 
 const pages = [
   {

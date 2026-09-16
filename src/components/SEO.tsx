@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { authors } from '@/data/authors';
 
 interface BreadcrumbItem {
   name: string;
@@ -18,7 +19,6 @@ interface SEOProps {
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
-  includeLocalBusiness?: boolean;
   breadcrumbs?: BreadcrumbItem[];
   articleHeadline?: string;
   faqSchema?: object;
@@ -200,7 +200,6 @@ export const SEO = ({
   publishedTime,
   modifiedTime,
   author = "BD Solar Power",
-  includeLocalBusiness = true,
   breadcrumbs,
   articleHeadline,
   faqSchema,
@@ -230,7 +229,8 @@ export const SEO = ({
       "@type": "Person",
       "@id": `${baseUrl}/#author-${author.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
       "name": author,
-      "jobTitle": "Solar Energy Analyst",
+      "jobTitle": authors[author]?.title ?? "Solar Energy Analyst",
+      ...(authors[author]?.bio ? { "description": authors[author].bio } : {}),
       "knowsAbout": [
         "Solar panel pricing in Bangladesh",
         "Net metering policy (BPDB)",

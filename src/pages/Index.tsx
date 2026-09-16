@@ -13,6 +13,7 @@ import AIToolsPreview from "@/components/AIToolsPreview";
 import InvestorMetrics from "@/components/InvestorMetrics";
 import Testimonials from "@/components/Testimonials";
 import FAQSection, { generateFAQSchema } from "@/components/FAQSection";
+import { blogPostsData } from "@/data/blogPosts";
 import ContactForm from "@/components/ContactForm";
 
 const productSchema = {
@@ -63,13 +64,14 @@ const serviceSchema = {
 
 const Index = () => {
   const faqSchema = generateFAQSchema();
+  // Resolve the featured post so this link always targets its canonical URL.
+  const featuredPost = blogPostsData.find((p) => p.id === "16") ?? blogPostsData[0];
 
   return <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
       <SEO 
         title="Solar Panels Bangladesh from BDT 275,000" 
         description="Solar panel installation across Bangladesh. 5kW systems from BDT 275,000, net metering and 3-4 year ROI. Get your free quote today." 
         canonicalUrl="https://bdsolarpower.com/"
-        includeLocalBusiness={false}
         faqSchema={faqSchema}
         extraSchemas={[productSchema, serviceSchema]}
       />
@@ -115,7 +117,7 @@ const Index = () => {
       {/* Incentive Banner */}
       <section className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <Link to="/blog/16" className="block group">
+          <Link to={`/blog/${featuredPost.slug ?? featuredPost.id}`} className="block group">
             <div className="rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-amber-50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 transition-colors group-hover:border-emerald-400">
               <Badge className="bg-emerald-600 text-white shrink-0 w-fit">New Incentive</Badge>
               <p className="text-sm sm:text-base text-gray-800 flex-1">
