@@ -84,6 +84,7 @@ All seven tasks shipped and verified in a clean production build: 27 pages prere
 
 Shipped: route-level code-splitting (lazy routes + vendor pinning), streamed SSR prerender (`renderToPipeableStream` — Suspense-safe for lazy routes), non-blocking font load, GA4 SPA page views + `generate_lead` on the quote form, robust shared blog parser for sitemap/prerender, author bios in pages + Article schema (E-E-A-T), dead-code cleanup, push-to-deploy hosting configs (`public/_headers`, `public/_redirects`) and the GSC checklist (`gsc-setup.md`).
 Verified: `tsc` clean · 27 pages prerendered (0 skipped) · 21 blog pages · 18 crawlable links · **initial JS ≈ 152 KB gz sitewide (was 360 KB)**.
+**Live in production 16 Sep 2026** (deployment `4b025407…`), including a follow-up fix making the Article JSON-LD image absolute (`cd173ae`).
 Still open: hosting migration decision (§2.3), GSC baseline capture (user-side), and the homepage `SolarDataDashboard` chunk (~109 KB gz) as a future lazy-load candidate.
 
 | Task | Where | Effort | Impact | Notes |
