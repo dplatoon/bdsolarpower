@@ -245,7 +245,7 @@ export const SEO = ({
     },
     "publisher": { "@id": `${baseUrl}/#organization` },
     "mainEntityOfPage": { "@id": `${currentUrl}#webpage` },
-    "image": ogImage,
+    "image": absoluteOgImage,
     ...(publishedTime && { "datePublished": publishedTime }),
     ...(modifiedTime && { "dateModified": modifiedTime })
   } : null;
