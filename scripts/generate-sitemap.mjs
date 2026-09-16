@@ -96,6 +96,12 @@ const pages = [
     files: ["src/pages/Learn.tsx"],
   },
   {
+    loc: "/solar-system-prices/5kw",
+    changefreq: "monthly",
+    priority: "0.9",
+    files: ["src/pages/SolarSystem5kW.tsx"],
+  },
+  {
     loc: "/blog",
     changefreq: "weekly",
     priority: "0.8",

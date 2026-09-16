@@ -21,6 +21,7 @@ const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Auth = lazy(() => import("./pages/Auth"));
 const UserDashboard = lazy(() => import("./pages/UserDashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const SolarSystem5kW = lazy(() => import("./pages/SolarSystem5kW"));
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ const App = ({ ssrLocation, helmetContext }: AppProps) => {
                 <Route path="/learn" element={<Learn />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/solar-system-prices/5kw" element={<SolarSystem5kW />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/my-dashboard" element={<UserDashboard />} />
                 <Route path="*" element={<NotFound />} />

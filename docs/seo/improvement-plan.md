@@ -99,7 +99,9 @@ Still open: hosting migration decision (§2.3), GSC baseline capture (user-side)
 | 2.8 Breadcrumbs use real post titles | `src/pages/BlogPost.tsx` | 1h | Low |
 | 2.9 Cleanup: delete dead `src/Index.tsx`, `src/blogPosts.ts`, `src/blogPostContent.ts`; remove dead props; de-hardcode `/blog/16` | various | 1h | Low |
 
-### Phase 3 — Content engine (months 2–3)
+### Phase 3 — Content engine (months 2–3) — in progress (started 16 Sep 2026)
+
+First pillar built: **`/solar-system-prices/5kw`** — copy drafted from the brief, page component created, route + prerender + sitemap + homepage link wired, `Product`/`AggregateOffer` schema and a dedicated OG image (`/og/5kw.jpg`) included. Next: 3kW/10kW spokes, inverter and battery price pages, net-metering guide upgrade.
 
 1. **Pillar builds** (priority order): 5kW price page → 3kW/10kW → inverter price → battery price → net-metering application guide → commercial/PPA landing page → city pages (Dhaka deep-dive first, then 3 more).
 2. **Refresh program:** expand 5 thin posts to 1,200+ words (7, 9, 13, 15, 10); quarterly year-sweep; add price-update timestamps to all pricing content.
