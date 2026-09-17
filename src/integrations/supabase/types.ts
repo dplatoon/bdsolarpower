@@ -46,7 +46,9 @@ export type Database = {
           description: string | null
           id: string
           investment_amount: number | null
+          latitude: number | null
           location: string
+          longitude: number | null
           name: string
           status: string
           updated_at: string | null
@@ -58,7 +60,9 @@ export type Database = {
           description?: string | null
           id?: string
           investment_amount?: number | null
+          latitude?: number | null
           location: string
+          longitude?: number | null
           name: string
           status?: string
           updated_at?: string | null
@@ -70,7 +74,9 @@ export type Database = {
           description?: string | null
           id?: string
           investment_amount?: number | null
+          latitude?: number | null
           location?: string
+          longitude?: number | null
           name?: string
           status?: string
           updated_at?: string | null
