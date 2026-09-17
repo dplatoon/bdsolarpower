@@ -114,6 +114,18 @@ const pages = [
     files: ["src/pages/SolarSystem10kW.tsx"],
   },
   {
+    loc: "/solar-inverter-price-bangladesh",
+    changefreq: "monthly",
+    priority: "0.8",
+    files: ["src/pages/SolarInverterPrice.tsx"],
+  },
+  {
+    loc: "/solar-battery-price-bangladesh",
+    changefreq: "monthly",
+    priority: "0.8",
+    files: ["src/pages/SolarBatteryPrice.tsx"],
+  },
+  {
     loc: "/blog",
     changefreq: "weekly",
     priority: "0.8",

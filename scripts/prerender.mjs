@@ -52,6 +52,8 @@ const routes = [
   "/solar-system-prices/3kw",
   "/solar-system-prices/5kw",
   "/solar-system-prices/10kw",
+  "/solar-inverter-price-bangladesh",
+  "/solar-battery-price-bangladesh",
   "/blog",
   ...blogSegments.map((segment) => `/blog/${segment}`),
   // Rendered to 404.html so static hosts serve a real 404 status.

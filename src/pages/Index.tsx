@@ -150,6 +150,20 @@ const Index = () => {
               10kW price guide
               <span aria-hidden="true">&rarr;</span>
             </Link>
+            <Link
+              to="/solar-inverter-price-bangladesh"
+              className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-white px-4 py-1.5 text-sm font-semibold text-emerald-700 transition-colors hover:border-emerald-500 hover:bg-emerald-50"
+            >
+              Inverter prices
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+            <Link
+              to="/solar-battery-price-bangladesh"
+              className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-white px-4 py-1.5 text-sm font-semibold text-emerald-700 transition-colors hover:border-emerald-500 hover:bg-emerald-50"
+            >
+              Battery prices
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
           </div>
         </div>
       </section>

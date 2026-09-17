@@ -24,6 +24,8 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const SolarSystem5kW = lazy(() => import("./pages/SolarSystem5kW"));
 const SolarSystem3kW = lazy(() => import("./pages/SolarSystem3kW"));
 const SolarSystem10kW = lazy(() => import("./pages/SolarSystem10kW"));
+const SolarInverterPrice = lazy(() => import("./pages/SolarInverterPrice"));
+const SolarBatteryPrice = lazy(() => import("./pages/SolarBatteryPrice"));
 
 const queryClient = new QueryClient();
 
@@ -72,6 +74,8 @@ const App = ({ ssrLocation, helmetContext }: AppProps) => {
                 <Route path="/solar-system-prices/5kw" element={<SolarSystem5kW />} />
                 <Route path="/solar-system-prices/3kw" element={<SolarSystem3kW />} />
                 <Route path="/solar-system-prices/10kw" element={<SolarSystem10kW />} />
+                <Route path="/solar-inverter-price-bangladesh" element={<SolarInverterPrice />} />
+                <Route path="/solar-battery-price-bangladesh" element={<SolarBatteryPrice />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/my-dashboard" element={<UserDashboard />} />
                 <Route path="*" element={<NotFound />} />
