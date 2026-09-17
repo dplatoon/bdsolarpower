@@ -8,8 +8,9 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      // SPA: page views are sent from the app on every route change.
       gtag('config', 'G-0Y39QW3QYF', {
-        page_path: window.location.pathname
+        send_page_view: false
       });
     </script>
     <meta charset="UTF-8" />
