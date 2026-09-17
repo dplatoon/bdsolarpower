@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SolarAnalyzer from "@/components/SolarAnalyzer";
 import ProjectMap from "@/components/ProjectMap";
+import ProjectQuoteForm from "@/components/ProjectQuoteForm";
 import CarbonCalculator from "@/components/CarbonCalculator";
 import PolicySummarizer from "@/components/PolicySummarizer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -50,6 +51,7 @@ const AITools = () => {
 
           <TabsContent value="map">
             <ProjectMap />
+            <ProjectQuoteForm />
           </TabsContent>
         </Tabs>
 
