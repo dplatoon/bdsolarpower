@@ -42,7 +42,9 @@ const ProjectMap = () => {
       .not('latitude', 'is', null)
       .not('longitude', 'is', null);
 
-    if (!error && data) {
+    if (error) {
+      console.error('Failed to load solar projects for map:', error.message);
+    } else if (data) {
       setProjects(data);
     }
     setLoading(false);
