@@ -53,18 +53,19 @@ const ProjectMap = () => {
   useEffect(() => {
     if (!mapRef.current || projects.length === 0) return;
 
-    // Use environment variable for Google Maps API key
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-    
+    // Prefer the managed Google Maps connector key, fall back to a manual key
+    const apiKey =
+      import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY ||
+      import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
     if (!apiKey || apiKey === 'YOUR_GOOGLE_MAPS_API_KEY') {
-      console.warn('Google Maps API key not configured. Set VITE_GOOGLE_MAPS_API_KEY environment variable.');
       setApiKeyMissing(true);
       return;
     }
 
     // Load Google Maps script
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&loading=async`;
     script.async = true;
     script.onload = initMap;
     document.head.appendChild(script);
