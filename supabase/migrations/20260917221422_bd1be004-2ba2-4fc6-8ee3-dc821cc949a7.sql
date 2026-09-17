@@ -1,0 +1,9 @@
+INSERT INTO public.solar_projects (name, location, capacity_mw, investment_amount, carbon_offset_tons, status, description, latitude, longitude) VALUES
+('Teesta Solar Power Plant', 'Sundarganj, Gaibandha', 200, 24000000000, 357000, 'operational', 'Bangladesh''s largest grid-connected solar power plant, located on the Teesta river basin in Gaibandha.', 25.5560, 89.6230),
+('Mongla Solar Power Plant', 'Mongla, Bagerhat', 100, 12000000000, 178500, 'operational', 'Coastal utility-scale solar plant supplying the Mongla port and export processing zone region.', 22.4830, 89.6000),
+('Sirajganj Solar Park', 'Sirajganj Sadar, Sirajganj', 68, 8200000000, 121380, 'operational', 'Grid-connected solar park near the Jamuna bridge corridor in Sirajganj.', 24.4530, 89.7010),
+('Sonagazi Solar Power Plant', 'Sonagazi, Feni', 75, 9000000000, 133875, 'under_construction', 'Large coastal solar project on reclaimed land in Sonagazi, Feni district.', 22.8450, 91.3850),
+('Sutiakhali Solar Park', 'Sutiakhali, Mymensingh', 50, 6000000000, 89250, 'operational', 'Grid-tied solar park serving the greater Mymensingh region.', 24.6720, 90.4350),
+('Teknaf Solar Park', 'Teknaf, Cox''s Bazar', 28, 3400000000, 49980, 'operational', 'Utility-scale solar park on the southern tip of Cox''s Bazar district.', 20.8660, 92.2980),
+('Panchagarh Solar Power Plant', 'Panchagarh Sadar, Panchagarh', 100, 12000000000, 178500, 'planned', 'Planned northern-region solar plant supporting rural grid supply in Panchagarh.', 26.3410, 88.5540),
+('Jamalpur Solar Power Plant', 'Madarganj, Jamalpur', 40, 4800000000, 71400, 'under_construction', 'Solar plant under development in Madarganj upazila, Jamalpur.', 24.9530, 89.7970);

@@ -53,18 +53,19 @@ const ProjectMap = () => {
   useEffect(() => {
     if (!mapRef.current || projects.length === 0) return;
 
-    // Use environment variable for Google Maps API key
-    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-    
+    // Prefer the managed Google Maps connector key, fall back to a manual key
+    const apiKey =
+      import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY ||
+      import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
     if (!apiKey || apiKey === 'YOUR_GOOGLE_MAPS_API_KEY') {
-      console.warn('Google Maps API key not configured. Set VITE_GOOGLE_MAPS_API_KEY environment variable.');
       setApiKeyMissing(true);
       return;
     }
 
     // Load Google Maps script
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&loading=async`;
     script.async = true;
     script.onload = initMap;
     document.head.appendChild(script);
@@ -159,10 +160,21 @@ const ProjectMap = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col items-center justify-center h-[500px] text-muted-foreground">
-            <MapPin className="h-12 w-12 mb-4 text-muted-foreground/50" />
-            <p className="text-center">Google Maps API key not configured.</p>
-            <p className="text-sm text-center mt-2">Please set the VITE_GOOGLE_MAPS_API_KEY environment variable.</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {projects.map((project) => (
+              <div key={project.id} className="rounded-lg border p-4">
+                <div className="flex items-start gap-2">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                  <div>
+                    <p className="font-semibold leading-tight">{project.name}</p>
+                    <p className="text-sm text-muted-foreground">{project.location}</p>
+                    <p className="mt-1 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+                      {project.capacity_mw} MW
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>
