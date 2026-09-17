@@ -203,6 +203,11 @@ const SolarSystem5kW = () => (
             see the full 2026 cost breakdown
           </Link>.
         </li>
+        <li>
+          <strong>Compare sizes:</strong> see the{" "}
+          <Link to="/solar-system-prices/3kw" className={linkCls}>3kW</Link> and{" "}
+          <Link to="/solar-system-prices/10kw" className={linkCls}>10kW</Link> price guides.
+        </li>
       </ul>
       <p className={p}>
         We survey every roof for free before quoting, so you'll know your exact usable capacity

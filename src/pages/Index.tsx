@@ -130,10 +130,24 @@ const Index = () => {
           </Link>
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <Link
+              to="/solar-system-prices/3kw"
+              className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-white px-4 py-1.5 text-sm font-semibold text-emerald-700 transition-colors hover:border-emerald-500 hover:bg-emerald-50"
+            >
+              3kW price guide
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+            <Link
               to="/solar-system-prices/5kw"
               className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-white px-4 py-1.5 text-sm font-semibold text-emerald-700 transition-colors hover:border-emerald-500 hover:bg-emerald-50"
             >
-              5kW solar system price guide
+              5kW price guide
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+            <Link
+              to="/solar-system-prices/10kw"
+              className="inline-flex items-center gap-1 rounded-full border border-emerald-300 bg-white px-4 py-1.5 text-sm font-semibold text-emerald-700 transition-colors hover:border-emerald-500 hover:bg-emerald-50"
+            >
+              10kW price guide
               <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
