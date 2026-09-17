@@ -1,10 +1,9 @@
-# Redirect rules for Cloudflare Pages / Netlify (ignored by the current
-# Lovable host). Take effect once the site is deployed there — see
-# docs/seo/hosting-migration.md.
+# Redirect rules for Cloudflare Pages (inert on the current Lovable host).
+# See docs/seo/hosting-migration.md.
+#
+# NOTE: www -> apex is handled by a zone-level Cloudflare Redirect Rule, not
+# here — _redirects sources are paths on this project, not other hostnames.
 
-# www → apex in a single 301 hop (Lovable currently answers with 302).
-https://www.bdsolarpower.com/* https://bdsolarpower.com/:splat 301
-
-# Legacy numeric blog URLs → canonical slug URLs (consolidates incoming links).
+# Legacy numeric blog URLs -> canonical slug URLs (consolidates incoming links).
 /blog/17 /blog/solar-system-cost-bangladesh-2026 301
 /blog/18 /blog/why-solar-systems-fail-bangladesh-how-to-avoid 301

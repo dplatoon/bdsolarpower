@@ -1,71 +1,77 @@
-# Hosting Migration — Lovable → Cloudflare Pages
+# Hosting Migration Runbook — Lovable to Cloudflare Pages
 
-**Why:** three Phase 2 issues can only be fixed at the hosting layer, and the current
-host also cannot deploy automatically from GitHub pushes:
+**Goal:** serve `bdsolarpower.com` from Cloudflare Pages so that:
 
-| Problem today | Symptom (verified on production, Sep 2026) |
-|---|---|
-| Unknown URLs return the homepage | `GET /any-missing-path` → **HTTP 200** with homepage HTML (soft-404) |
-| No HTML cache policy | `cache-control: no-cache, must-revalidate, max-age=0` on every page |
-| `www` redirect is 302 | `https://www.bdsolarpower.com/* → 302` (should be a 301) |
-| Deploys are manual | GitHub push does nothing until **Publish** is clicked in the Lovable editor |
+1. Unknown URLs return a **real 404** (today they return HTTP 200 with the homepage).
+2. HTML gets sane **cache headers** (today: `no-cache, max-age=0`).
+3. `www` → apex is a **single 301** (today: 302).
+4. Every push to `main` **auto-deploys** (no more manual Publish step).
 
-Cloudflare Pages fixes all four: it serves `dist/404.html` with a real 404 status, honors
-`_headers` / `_redirects` (already committed in `public/`), and deploys automatically on
-every push to `main`.
+## Current state vs target
 
----
+| Thing | Now (Lovable) | After (Cloudflare Pages) |
+|---|---|---|
+| Unknown URL | HTTP 200 + homepage (soft 404) | `404.html` with HTTP 404 |
+| HTML caching | `no-cache, must-revalidate` | edge cache + `stale-while-revalidate` |
+| www redirect | 302 | 301 (zone Redirect Rule) |
+| Deploy | GitHub push + click Publish | push = deploy |
 
-## Steps
+## DNS inventory (verified 17 Sep 2026)
 
-1. **Create the Pages project**
-   - Cloudflare dashboard → Workers & Pages → Create → Pages → **Connect to Git**
-   - Repository: `Start-bd/bdsolarpower`, production branch: `main`
-   - Build command: `npm run build` · Build output directory: `dist`
-   - Node version: set env var `NODE_VERSION=20` (prerender script needs Node ≥ 18)
+- **Nameservers:** `ns1.dyna-ns.net`, `ns2.dyna-ns.net` — **Dynadot** DNS (zone must move to Cloudflare for Pages custom domains + redirect rules)
+- **A** `bdsolarpower.com` → `185.158.133.1` (Lovable proxy)
+- **A** `www.bdsolarpower.com` → `185.158.133.1`
+- **MX:** none · **TXT:** none — no email or verification records to preserve
+- A-record TTL is 3600s — allow up to ~1 hour for full propagation after cutover
 
-2. **Verify on the preview URL** (`<project>.pages.dev`) before touching DNS:
-   - [ ] `curl -sI https://<project>.pages.dev/whatever-missing` → **404**
-   - [ ] `curl -sI https://<project>.pages.dev/` → `cache-control` shows `s-maxage`
-   - [ ] `curl https://<project>.pages.dev/blog | grep -c 'href="/blog/'` → **18**
-   - [ ] `curl -s https://<project>.pages.dev/blog/17 -D - | grep -i location` → **301** to the slug URL
-   - [ ] `curl -s https://<project>.pages.dev/this-does-not-exist | grep -i '<title'` → 404 page, not homepage
-   - [ ] `https://www.<preview-domain>` behaviour (www redirect only tested on custom domain)
-   - [ ] Spot-check a prerendered page's HTML (title, canonical, OG tags)
+## Repo-side prep (already committed)
 
-3. **Attach the custom domain** (DNS cutover)
-   - In Pages → Custom domains → add `bdsolarpower.com` and `www.bdsolarpower.com`
-   - In Cloudflare DNS (the domain already uses Cloudflare nameservers):
-     - `bdsolarpower.com` → replace the current Lovable target with the Pages custom-domain CNAME (Cloudflare flattens at apex)
-     - `www` → CNAME to `<project>.pages.dev`
-   - SSL/TLS mode: **Full (strict)**; wait for the certificate to go Active
+- `public/_headers` — security headers + cache policy (CF Pages applies the **last** matching rule)
+- `public/_redirects` — legacy `/blog/17` and `/blog/18` → slug 301s
+- `.nvmrc` — pins **Node 22** for the Pages build environment
+- `package-lock.json` — re-synced so `npm ci` works in CI
 
-4. **Post-cutover verification** (run the production checks again):
-   - [ ] `GET /missing-path` → 404; no homepage canary
-   - [ ] `www → apex` single-hop **301**
-   - [ ] HTML `cache-control` includes `s-maxage` + `stale-while-revalidate`
-   - [ ] `/blog/17` and `/blog/18` redirect 301 to slug URLs
-   - [ ] `/blog` still exposes 18 crawlable links; OG images absolute
-   - [ ] `x-deployment-id` header gone (Cloudflare Pages headers instead)
+## Steps (est. 30–45 minutes, plus DNS propagation)
 
-5. **Rollback plan**
-   - DNS records are the only switch — restore the previous Lovable targets and the
-     old host resumes serving. Keep the Lovable project untouched for at least a week
-     (it remains the editor + GitHub sync; nothing there needs changing).
+### 1. Cloudflare account + zone
+1. Log in / create an account at dash.cloudflare.com → **Add a site** → `bdsolarpower.com` → Free plan.
+2. Cloudflare shows two nameservers (e.g. `xxx.ns.cloudflare.com`). **Do not change anything at Dynadot yet.**
 
-## Notes
+### 2. Create the Pages project
+1. Workers & Pages → **Create** → **Pages** → **Connect to Git** → GitHub → repo `Start-bd/bdsolarpower`, branch `main`.
+2. Build settings: Framework preset **None** · Build command **`npm run build`** · Build output directory **`dist`**. (Node version comes from `.nvmrc` = 22.)
+3. Deploy and note the `*.pages.dev` URL.
 
-- `public/_headers` and `public/_redirects` are already committed; they are copied into
-  `dist/` automatically by Vite and are **inert** on the Lovable host.
-- The prerender pipeline writes a real `404.html`; Cloudflare Pages serves it with a 404
-  status for any unmatched path, which is exactly what we want (no SPA fallback).
-- Vercel alternative: same build settings, but `_headers`/`_redirects` are ignored —
-  you would move those rules into `vercel.json` (`headers` + `redirects` arrays).
+### 3. Validate on pages.dev BEFORE switching DNS
+- [ ] Home, `/blog` (18 post links), `/solar-system-prices/3kw|5kw|10kw`, `/solar-inverter-price-bangladesh`, `/solar-battery-price-bangladesh`
+- [ ] Unknown URL returns **404**: `curl -s -o /dev/null -w "%{http_code}" https://<project>.pages.dev/definitely-missing`
+- [ ] HTML headers: `curl -sI https://<project>.pages.dev/ | grep -i cache-control`
+- [ ] Asset headers: `curl -sI https://<project>.pages.dev/assets/<any>.js | grep -i cache-control` → `immutable`
+- [ ] `/blog/17` → 301 → `/blog/solar-system-cost-bangladesh-2026`
+- [ ] `/sitemap.xml` contains 29 URLs
 
-## Google Search Console (unchanged property)
+### 4. Custom domains + redirect rule (still pre-cutover)
+1. Pages project → **Custom domains** → add `bdsolarpower.com` and `www.bdsolarpower.com` (the zone is in the account, so DNS records configure automatically; they become live after step 5).
+2. Zone → **Rules → Redirect Rules** → use the *Redirect from WWW to root* template → **301**, "Site live".
+3. SSL/TLS → Edge Certificates → enable **Always Use HTTPS** and **HSTS** (max-age 1 year, include subdomains).
+4. Pages project → Settings → Builds & deployments → **Trailing slashes → Transform** (canonical URLs have no trailing slash; after cutover verify `/blog/1/` 301s to `/blog/1` — if behaviour differs, switch to "Ignore" and rely on canonicals).
 
-- Property + verification meta already exist (`google-site-verification` in `index.html`).
-- After 1–2 weeks on the new host: check **Pages** report for the 404 fix (the soft-404
-  “Crawled – currently not indexed” noise on random URLs should clear up).
-- Use URL Inspection → *Request Indexing* for `/blog` and the two slugged posts.
-- Submit `https://bdsolarpower.com/sitemap.xml` if not already submitted.
+### 5. Cutover (DNS at Dynadot)
+1. Dynadot → `bdsolarpower.com` → Nameservers → replace `ns1/ns2.dyna-ns.net` with the two Cloudflare nameservers from step 1.
+2. Save the old values — **rollback = change them back** (Lovable keeps serving meanwhile).
+
+### 6. Post-cutover validation
+- [ ] Nameservers show Cloudflare (dig / dnschecker)
+- [ ] Repeat the step-3 checklist on the real domain
+- [ ] `curl -sI https://www.bdsolarpower.com/` → `301` → apex, single hop
+- [ ] SSL certificate issued (automatic, usually minutes)
+- [ ] In GSC: re-verify property (the meta tag persists), resubmit the sitemap, request indexing for the five new pages
+
+### 7. Aftercare
+- Lovable remains usable as an editor; its GitHub sync now feeds Pages automatically — the **Publish button is no longer needed for hosting**.
+- Watch GSC → Page indexing for a week: soft-404s should vanish as Google recrawls.
+- Note: if the Pages checkout is shallow, sitemap `lastmod` falls back to build date — acceptable; can be refined later with a full clone setting.
+
+## Open questions
+- Confirm access to the **Dynadot registrar account** (needed only for step 5).
+- If moving nameservers is ever blocked, the fallback (CNAME to `<project>.pages.dev` for `www` plus apex flattening at Dynadot) is messier — moving NS is the clean path.
