@@ -84,25 +84,23 @@ const ProjectQuoteForm = () => {
     setIsSubmitting(true);
     try {
       const selected = projects.find((p) => p.id === formData.projectId);
-      const { data, error } = await supabase
-        .from("project_quote_requests")
-        .insert({
-          project_id: formData.projectId,
-          project_name: selected ? `${selected.name} (${selected.location})` : null,
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email || null,
-          company: formData.company || null,
-          message: formData.message || null,
-        })
-        .select("id")
-        .single();
+      const requestId = crypto.randomUUID();
+      const { error } = await supabase.from("project_quote_requests").insert({
+        id: requestId,
+        project_id: formData.projectId,
+        project_name: selected ? `${selected.name} (${selected.location})` : null,
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email || null,
+        company: formData.company || null,
+        message: formData.message || null,
+      });
 
       if (error) throw error;
 
       // Best-effort notification: the request is already saved either way.
       supabase.functions
-        .invoke("notify-project-quote", { body: { requestId: data.id } })
+        .invoke("notify-project-quote", { body: { requestId } })
         .catch((err) => console.error("Notification failed:", err));
 
       trackEvent("generate_lead", { method: "project_quote_form" });
