@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { checkRateLimit, rateLimitedResponse } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -25,6 +26,12 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
+    // requestId is unauthenticated (verify_jwt=false) and unguessable but
+    // known to its submitter, who could otherwise replay it to spam the
+    // notification email / burn the Resend quota.
+    const allowed = await checkRateLimit(`notify-project-quote:${requestId}`, 3, 900);
+    if (!allowed) return rateLimitedResponse(corsHeaders);
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,

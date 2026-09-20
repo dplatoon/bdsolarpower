@@ -1,3 +1,7 @@
+-- NOTE: recreates the same 4 tables as 20250615175837-...sql (an earlier,
+-- superseded migration with a different column set) — see that file's
+-- header. This is the shape later migrations build on.
+
 -- Create profiles table for user data
 CREATE TABLE public.profiles (
   id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
