@@ -1,26 +1,29 @@
 # BD Solar Power (bdsolarpower.com)
 
-> Independent reference on solar energy in Bangladesh: current system prices,
-> net metering rules, government incentives, ROI figures and installation
-> guidance. Based in Mymensingh, serving all of Bangladesh.
+> Rooftop solar installation guidance and site-specific surveys for homes and businesses across Bangladesh.
 
-## Key facts
+## Verified public facts
 
-- 5kW rooftop system price (2026): BDT 275,000-350,000, installed.
-- Typical payback period: 3-4 years; panel lifespan 25 years.
-- Solar import duty in Bangladesh: 1% (reduced from earlier rates).
-- Net metering is available for systems up to 100kW under BPDB rules.
-- Contact: hello@bdsolarpower.com, WhatsApp +880 1711 927755.
+- BD Solar Power currently states a 5kW rooftop solar system starting from BDT 275,000, subject to site survey and final scope.
+- A free site survey and net-metering documentation support are offered.
+- The stated panel warranty is 25 years; final terms depend on the selected product documentation.
+- Service is offered nationwide, subject to assessment and scheduling.
+- Contact: hello@bdsolarpower.com; WhatsApp +880 1711 927755.
+- Policy, incentive, generation, savings and payback information must be verified for the specific project before purchase.
 
-## Pages
+## Buyer pages
 
-- [Home](https://bdsolarpower.com/): Solar panel prices, savings calculator and FAQs for Bangladesh.
-- [Solar Dashboard](https://bdsolarpower.com/dashboard): Live national solar capacity, projects and tender data.
-- [AI Tools](https://bdsolarpower.com/ai-tools): Rooftop photo analysis and solar policy summariser.
-- [Investors](https://bdsolarpower.com/investors): Market metrics, project comparison and portfolio tools.
-- [Learn](https://bdsolarpower.com/learn): Beginner guides to solar technology and net metering.
-- [Blog](https://bdsolarpower.com/blog): Articles on pricing, policy, incentives and technology.
+- [Home](https://bdsolarpower.com/)
+- [Solar system prices](https://bdsolarpower.com/solar-system-price-bangladesh)
+- [Net metering guide](https://bdsolarpower.com/net-metering-bangladesh)
+- [Residential solar](https://bdsolarpower.com/residential-solar-bangladesh)
+- [Commercial solar](https://bdsolarpower.com/commercial-solar-bangladesh)
+- [Solar calculator](https://bdsolarpower.com/solar-calculator-bangladesh)
+- [Published solar projects](https://bdsolarpower.com/solar-projects-bangladesh)
+- [Blog](https://bdsolarpower.com/blog)
+- [Contact](https://bdsolarpower.com/contact)
 
-## Optional
+## Machine-readable discovery
 
-- [Sitemap](https://bdsolarpower.com/sitemap.xml): Full list of indexable pages.
+- [Sitemap](https://bdsolarpower.com/sitemap.xml)
+- [Robots](https://bdsolarpower.com/robots.txt)

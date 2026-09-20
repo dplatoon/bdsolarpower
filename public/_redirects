@@ -7,3 +7,8 @@
 # Legacy numeric blog URLs -> canonical slug URLs (consolidates incoming links).
 /blog/17 /blog/solar-system-cost-bangladesh-2026 301
 /blog/18 /blog/why-solar-systems-fail-bangladesh-how-to-avoid 301
+
+# Legacy price routes -> buyer-focused canonical URLs.
+/solar-system-prices/3kw /3kw-solar-system-price-bangladesh 301
+/solar-system-prices/5kw /5kw-solar-system-price-bangladesh 301
+/solar-system-prices/10kw /10kw-solar-system-price-bangladesh 301

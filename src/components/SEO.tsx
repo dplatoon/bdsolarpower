@@ -106,7 +106,6 @@ export const localBusinessSchema = {
   "url": "https://bdsolarpower.com",
   "telephone": "+880-1711-927755",
   "email": "hello@bdsolarpower.com",
-  "foundingDate": "2020",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Mymensingh",
@@ -129,23 +128,6 @@ export const localBusinessSchema = {
     { "@type": "AdministrativeArea", "name": "Rajshahi Division" },
     { "@type": "AdministrativeArea", "name": "Khulna Division" }
   ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "10:00",
-      "closes": "16:00"
-    }
-  ],
-  "priceRange": "৳৳৳",
-  "currenciesAccepted": "BDT",
-  "paymentAccepted": "Cash, Bank Transfer, EMI, bKash, Nagad",
   "logo": { "@id": "https://bdsolarpower.com/#logo" },
   "image": { "@id": "https://bdsolarpower.com/#logo" },
   "contactPoint": {
@@ -156,12 +138,6 @@ export const localBusinessSchema = {
     "availableLanguage": ["Bengali", "English"],
     "areaServed": "BD"
   },
-  "sameAs": [
-    "https://facebook.com/bdsolarpower",
-    "https://twitter.com/bdsolarpower",
-    "https://linkedin.com/company/bdsolarpower",
-    "https://youtube.com/@bdsolarpower"
-  ],
   "knowsAbout": ["Solar Energy", "Renewable Energy", "Net Metering Policy Bangladesh", "3000 MW Solar Program"]
 };
 
@@ -210,7 +186,9 @@ export const SEO = ({
   const suffixedTitle = `${title} | BD Solar Power`;
   // Stay inside Google's ~60-character display limit: drop the suffix for long
   // titles rather than truncating the page's own words.
-  const fullTitle = suffixedTitle.length <= 60 ? suffixedTitle : title;
+  const selectedTitle = suffixedTitle.length <= 60 ? suffixedTitle : title;
+  const fullTitle = selectedTitle.length < 60 ? selectedTitle : `${selectedTitle.slice(0, 56).trim()}…`;
+  const metaDescription = description.length < 160 ? description : `${description.slice(0, 156).trim()}…`;
   const baseUrl = 'https://bdsolarpower.com';
   const currentUrl = canonicalUrl || `${baseUrl}${location.pathname}`;
   const absoluteOgImage = toAbsoluteUrl(ogImage);
@@ -224,7 +202,7 @@ export const SEO = ({
   const articleSchema = type === 'article' ? {
     "@type": "Article",
     "headline": articleHeadline || title,
-    "description": description,
+    "description": metaDescription,
     "author": {
       "@type": "Person",
       "@id": `${baseUrl}/#author-${author.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
@@ -256,7 +234,7 @@ export const SEO = ({
     "@id": `${currentUrl}#webpage`,
     "url": currentUrl,
     "name": fullTitle,
-    "description": description,
+    "description": metaDescription,
     "isPartOf": { "@id": `${baseUrl}/#website` },
     "about": { "@id": `${baseUrl}/#organization` },
     "inLanguage": "en-BD",
@@ -287,7 +265,7 @@ export const SEO = ({
       {/* Primary Meta Tags */}
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
-      <meta name="description" content={description} />
+      <meta name="description" content={metaDescription} />
       <meta name="author" content={author} />
       <link rel="canonical" href={currentUrl} />
 
@@ -295,7 +273,7 @@ export const SEO = ({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={absoluteOgImage} />
       <meta property="og:image:width" content={String(ogWidth)} />
       <meta property="og:image:height" content={String(ogHeight)} />
@@ -307,7 +285,7 @@ export const SEO = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={currentUrl} />
       <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={absoluteOgImage} />
       <meta name="twitter:site" content="@bdsolarpower" />
       <meta name="twitter:creator" content="@bdsolarpower" />

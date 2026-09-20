@@ -10,6 +10,7 @@ import { blogPostContent } from "@/data/blogPostContent";
 import { blogHeroImages } from "@/data/blogHeroImages";
 import { authors } from "@/data/authors";
 import BlogTableOfContents from "@/components/BlogTableOfContents";
+import QuoteDialog from "@/components/QuoteDialog";
 
 const equipmentFrames = {
   'solar-panel': { border: 'border-l-8 border-blue-500', badge: 'bg-blue-600', icon: '☀️' },
@@ -113,6 +114,10 @@ const BlogPostPage = () => {
               {post.title}
             </h1>
 
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              What should Bangladesh solar buyers know about this topic?
+            </h2>
+
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8 pb-8 border-b">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
@@ -210,15 +215,12 @@ const BlogPostPage = () => {
 
             {/* End-of-article conversion block */}
             <div className="mt-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Get a Free Site Survey</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Ready to get a free site survey?</h2>
               <p className="text-gray-700 mb-6">
                 Every roof is different. Tell us about your place and we'll send an itemized, no-obligation quotation.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  {/* Full navigation so the browser scrolls to the contact section. */}
-                  <a href="/#contact">Get Free Site Survey</a>
-                </Button>
+                <QuoteDialog label="Get Free Site Survey" size="lg" className="w-full sm:w-auto" />
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <a
                     href="https://wa.me/8801711927755"
