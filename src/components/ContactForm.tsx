@@ -67,17 +67,18 @@ const ContactForm = () => {
     // Construct WhatsApp message
     const message = `🌞 *Solar Quote Request*
 
-*Name:* ${encodeURIComponent(formData.name)}
-*Phone:* ${encodeURIComponent(formData.phone)}
-*Email:* ${formData.email ? encodeURIComponent(formData.email) : "Not provided"}
-*Location:* ${encodeURIComponent(formData.location)}
-*System Size:* ${encodeURIComponent(formData.systemSize)}
-*Additional Info:* ${formData.message ? encodeURIComponent(formData.message) : "None"}
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email || "Not provided"}
+*Location:* ${formData.location}
+*System Size:* ${formData.systemSize}
+*Additional Info:* ${formData.message || "None"}
 
 Sent from bdsolarpower.com`;
 
-    // Open WhatsApp with pre-filled message
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    // Open WhatsApp with pre-filled message (encode the whole message once,
+    // not per-field, so static text like emoji/asterisks/newlines is escaped too)
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
     // GA4: a completed quote form is the site's lead conversion.

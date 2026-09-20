@@ -1,5 +1,6 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { checkRateLimit, clientIp, rateLimitedResponse } from "../_shared/rateLimit.ts";
 
 const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
 
@@ -14,6 +15,11 @@ serve(async (req) => {
   }
 
   try {
+    // Public, OpenAI-backed endpoint: cap requests per IP so a script can't
+    // run up the OpenAI bill.
+    const allowed = await checkRateLimit(`summarize-policy:${clientIp(req)}`, 5, 60);
+    if (!allowed) return rateLimitedResponse(corsHeaders);
+
     const { policyText, policyType } = await req.json();
 
     // Validate inputs

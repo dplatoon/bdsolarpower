@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { checkRateLimit, clientIp, rateLimitedResponse } from "../_shared/rateLimit.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -11,6 +12,11 @@ serve(async (req) => {
   }
 
   try {
+    // Public, OpenAI-backed endpoint: cap requests per IP so a script can't
+    // run up the OpenAI bill.
+    const allowed = await checkRateLimit(`analyze-solar-potential:${clientIp(req)}`, 5, 60);
+    if (!allowed) return rateLimitedResponse(corsHeaders);
+
     const { imageUrl, roofArea, location } = await req.json();
     const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
 

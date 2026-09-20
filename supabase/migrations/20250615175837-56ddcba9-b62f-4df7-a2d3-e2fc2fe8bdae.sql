@@ -1,3 +1,17 @@
+-- HISTORICAL / SUPERSEDED: this migration's CREATE TABLE statements for
+-- profiles/solar_projects/tender_opportunities/user_project_interactions
+-- were superseded by 20251029200257_61280c2d-...sql, which recreates the
+-- same four tables with a different column set. Both files are kept as-is
+-- (already applied against the live database; editing applied migrations
+-- is out of scope without access to that project to verify against).
+--
+-- Practical effect: replaying this migration history against a fresh/empty
+-- database will fail here or at the next migration with a duplicate-table
+-- or duplicate-policy error. Don't use `supabase db reset` / a full replay
+-- to provision a new environment from this history as-is — either start
+-- from a `pg_dump`/`supabase db dump` of the live schema instead, or have
+-- someone with access to the live project consolidate these into one
+-- squashed baseline migration.
 
 -- Create profiles table for additional user data
 CREATE TABLE public.profiles (
