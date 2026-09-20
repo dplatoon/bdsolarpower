@@ -46,7 +46,7 @@ const Blog = () => {
         </header>
 
         <section className="mb-12">
-          <h2 className="mb-6 text-2xl font-bold">Essential solar guides</h2>
+          <h2 className="mb-6 text-2xl font-bold">Which solar guides should you read first?</h2>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{blogTemplates.map((post) => <Card key={post.slug}><CardHeader><p className="text-sm font-semibold text-primary">{post.category}</p><CardTitle className="text-xl"><Link to={`/blog/${post.slug}`} className="hover:text-primary">{post.title}</Link></CardTitle></CardHeader><CardContent><Button asChild variant="outline"><Link to={`/blog/${post.slug}`}>Read More</Link></Button></CardContent></Card>)}</div>
         </section>
         <Tabs defaultValue="all" className="w-full">

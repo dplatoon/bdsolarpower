@@ -211,7 +211,7 @@ const BlogPostPage = () => {
 
             {/* End-of-article conversion block */}
             <div className="mt-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Get a Free Site Survey</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Ready to get a free site survey?</h2>
               <p className="text-gray-700 mb-6">
                 Every roof is different. Tell us about your place and we'll send an itemized, no-obligation quotation.
               </p>
