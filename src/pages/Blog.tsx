@@ -4,6 +4,10 @@ import Footer from "@/components/Footer";
 import { BlogPostCard } from "@/components/BlogPostCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { blogPostsData } from "@/data/blogPosts";
+import { blogTemplates } from "@/data/siteContent";
+import { Link } from "react-router-dom";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const Blog = () => {
   // Newest posts first, so the latest guides lead the listing.
@@ -41,6 +45,10 @@ const Blog = () => {
           </p>
         </header>
 
+        <section className="mb-12">
+          <h2 className="mb-6 text-2xl font-bold">Essential solar guides</h2>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{blogTemplates.map((post) => <Card key={post.slug}><CardHeader><p className="text-sm font-semibold text-primary">{post.category}</p><CardTitle className="text-xl"><Link to={`/blog/${post.slug}`} className="hover:text-primary">{post.title}</Link></CardTitle></CardHeader><CardContent><Button asChild variant="outline"><Link to={`/blog/${post.slug}`}>Read More</Link></Button></CardContent></Card>)}</div>
+        </section>
         <Tabs defaultValue="all" className="w-full">
           <TabsList className="grid w-full grid-cols-4 lg:grid-cols-7 mb-8 gap-2">
             <TabsTrigger value="all">All Posts</TabsTrigger>

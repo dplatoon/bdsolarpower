@@ -106,7 +106,6 @@ export const localBusinessSchema = {
   "url": "https://bdsolarpower.com",
   "telephone": "+880-1711-927755",
   "email": "hello@bdsolarpower.com",
-  "foundingDate": "2020",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Mymensingh",
@@ -129,23 +128,6 @@ export const localBusinessSchema = {
     { "@type": "AdministrativeArea", "name": "Rajshahi Division" },
     { "@type": "AdministrativeArea", "name": "Khulna Division" }
   ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "10:00",
-      "closes": "16:00"
-    }
-  ],
-  "priceRange": "৳৳৳",
-  "currenciesAccepted": "BDT",
-  "paymentAccepted": "Cash, Bank Transfer, EMI, bKash, Nagad",
   "logo": { "@id": "https://bdsolarpower.com/#logo" },
   "image": { "@id": "https://bdsolarpower.com/#logo" },
   "contactPoint": {
@@ -156,12 +138,6 @@ export const localBusinessSchema = {
     "availableLanguage": ["Bengali", "English"],
     "areaServed": "BD"
   },
-  "sameAs": [
-    "https://facebook.com/bdsolarpower",
-    "https://twitter.com/bdsolarpower",
-    "https://linkedin.com/company/bdsolarpower",
-    "https://youtube.com/@bdsolarpower"
-  ],
   "knowsAbout": ["Solar Energy", "Renewable Energy", "Net Metering Policy Bangladesh", "3000 MW Solar Program"]
 };
 
