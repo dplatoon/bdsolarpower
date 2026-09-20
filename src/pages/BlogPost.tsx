@@ -10,6 +10,7 @@ import { blogPostContent } from "@/data/blogPostContent";
 import { blogHeroImages } from "@/data/blogHeroImages";
 import { authors } from "@/data/authors";
 import BlogTableOfContents from "@/components/BlogTableOfContents";
+import QuoteDialog from "@/components/QuoteDialog";
 
 const equipmentFrames = {
   'solar-panel': { border: 'border-l-8 border-blue-500', badge: 'bg-blue-600', icon: '☀️' },
@@ -215,10 +216,7 @@ const BlogPostPage = () => {
                 Every roof is different. Tell us about your place and we'll send an itemized, no-obligation quotation.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="w-full sm:w-auto">
-                  {/* Full navigation so the browser scrolls to the contact section. */}
-                  <a href="/#contact">Get Free Site Survey</a>
-                </Button>
+                <QuoteDialog label="Get Free Site Survey" size="lg" className="w-full sm:w-auto" />
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                   <a
                     href="https://wa.me/8801711927755"

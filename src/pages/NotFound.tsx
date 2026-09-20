@@ -52,10 +52,10 @@ const NotFound = () => {
           <div className="mt-12 pt-8 border-t">
             <p className="text-sm text-gray-500 mb-4">You might find these helpful:</p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Link to="/dashboard" className="text-emerald-600 hover:underline">Dashboard</Link>
-              <Link to="/ai-tools" className="text-emerald-600 hover:underline">AI Tools</Link>
-              <Link to="/investors" className="text-emerald-600 hover:underline">Investors</Link>
-              <Link to="/learn" className="text-emerald-600 hover:underline">Learn</Link>
+              <Link to="/solar-system-price-bangladesh" className="text-emerald-600 hover:underline">Prices</Link>
+              <Link to="/solar-calculator-bangladesh" className="text-emerald-600 hover:underline">Calculator</Link>
+              <Link to="/solar-projects-bangladesh" className="text-emerald-600 hover:underline">Projects</Link>
+              <Link to="/contact" className="text-emerald-600 hover:underline">Contact</Link>
               <Link to="/blog" className="text-emerald-600 hover:underline">Blog</Link>
             </div>
           </div>

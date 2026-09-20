@@ -13,8 +13,8 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { z } from "zod";
 
 const quoteSchema = z.object({ name: z.string().trim().min(2).max(100), phone: z.string().trim().min(10).max(15).regex(/^[0-9+\-\s]+$/), email: z.string().trim().email().optional().or(z.literal("")), city: z.string().min(1), property: z.string().min(1), bill: z.string().min(1), size: z.string().min(1), message: z.string().trim().max(1000), consent: z.literal(true) });
-type Quote = z.infer<typeof quoteSchema>;
-const initial: Quote = { name: "", phone: "", email: "", city: "", property: "", bill: "", size: "", message: "", consent: false as true };
+type Quote = Omit<z.infer<typeof quoteSchema>, "consent"> & { consent: boolean };
+const initial: Quote = { name: "", phone: "", email: "", city: "", property: "", bill: "", size: "", message: "", consent: false };
 
 export default function QuoteDialog({ label = "Get Free Quote", variant = "default", size = "default", className }: { label?: string; variant?: "default" | "secondary" | "outline"; size?: "default" | "lg"; className?: string }) {
   const { toast } = useToast();
