@@ -114,6 +114,10 @@ const BlogPostPage = () => {
               {post.title}
             </h1>
 
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              What should Bangladesh solar buyers know about this topic?
+            </h2>
+
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8 pb-8 border-b">
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
