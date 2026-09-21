@@ -6,7 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQList from "@/components/FAQList";
 import QuoteDialog from "@/components/QuoteDialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { commercialSectors, locations, policyNotice, solarSystems } from "@/data/siteContent";
+import { business, commercialSectors, locations, policyNotice, solarSystems } from "@/data/siteContent";
 
 type Page = { title: string; description: string; intro: string; sections: { heading: string; text: string }[]; faq?: readonly (readonly [string, string])[] };
 const simpleFaq = [["How does the process start?", "Share your electricity bill, property type and roof details. A site assessment is required before final design or pricing."], ["Are savings guaranteed?", "No. Generation and savings vary with site conditions, usage, equipment, tariffs and approvals."], ["Is net metering included?", "Documentation guidance can be included where applicable, but eligibility and approval remain subject to current utility requirements."]] as const;
