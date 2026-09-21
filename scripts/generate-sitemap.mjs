@@ -87,6 +87,8 @@ const pages = [
   { loc: "/solar-company-mymensingh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/about", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/contact", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
+  { loc: "/privacy", changefreq: "yearly", priority: "0.3", files: ["src/pages/MarketingPage.tsx"] },
+  { loc: "/terms", changefreq: "yearly", priority: "0.3", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/blog/solar-panel-price-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/blog/5kw-solar-system-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/blog/net-metering-bangladesh-guide", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
