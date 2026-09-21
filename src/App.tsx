@@ -102,6 +102,8 @@ const App = ({ ssrLocation, helmetContext }: AppProps) => {
                 <Route path="/solar-company-mymensingh" element={<MarketingPage />} />
                 <Route path="/about" element={<MarketingPage />} />
                 <Route path="/contact" element={<MarketingPage />} />
+                <Route path="/privacy" element={<MarketingPage />} />
+                <Route path="/terms" element={<MarketingPage />} />
                 <Route path="/solar-system-prices/3kw" element={<Navigate to="/3kw-solar-system-price-bangladesh" replace />} />
                 <Route path="/solar-system-prices/5kw" element={<Navigate to="/5kw-solar-system-price-bangladesh" replace />} />
                 <Route path="/solar-system-prices/10kw" element={<Navigate to="/10kw-solar-system-price-bangladesh" replace />} />

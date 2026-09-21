@@ -66,6 +66,8 @@ const routes = [
   "/solar-company-mymensingh",
   "/about",
   "/contact",
+  "/privacy",
+  "/terms",
   "/blog/solar-panel-price-bangladesh",
   "/blog/5kw-solar-system-bangladesh",
   "/blog/net-metering-bangladesh-guide",
