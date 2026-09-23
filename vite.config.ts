@@ -67,4 +67,5 @@ export default defineConfig(({ mode }) => {
     // CJS-only deps must be bundled for the build-time prerender to import them.
     noExternal: ["react-helmet-async"],
   },
-}));
+  };
+});
