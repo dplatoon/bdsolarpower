@@ -88,6 +88,75 @@ export type Database = {
           },
         ]
       }
+      site_assessments: {
+        Row: {
+          area_sqft: number | null
+          assessment: Json | null
+          contact_name: string | null
+          contact_phone: string | null
+          created_at: string
+          district: string | null
+          estimated_annual_kwh: number | null
+          estimated_cost_bdt_max: number | null
+          estimated_cost_bdt_min: number | null
+          grid_connected: boolean | null
+          id: string
+          monthly_bill_bdt: number | null
+          notes: string | null
+          payback_years: number | null
+          photo_count: number
+          recommended_system_kw: number | null
+          site_type: string | null
+          suitability_score: number | null
+          summary: string | null
+          user_id: string | null
+        }
+        Insert: {
+          area_sqft?: number | null
+          assessment?: Json | null
+          contact_name?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          district?: string | null
+          estimated_annual_kwh?: number | null
+          estimated_cost_bdt_max?: number | null
+          estimated_cost_bdt_min?: number | null
+          grid_connected?: boolean | null
+          id?: string
+          monthly_bill_bdt?: number | null
+          notes?: string | null
+          payback_years?: number | null
+          photo_count?: number
+          recommended_system_kw?: number | null
+          site_type?: string | null
+          suitability_score?: number | null
+          summary?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          area_sqft?: number | null
+          assessment?: Json | null
+          contact_name?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          district?: string | null
+          estimated_annual_kwh?: number | null
+          estimated_cost_bdt_max?: number | null
+          estimated_cost_bdt_min?: number | null
+          grid_connected?: boolean | null
+          id?: string
+          monthly_bill_bdt?: number | null
+          notes?: string | null
+          payback_years?: number | null
+          photo_count?: number
+          recommended_system_kw?: number | null
+          site_type?: string | null
+          suitability_score?: number | null
+          summary?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       solar_projects: {
         Row: {
           capacity_mw: number
