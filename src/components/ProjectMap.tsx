@@ -71,17 +71,21 @@ const ProjectMap = () => {
     const channel = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID;
     (window as any).__initSolarProjectMap = initMap;
 
-    // Load Google Maps script
+    // Load the Maps script exactly once — React StrictMode and tab remounts
+    // would otherwise append duplicate loaders and break the API bootstrap.
+    if (window.google?.maps) {
+      initMap();
+      return;
+    }
+    if (document.getElementById('google-maps-js')) return;
+
     const script = document.createElement('script');
+    script.id = 'google-maps-js';
     script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&loading=async&callback=__initSolarProjectMap${channel ? `&channel=${encodeURIComponent(channel)}` : ''}`;
     script.async = true;
     document.head.appendChild(script);
-
-    return () => {
-      if (script.parentNode) {
-        document.head.removeChild(script);
-      }
-    };
+    // The script is intentionally left in <head> on unmount: removing it does
+    // not unload the API and re-adding it causes duplicate-loader errors.
   }, [projects]);
 
   const initMap = () => {
