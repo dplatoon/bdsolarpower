@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SolarAnalyzer from "@/components/SolarAnalyzer";
+import SiteSuitabilityAssessor from "@/components/SiteSuitabilityAssessor";
 import ProjectMap from "@/components/ProjectMap";
 import ProjectQuoteForm from "@/components/ProjectQuoteForm";
 import CarbonCalculator from "@/components/CarbonCalculator";
@@ -29,13 +30,18 @@ const AITools = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="analyzer" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+        <Tabs defaultValue="site" className="w-full">
+          <TabsList className="flex w-full flex-wrap gap-1 sm:grid sm:grid-cols-5">
+            <TabsTrigger value="site">Site Assessment</TabsTrigger>
             <TabsTrigger value="analyzer">Solar Analyzer</TabsTrigger>
             <TabsTrigger value="carbon">Carbon Calculator</TabsTrigger>
             <TabsTrigger value="policy">Policy Summarizer</TabsTrigger>
             <TabsTrigger value="map">Project Map</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="site">
+            <SiteSuitabilityAssessor />
+          </TabsContent>
 
           <TabsContent value="analyzer">
             <SolarAnalyzer />

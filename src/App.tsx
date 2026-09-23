@@ -28,6 +28,7 @@ const SolarCalculator = lazy(() => import("./pages/SolarCalculator"));
 const MarketingPage = lazy(() => import("./pages/MarketingPage"));
 const Projects = lazy(() => import("./pages/Projects"));
 const BlogGuide = lazy(() => import("./pages/BlogGuide"));
+const SiteAssessment = lazy(() => import("./pages/SiteAssessment"));
 
 const queryClient = new QueryClient();
 
@@ -88,6 +89,7 @@ const App = ({ ssrLocation, helmetContext }: AppProps) => {
                 <Route path="/10kw-solar-system-price-bangladesh" element={<SolarPricing />} />
                 <Route path="/solar-calculator-bangladesh" element={<SolarCalculator />} />
                 <Route path="/solar-projects-bangladesh" element={<Projects />} />
+                <Route path="/solar-site-assessment" element={<SiteAssessment />} />
                 <Route path="/net-metering-bangladesh" element={<MarketingPage />} />
                 <Route path="/residential-solar-bangladesh" element={<MarketingPage />} />
                 <Route path="/commercial-solar-bangladesh" element={<MarketingPage />} />
