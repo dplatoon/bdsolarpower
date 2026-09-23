@@ -76,6 +76,7 @@ const pages = [
   { loc: "/commercial-solar-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/solar-calculator-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/solar-projects-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
+  { loc: "/solar-site-assessment", changefreq: "monthly", priority: "0.8", files: ["src/pages/SiteAssessment.tsx"] },
   { loc: "/factory-solar-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/office-solar-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },
   { loc: "/school-solar-bangladesh", changefreq: "monthly", priority: "0.8", files: ["src/pages/MarketingPage.tsx"] },

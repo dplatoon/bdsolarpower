@@ -55,6 +55,7 @@ const routes = [
   "/commercial-solar-bangladesh",
   "/solar-calculator-bangladesh",
   "/solar-projects-bangladesh",
+  "/solar-site-assessment",
   "/factory-solar-bangladesh",
   "/office-solar-bangladesh",
   "/school-solar-bangladesh",
