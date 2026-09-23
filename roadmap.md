@@ -9,3 +9,4 @@
 - [x] Verify responsive behavior, forms, calculator, metadata, and prerender output
 - [x] Restore signed-out account access in desktop and mobile navigation
 - [x] Add working Privacy Policy and Terms pages
+- [x] Add AI site suitability assessment for landowners (/solar-site-assessment)
