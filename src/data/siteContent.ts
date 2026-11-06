@@ -8,7 +8,53 @@ export const business = {
   verifiedLocation: "Mymensingh, Bangladesh",
 };
 
-export const policyNotice = {
+export const homeContent = {
+  hero: {
+    titleEn: "Solar Panel Installation in Bangladesh for Homes & Businesses",
+    titleBn: "বাড়ি ও কারখানার জন্য বাংলাদেশে সোলার প্যানেল স্থাপন",
+    subtitleEn: "Lower grid dependence with a rooftop solar system designed around your bill, roof and backup needs. Start with a free site survey and a clear, site-specific proposal.",
+    subtitleBn: "আপনার বিদ্যুৎ বিল, ছাদের জায়গা এবং ব্যাকআপ চাহিদার ওপর ভিত্তি করে তৈরি সোলার সিস্টেমের মাধ্যমে গ্রিড নির্ভরতা কমিয়ে আনুন। শুরু করুন একটি ফ্রি সাইট সার্ভে এবং সঠিক প্রপোজালের মাধ্যমে।",
+  },
+  sizing: {
+    titleEn: "Which solar system size fits your property?",
+    titleBn: "আপনার প্রপার্টির জন্য কোন সাইজের সোলার সিস্টেম সঠিক?",
+    subtitleEn: "Start with these common pathways, then confirm sizing through bill analysis and a rooftop survey.",
+    subtitleBn: "সাধারণ কিছু অপশন দেখুন, এরপর বিদ্যুৎ বিল এবং ছাদের সার্ভের মাধ্যমে সঠিক সাইজ নিশ্চিত করুন।",
+    directAnswerEn: "For most family homes in Bangladesh, a 5kW solar system is the ideal choice, typically reducing electricity bills by 60-80%. Larger properties or businesses may require 10kW or higher based on daytime load and roof area.",
+    directAnswerBn: "বাংলাদেশের অধিকাংশ পরিবারের জন্য ৫ কিলোওয়াট সোলার সিস্টেম সবচেয়ে উপযুক্ত, যা বিদ্যুৎ বিল ৬০-৮০% পর্যন্ত কমাতে পারে। বড় প্রপার্টি বা ব্যবসার জন্য লোড এবং ছাদের জায়গার ওপর ভিত্তি করে ১০ কিলোওয়াট বা তার বেশি প্রয়োজন হতে পারে।",
+  },
+  process: {
+    titleEn: "How does rooftop solar installation work?",
+    titleBn: "সোলার সিস্টেম স্থাপনের প্রক্রিয়াটি কেমন?",
+    directAnswerEn: "Rooftop solar installation involves five key steps: bill analysis, a professional site survey, technical design and quoting, physical installation and testing, and finally, handover with net-metering support for surplus energy exports.",
+    directAnswerBn: "সোলার প্যানেল স্থাপনের প্রক্রিয়াটি পাঁচটি ধাপে বিভক্ত: বিদ্যুৎ বিল বিশ্লেষণ, প্রফেশনাল সাইট সার্ভে, টেকনিক্যাল ডিজাইন ও কোটেশন, ফিজিক্যাল ইনস্টলেশন ও টেস্টিং, এবং সবশেষে নেট-মিটারিং সহায়তার মাধ্যমে হ্যান্ডওভার।",
+  },
+  netMetering: {
+    titleEn: "How can net metering support your solar plan?",
+    titleBn: "নেট মিটারিং কীভাবে আপনার সোলার প্ল্যানকে সাহায্য করতে পারে?",
+    directAnswerEn: "Net metering allows you to export surplus solar electricity back to the national grid in exchange for credits on your monthly bill, effectively turning your rooftop into a source of revenue and reducing overall costs.",
+    directAnswerBn: "নেট মিটারিংয়ের মাধ্যমে আপনি আপনার উৎপাদিত অতিরিক্ত বিদ্যুৎ জাতীয় গ্রিডে পাঠাতে পারেন এবং বিনিময়ে মাসিক বিলে ক্রেডিট পাবেন, যা আপনার ছাদকে আয়ের উৎসে পরিণত করে এবং সামগ্রিক খরচ কমায়।",
+  },
+  surveyFirst: {
+    titleEn: "Why choose a survey-first solar process?",
+    titleBn: "কেন আমরা সার্ভে-ফার্স্ট প্রক্রিয়া অনুসরণ করি?",
+    directAnswerEn: "A survey-first approach ensures accuracy by analyzing real roof shading, structural integrity, and actual electricity loads. This prevents costly equipment mismatches and guarantees a realistic ROI and performance projection for the client.",
+    directAnswerBn: "সার্ভে-ফার্স্ট পদ্ধতি ছাদের ছায়া, কাঠামোগত সক্ষমতা এবং প্রকৃত বিদ্যুতের লোড বিশ্লেষণ করে সঠিক সিস্টেম নিশ্চিত করে। এটি ভুল সরঞ্জাম নির্বাচন রোধ করে এবং ক্লায়েন্টকে সঠিক রিটার্ন অন ইনভেস্টমেন্ট (ROI) এবং পারফরম্যান্স গ্যারান্টি দেয়।",
+  },
+  locations: {
+    titleEn: "Where is solar installation available?",
+    titleBn: "সোলার স্থাপন কোথায় কোথায় সম্ভব?",
+    directAnswerEn: "Our solar installation services are available nationwide across Bangladesh, including Dhaka, Chittagong, Sylhet, Rajshahi, and Mymensingh, with site-specific assessments provided for every urban and rural property.",
+    directAnswerBn: "আমাদের সোলার ইনস্টলেশন সেবা ঢাকা, চট্টগ্রাম, সিলেট, রাজশাহী এবং ময়মনসিংহসহ সমগ্র বাংলাদেশে উপলব্ধ। প্রতিটি শহর এবং গ্রামের প্রপার্টির জন্য আমরা নির্দিষ্ট সাইট অ্যাসেসমেন্ট প্রদান করি।",
+  },
+  cta: {
+    titleEn: "Ready to assess your rooftop?",
+    titleBn: "আপনার ছাদের সক্ষমতা যাচাই করতে প্রস্তুত?",
+    subtitleEn: "Share your bill, city and property details for a free survey request.",
+    subtitleBn: "ফ্রি সার্ভে রিকোয়েস্টের জন্য আপনার বিদ্যুৎ বিল, শহর এবং প্রপার্টি ডিটেইলস শেয়ার করুন।",
+  }
+};
+
   text: "Install rooftop solar before 28 February 2027 and potentially receive Tk 10.50 per unit for surplus electricity for three years.",
   disclaimer: "Policy terms, eligibility, tariffs and deadlines must be verified with the relevant authority before purchase.",
   lastReviewed: "20 September 2026",

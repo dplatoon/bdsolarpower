@@ -1,4 +1,7 @@
 import React, { lazy, Suspense, useEffect } from "react";
+import SolarUpdate from "@/pages/SolarUpdate";
+import DirectSourcing from "@/pages/DirectSourcing";
+import ExpertProfile from "@/pages/ExpertProfile";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -112,7 +115,10 @@ const App = ({ ssrLocation, helmetContext }: AppProps) => {
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/my-dashboard" element={<UserDashboard />} />
                 <Route path="*" element={<NotFound />} />
-              </Routes>
+              <Route path="/bangladesh-solar-power-update" element={<SolarUpdate />} />
+    <Route path="/direct-sourcing" element={<DirectSourcing />} />
+    <Route path="/about-expert" element={<ExpertProfile />} />
+    </Routes>
             </Suspense>
           </Router>
         </TooltipProvider>
