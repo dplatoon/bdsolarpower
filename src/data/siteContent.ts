@@ -55,6 +55,7 @@ export const homeContent = {
   }
 };
 
+export const policyNotice = {
   text: "Install rooftop solar before 28 February 2027 and potentially receive Tk 10.50 per unit for surplus electricity for three years.",
   disclaimer: "Policy terms, eligibility, tariffs and deadlines must be verified with the relevant authority before purchase.",
   lastReviewed: "20 September 2026",

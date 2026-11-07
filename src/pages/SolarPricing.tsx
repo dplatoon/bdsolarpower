@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Link, useLocation } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import SiteShell from "@/components/SiteShell";

@@ -1,3 +1,4 @@
+import QuoteDialog from "@/components/QuoteDialog";
 import { SEO } from "@/components/SEO";
 import SiteShell from "@/components/SiteShell";
 import { Button } from "@/components/ui/button";
@@ -110,7 +111,7 @@ export default function ExpertProfile() {
                 <span><strong className="font-bold">Long-Term Support:</strong> I design for 25 years, not just for the first year.</span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
 
         <section className="text-center bg-primary text-primary-foreground rounded-3xl p-12 shadow-xl">
