@@ -1,3 +1,4 @@
+import QuoteDialog from "@/components/QuoteDialog";
 import { SEO } from "@/components/SEO";
 import SiteShell from "@/components/SiteShell";
 import { Button } from "@/components/ui/button";

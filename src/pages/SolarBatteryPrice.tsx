@@ -1,3 +1,4 @@
+import FAQList from "@/components/FAQList";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import SiteShell from "@/components/SiteShell";
