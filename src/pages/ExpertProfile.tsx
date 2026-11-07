@@ -110,7 +110,7 @@ export default function ExpertProfile() {
                 <span><strong className="font-bold">Long-Term Support:</strong> I design for 25 years, not just for the first year.</span>
               </li>
             </ul>
-          </div>
+          </section>
         </div>
 
         <section className="text-center bg-primary text-primary-foreground rounded-3xl p-12 shadow-xl">
